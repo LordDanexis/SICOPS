@@ -47,7 +47,7 @@ $queryc= "UPDATE configuracion set boleano = 0 WHERE proceso = 'estadoSistema' "
 	<meta http-equiv="Pragma" content="no-cache">
 
 
-    <title> SICOPS </title>
+    <title> SICOPS - </title>
 	<link href=" " rel="stylesheet"> 
     <link REL="shortcut icon" HREF="legal3.ico">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
