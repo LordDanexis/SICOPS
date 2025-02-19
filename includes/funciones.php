@@ -62,19 +62,19 @@ function menu($direccion, $nivel, $soloReportes)
 	} 
 
 	if ($direccion == "A"  || $direccion == "DG" || $direccion == "AP") {
-		$menu .= '<ul class="select menu" id="mInicio"> <li><a href="#nogo" class="munuSup"><b>Registro de Oficios DGSUB</b><!--[if IE 7]><!--></a><!--<![endif]-->
+		$menu .= '<ul class="select menu" id="mInicio"> <li><a href="#nogo" class="munuSup"><b>Oficios DGSUB</b><!--[if IE 7]><!--></a><!--<![endif]-->
 				<!--[if lte IE 6]><table><tr><td><![endif]-->
     <ul class="sub submenu redonda5 ulPfrr">';
 		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=pfrr_escritorio"> <img src="images/pliego_pfrr.png" /> <span> Ver Acciones </span></a></li>';
 		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=frLista"> <img src="images/pliego_pfrr.png" /> <span> Ver Prescripciones </span></a></li>';
 		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=frListaVencimiento1"> <img src="images/pliego_pfrr.png" /> <span> Fecha Judicial </span></a></li>';
 		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=frListaVencimiento"> <img src="images/pliego_pfrr.png" /> <span> Ver Vencimiento (90 Días)</span></a></li>';
-		if ($soloReportes != 1) $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=pfrr_oficios3"> <img src="images/volantes.png" /> <span>Oficios DGSUB</span> </a></li>';
+		if ($soloReportes != 1) $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=pfrr_oficios3"> <img src="images/volantes.png" /> <span>Alta Oficio </span> </a></li>'; //*********GENERA OFICIOS********** */
 		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=presuntosLista"><img src="images/presuntos.png" /> <span>Presuntos Responsables</span></a></li>';
 
 		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=pfrr_busqueda&reports=' . $soloReportes . '"><img src="images/search16.png" /><span>Búsqueda Avanzada</span></a></li>';
 		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=ayuda_pfrr"><img src="images/faqpfrr.png" /> <span>Ticket</span></a></li>';
-		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=ady"> <img src="images/volantes.png" /> <span>Avisos</span> </a></li>';
+		if ($soloReportes != 1 and $direccion == "AP" || $direccion == "A"  || $direccion == "DG") $menu .= '<li><a class="menu_pfrr redonda3" href="busquedaO/oficiosB.php"> <img src="images/volantes.png" /> <span>Búsqueda de Oficios  </span> </a></li>'; //*********BUSCA OFICIOS********** */
 		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="indicadores/dist/controlPFRR.php"> <img src="images/volantes.png" /> <span>Indicadores</span> </a></li>';
 		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="entidad/dist/controlEntidad.php"> <img src="images/volantes.png" /> <span>Información por Entidad</span> </a></li>';
 
@@ -312,6 +312,18 @@ function ivalorSeguro($conn, $_Cadena)
 	return 	mysqli_real_escape_string($conn, $_Cadena);
 	//return 	$_Cadena;
 }
+
+// function ivalorSeguro2($_Cadena)
+// {
+// 	$_Cadena = strip_tags($_Cadena);
+// 	$_Cadena = stripslashes($_Cadena);
+// 	$_Cadena = addslashes($_Cadena);
+// 	$_Cadena = trim($_Cadena);
+// 	$_Cadena = @htmlspecialchars($_Cadena);
+// 	$_Cadena = str_replace(chr(160), '', $_Cadena);
+// 	$_Cadena = real_escape_string($_Cadena);	 
+// 	return 	$_Cadena;
+// }
 
 //-------------------------------------------------- MALICIOSO -------------------------------------------------------
 // function remueveXSS($val)

@@ -216,7 +216,7 @@ var hour = (d.getHours(),':'+d.getMinutes(),':'+d.getSeconds());
 											
 											<!-- <li><a class="mSetup redonda3" href="?cont=calendario"> <img src="images/calendar01.png" /> Calendario</a></li>; -->
 											<!-- <link rel="stylesheet" href="css/estilo.css" type="text/css" media="screen" title="default" /> -->
-											<li><a class="mSetup redonda3" href="?cont=cambiar_contra"> <img src="images/password.png" /> Cambiar Contraseña</a></li>;
+											<li><a class="mSetup redonda3" href="?cont=cambiar_contra"> <img src="images/password.png" /> Cambiar Contraseña</a></li>
 											
 											<?php
 											
@@ -226,7 +226,7 @@ var hour = (d.getHours(),':'+d.getMinutes(),':'+d.getSeconds());
 											
 											// echo '<li><a class="mSetup redonda3" href="#"  onclick=\' new mostrarCuadro(600,1000,"Estados de Trámite ADICOM-BETA",20,"cont/estados_tramite.php","") \'> <img src="images/listNum.png" /> Estados de Trámite</a></li>'; 
 											//echo '<li><a class="mSetup redonda3" href="http://'.$_SERVER['HTTP_HOST'].'/'.$carpeta.'/reportes2" target="_blank"> <img src="images/bar-chart-icon.png" /> Reportes</a></li>';
-                                            if($_SESSION['direccion'] == "DG")
+                                            if($_SESSION['direccion'] == "AP")
                                             {
 											    echo '<li><a class="mSetup redonda3" href="?cont=configuracion"> <img src="images/config.png" /> Configurar Sistema</a></li>';
 											}
@@ -236,7 +236,6 @@ var hour = (d.getHours(),':'+d.getMinutes(),':'+d.getSeconds());
                                 </li>
                             </ul>    
             </div>
-
 
 
 		</div>

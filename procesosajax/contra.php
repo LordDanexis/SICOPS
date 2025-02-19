@@ -4,16 +4,17 @@ header("Content-Type: text/html;charset=utf-8");
 error_reporting(E_ERROR | E_PARSE);
 require_once("../includes/clases.php");
 require_once("../includes/funciones.php");
-$conexion = new conexion;
-$conexion->conectar();
+// $conexion = new conexion;
+// $conexion->conectar();
 //-------------------------- DESINFECTAR VARIABLES -----------------------------
 //------------------------------------------------------------------------------
-foreach($_POST as $nombre_campo => $valor)
-{
-   $asignacion = "\$" . $nombre_campo . " = '" . valorSeguro($valor) . "';"; 
-   eval($asignacion);
-   //echo "\n ".$asignacion;
-   } 
+
+// foreach($_POST as $nombre_campo => $valor)
+// {
+//    $asignacion = "\$" . $nombre_campo . " = '" . ivalorSeguro2($valor) . "';"; 
+//    eval($asignacion);
+//    //echo "\n ".$asignacion;
+// } 
 
 //-------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------
@@ -36,8 +37,9 @@ foreach($_POST as $nombre_campo => $valor)
 	//-- si los años son diferentes se reinicia el consecutivo de folios ------------
 	//-------------------------------------------------------------------------------
 	
-	$sql = $conexion->select("SELECT * FROM usuarios where usuario='$userForm' ", false);
-	$r = mysql_fetch_array($sql);
+	$sql = "SELECT * FROM usuarios where usuario='$userForm' ";
+	$result = $conn->query($sql);
+	$r = $result->fetch_array(MYSQLI_ASSOC);
 	$user = $r['usuario']; 
 	$contrase = $r['password']; 
 	$cont=$r['veces'];
@@ -48,31 +50,28 @@ foreach($_POST as $nombre_campo => $valor)
 	}
 	else 
 	{ 
-$cont=$cont+1;
-	$sql = $conexion->update("update usuarios set
-							    password='$new_contra', veces='$cont' where usuario ='$userForm'
-								
-								"
-								
-							,false);
+    $cont=$cont+1;
+
+	// $sql = $conexion->update("update usuarios set password='$new_contra', veces='$cont' where usuario ='$userForm'",false);
+	$update = "update usuarios set password='$new_contra', veces='$cont' where usuario ='$userForm'";
+	$result = $conn->query($update);
+	printf("Affected rows (UPDATE): %d\n", $conn->affected_rows);
 							
-							
-	
-	$ultimo_id = mysql_insert_id(); 
+	$ultimo_id = $conn->insert_id; 
+
 
 	
 	echo "<center><h2>Cambio de Contraseña Correcto </center></h2>";
+	echo $userForm;
+
+	echo $ultimo_id;
 	session_start();
 $_SESSION['acceso'] == false;
 
 session_destroy();
-
-
 	}
 	//echo "<center><font face='Arial size='10''><b>[Tiempo de espera estimado 60 minutos]</b> ";
 // end TO
-
-
-
-@mysql_free_result($sql);
+//@mysqli_free_result($r);
+//@$result->free();
 ?>
