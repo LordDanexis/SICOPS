@@ -47,7 +47,7 @@ $queryc= "UPDATE configuracion set boleano = 0 WHERE proceso = 'estadoSistema' "
 	<meta http-equiv="Pragma" content="no-cache">
 
 
-    <title> SICOPS - </title>
+    <title> SICOPS </title>
 	<link href=" " rel="stylesheet"> 
     <link REL="shortcut icon" HREF="legal3.ico">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -186,9 +186,9 @@ var hour = (d.getHours(),':'+d.getMinutes(),':'+d.getSeconds());
 							  //$r=$conexion->select( $sql="Select * from usuarios where usuario = '$u'");
 							  $sql= "Select * from usuarios where usuario = '$u'";  
 							   
-							  $r = mysqli_query($enlace, $sql);
+							//   $r = mysqli_query($enlace, $sql);
+							
 							   
-							 // while($m=mysql_fetch_array($r))
 							 while($m = mysqli_fetch_array($r,MYSQLI_BOTH))
 							   {
 							   $id=$m['id'];
@@ -331,7 +331,7 @@ var hour = (d.getHours(),':'+d.getMinutes(),':'+d.getSeconds());
 
 	//si esta cerrado
     ?>
-    </div> <!--SE QUITA EL DIV 30/07/2019 -----> 
+    </div> <!--SE QUITA EL DIV 30/07/2019 ----->     
 <!---------------------------------------  end content ------------------------------------>
 <div class="clear">&nbsp;</div> 
 </div>

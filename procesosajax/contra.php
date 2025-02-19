@@ -13,7 +13,7 @@ foreach($_POST as $nombre_campo => $valor)
    $asignacion = "\$" . $nombre_campo . " = '" . valorSeguro($valor) . "';"; 
    eval($asignacion);
    //echo "\n ".$asignacion;
-   }
+   } 
 
 //-------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------
@@ -36,7 +36,7 @@ foreach($_POST as $nombre_campo => $valor)
 	//-- si los años son diferentes se reinicia el consecutivo de folios ------------
 	//-------------------------------------------------------------------------------
 	
-		$sql = $conexion->select("SELECT * FROM usuarios where usuario='$userForm' ", false);
+	$sql = $conexion->select("SELECT * FROM usuarios where usuario='$userForm' ", false);
 	$r = mysql_fetch_array($sql);
 	$user = $r['usuario']; 
 	$contrase = $r['password']; 

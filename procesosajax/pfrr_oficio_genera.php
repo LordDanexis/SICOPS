@@ -74,7 +74,7 @@ if($TO == 0){
 											// mysqli_free_result($r);
 											  //printf("There are %u million bicycles in %s.",$number,$str);
 
-
+ 
 	//-------------------------------------------------------------------------------
 	//$partesAcciones = explode("|",$procedimiento);
 // 	if($oficioRef != "varios_pr_OT")

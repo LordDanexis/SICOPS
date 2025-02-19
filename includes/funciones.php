@@ -46,11 +46,11 @@ function menu($direccion, $nivel, $soloReportes)
 			
 					<ul class="submenu redonda5 ulPo">';
 		if ($soloReportes != 1) $menu .= '<li><a class="menu_po redonda3" href="?cont=ayuda_po"> <img src="images/FAQ.png" />Ticket</a></li>';
-		if ($soloReportes != 1 and $direccion == "DG") $menu .= '<li><a class="menu_po redonda3" href="?cont=po_escritorio"> <img src="images/pliego_po.png" /> Ver Acciones </a></li>';
-		if ($soloReportes != 1 and $direccion == "DG") $menu .= '<li><a class="menu_po redonda3" href="?cont=po_oficios"> <img src="images/volantes.png" /> <span>Oficios PO</span> </a></li>';
-		if ($soloReportes != 1 and $direccion == "DG") $menu .= '<!-- <li><a class="menu_po redonda3" href="?cont=dg_mantenimiento"> <img src="images/volantes.png" /> <span>Oficios PO</span> </a></li> -->';
-		if ($soloReportes != 1 and $direccion == "DG") $menu .= '<li><a class="menu_po redonda3" href="?cont=po_busqueda&reports=' . $soloReportes . '"> <img src="images/search16.png" />Búsqueda Avanzada</a></li>';
-		if ($direccion == "DG") $menu .= '<li><a class="mSetup redonda3" href="?cont=dg_bajasAnunciadas"> <img src="images/page_16_remove.png" /> Bajas Anunciadas </a></li>';
+		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_po redonda3" href="?cont=po_escritorio"> <img src="images/pliego_po.png" /> Ver Acciones </a></li>';
+		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_po redonda3" href="?cont=po_oficios"> <img src="images/volantes.png" /> <span>Oficios PO</span> </a></li>';
+		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<!-- <li><a class="menu_po redonda3" href="?cont=dg_mantenimiento"> <img src="images/volantes.png" /> <span>Oficios PO</span> </a></li> -->';
+		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_po redonda3" href="?cont=po_busqueda&reports=' . $soloReportes . '"> <img src="images/search16.png" />Búsqueda Avanzada</a></li>';
+		if ($direccion == "AP") $menu .= '<li><a class="mSetup redonda3" href="?cont=dg_bajasAnunciadas"> <img src="images/page_16_remove.png" /> Bajas Anunciadas </a></li>';
 		$menu .= '
 				</ul>
 				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
@@ -59,24 +59,24 @@ function menu($direccion, $nivel, $soloReportes)
 				
 				<div class="nav-divider">&nbsp;</div>
 				';
-	}
+	} 
 
 	if ($direccion == "A"  || $direccion == "DG" || $direccion == "AP") {
 		$menu .= '<ul class="select menu" id="mInicio"> <li><a href="#nogo" class="munuSup"><b>Registro de Oficios DGSUB</b><!--[if IE 7]><!--></a><!--<![endif]-->
 				<!--[if lte IE 6]><table><tr><td><![endif]-->
     <ul class="sub submenu redonda5 ulPfrr">';
-		if ($soloReportes != 1 and $direccion == "DG") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=pfrr_escritorio"> <img src="images/pliego_pfrr.png" /> <span> Ver Acciones </span></a></li>';
-		if ($soloReportes != 1 and $direccion == "DG") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=frLista"> <img src="images/pliego_pfrr.png" /> <span> Ver Prescripciones </span></a></li>';
-		if ($soloReportes != 1 and $direccion == "DG") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=frListaVencimiento1"> <img src="images/pliego_pfrr.png" /> <span> Fecha Judicial </span></a></li>';
-		if ($soloReportes != 1 and $direccion == "DG") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=frListaVencimiento"> <img src="images/pliego_pfrr.png" /> <span> Ver Vencimiento (90 Días)</span></a></li>';
+		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=pfrr_escritorio"> <img src="images/pliego_pfrr.png" /> <span> Ver Acciones </span></a></li>';
+		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=frLista"> <img src="images/pliego_pfrr.png" /> <span> Ver Prescripciones </span></a></li>';
+		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=frListaVencimiento1"> <img src="images/pliego_pfrr.png" /> <span> Fecha Judicial </span></a></li>';
+		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=frListaVencimiento"> <img src="images/pliego_pfrr.png" /> <span> Ver Vencimiento (90 Días)</span></a></li>';
 		if ($soloReportes != 1) $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=pfrr_oficios3"> <img src="images/volantes.png" /> <span>Oficios DGSUB</span> </a></li>';
-		if ($soloReportes != 1 and $direccion == "DG") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=presuntosLista"><img src="images/presuntos.png" /> <span>Presuntos Responsables</span></a></li>';
+		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=presuntosLista"><img src="images/presuntos.png" /> <span>Presuntos Responsables</span></a></li>';
 
-		if ($soloReportes != 1 and $direccion == "DG") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=pfrr_busqueda&reports=' . $soloReportes . '"><img src="images/search16.png" /><span>Búsqueda Avanzada</span></a></li>';
-		if ($soloReportes != 1 and $direccion == "DG") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=ayuda_pfrr"><img src="images/faqpfrr.png" /> <span>Ticket</span></a></li>';
-		if ($soloReportes != 1 and $direccion == "DG") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=ady"> <img src="images/volantes.png" /> <span>Avisos</span> </a></li>';
-		if ($soloReportes != 1 and $direccion == "DG") $menu .= '<li><a class="menu_pfrr redonda3" href="indicadores/dist/controlPFRR.php"> <img src="images/volantes.png" /> <span>Indicadores</span> </a></li>';
-		if ($soloReportes != 1 and $direccion == "DG") $menu .= '<li><a class="menu_pfrr redonda3" href="entidad/dist/controlEntidad.php"> <img src="images/volantes.png" /> <span>Información por Entidad</span> </a></li>';
+		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=pfrr_busqueda&reports=' . $soloReportes . '"><img src="images/search16.png" /><span>Búsqueda Avanzada</span></a></li>';
+		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=ayuda_pfrr"><img src="images/faqpfrr.png" /> <span>Ticket</span></a></li>';
+		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="?cont=ady"> <img src="images/volantes.png" /> <span>Avisos</span> </a></li>';
+		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="indicadores/dist/controlPFRR.php"> <img src="images/volantes.png" /> <span>Indicadores</span> </a></li>';
+		if ($soloReportes != 1 and $direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="entidad/dist/controlEntidad.php"> <img src="images/volantes.png" /> <span>Información por Entidad</span> </a></li>';
 
 
 		$menu .= '	</ul>

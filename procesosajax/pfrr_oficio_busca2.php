@@ -91,7 +91,7 @@ $tabla = '
 		$estilo = "class='non'";
 		
 		//------------ MUESTRA FILAS LA FUNCION PROCESO PO SE ENCARGA DE ABRIR EL CUADRO Y CARGAR LA PAGINA ---------------
-		if($r['state'] == 0) $txtStatus = "<img src='images/pendientes.png'>";
+		if($r['state'] == 0) $txtStatus = " ";
 		if($r['state'] == 1) $txtStatus = " ";
 		if($r['state'] == 2) $txtStatus = " ";
 		
@@ -133,9 +133,9 @@ $tabla = '
 			//   $userF = mysql_fetch_array($users);
 			  $users = "SELECT nombre,nivel FROM usuarios WHERE usuario = '".$r['abogado_solicitante']."' ";
 			  $a = mysqli_query($enlace, $users); //pasas la query a la conexion
-			  $userF = mysqli_fetch_array($a,MYSQLI_BOTH);
+			  $userF  = mysqli_fetch_array($a,MYSQLI_BOTH);
 			  $nombre = $userF['nombre'];
-			  $nivel = $userF['nivel'];
+			  $nivel  = $userF['nivel'];
 			  //---------- Termina el Query para sacar el Nombre del Usuario y el Nivel---------------------//
 			  
 			  //---------- Aquí se imprimen las columnas de la Tabla Oficios---------------------//
