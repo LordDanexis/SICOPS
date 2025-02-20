@@ -30,6 +30,7 @@ $direccion = ivalorSeguro($enlace, $_REQUEST['direccion']);
 									consecutivo LIKE '%".$texto."%' OR
 									destinatario LIKE '%".$texto."%' OR 
 									observaciones LIKE '%".$texto."%' OR 
+									asunto LIKE '%".$texto."%' OR 
 									Folio LIKE '%".$texto."%' OR
 									id LIKE '%".$texto."%'
 								) 
@@ -69,6 +70,7 @@ $tabla = '
 <th class="anchoFecha"><a href="#">Fecha </a></th>
 <th class="anchoDest"><a href="#">Destinatario </a></th>
 <th class="anchoDep"><a href="#">Dependencia </a></th>
+<th class="anchoDep"><a href="#">Asunto </a></th>
 <th class="anchoDep"><a href="#">Abogado Solicitante</a></th>
 <th class="anchoArea"><a href="#"> Área </a></th>
 <th class="anchoObs"><a href="#"> Observaciones </a></th>
@@ -149,6 +151,7 @@ $tabla = '
 					<td class="ofiFecha">'.fechaNormal($r['fecha_oficio']).'</td>
 					<td class="ofiDest">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$destinatario).'</td>
 					<td class="ofiDep">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['dependencia']).'</td>
+						<td class="ofiDep">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['asunto']).'</td>
 					<td class="ofiSoli">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$nombre).'</td>
 					<td class="ofiArea">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$nivel ).'</td>
 					<td class="ofiObs">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['observaciones']).'  </td>
