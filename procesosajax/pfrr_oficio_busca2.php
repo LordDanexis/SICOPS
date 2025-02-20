@@ -11,10 +11,11 @@ $enlace = mysqli_connect("127.0.0.1","root","","dgsub_sicops");
 $texto = ivalorSeguro($enlace, $_REQUEST['texto']);
 $usuario = ivalorSeguro($enlace, $_REQUEST['usuario']);
 $direccion = ivalorSeguro($enlace, $_REQUEST['direccion']);
-//$nivel = valorSeguro(trim($_REQUEST['nivel']));
+// $nivel = ivalorSeguro($enlace, $_REQUEST['nivel']);
+// $nivel = valorSeguro(trim($_REQUEST['nivel']));
 //$idOficio = valorSeguro(trim($_REQUEST['id_oficio']));
 
-// if($direccion == "DG")
+// if($nivel == "DG")
 // {	
 	$sql = "SELECT *,
 	                           o.folio Folio,
@@ -32,7 +33,8 @@ $direccion = ivalorSeguro($enlace, $_REQUEST['direccion']);
 									observaciones LIKE '%".$texto."%' OR 
 									asunto LIKE '%".$texto."%' OR 
 									Folio LIKE '%".$texto."%' OR
-									id LIKE '%".$texto."%'
+									id LIKE '%".$texto."%' AND
+									nivel = 'A.2'
 								) 
 							group by folio ORDER BY o.id";	
 // }

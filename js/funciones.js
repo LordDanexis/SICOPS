@@ -161,7 +161,7 @@ function validaVolante(valor)
 function comprobarForm(form,estado,volantes,oficios,cral,SolventacionBaja)
 {
 	
-	var mensaje = "Los campos marcados en color rojo son obligatorios";
+	var mensaje = "Los campos marcados en color rojo son ocsdcbligatorios";
 	var elementos = "";
 	var error = 0;
 	var adver = 0;
