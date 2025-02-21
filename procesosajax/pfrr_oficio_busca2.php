@@ -12,6 +12,7 @@ $texto = ivalorSeguro($enlace, $_REQUEST['texto']);
 $usuario = ivalorSeguro($enlace, $_REQUEST['usuario']);
 $direccion = ivalorSeguro($enlace, $_REQUEST['direccion']);
 $nivel = ivalorSeguro($enlace, $_REQUEST['nivel']);
+$nombre = ivalorSeguro($enlace, $_REQUEST['nombre']);
 
 	switch($nivel) {
 		case "A.1":
@@ -21,12 +22,20 @@ $nivel = ivalorSeguro($enlace, $_REQUEST['nivel']);
 		
 		case "A.2":
 			$sql = "SELECT *,o.folio Folio,o.id, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' AND nivel = 'A.2') 
-	        group by folio ORDER BY o.id";  
+	         ORDER BY o.id";  
 		break;
 		
 		case "ST":
-			$sql = "SELECT *,o.folio Folio,o.id, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' AND nivel = 'ST') 
+			if ($usuario == "ioleon" || $usuario == "bhcalva")
+			{
+				$sql = "SELECT *,o.folio Folio,o.id, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' AND nivel = 'ST') 
+				group by folio ORDER BY o.id";
+			}
+			else
+			{
+			$sql = "SELECT *,o.folio Folio,o.id, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' ) 
 	        group by folio ORDER BY o.id";
+			}
 		break;
 		
 		default:
@@ -61,17 +70,18 @@ $tabla = '
 <!--<thead> -->
 <tr>
 <th class="anchoNum"><a href="#">#</a></th>
-<th class="anchoFolio"><a href="#">Folio </a></th>
-<th class="anchoCarga"><a href="#"> Carga Acuses </a></th>
-<th class="anchoProc"><a href="#">Procedimiento </a></th>
-<th class="anchoFecha"><a href="#">Fecha </a></th>
-<th class="anchoDest"><a href="#">Destinatario </a></th>
-<th class="anchoDep"><a href="#">Dependencia </a></th>
-<th class="anchoDep"><a href="#">Asunto </a></th>
-<th class="anchoDep"><a href="#">Abogado Solicitante</a></th>
-<th class="anchoArea"><a href="#"> Área </a></th>
-<th class="anchoObs"><a href="#"> Observaciones </a></th>
-<th class="anchoStatus"><a href="#"> Estatus </a></th>
+<th class="anchoFolio"><a href="#"> OFICIO </a></th>
+<th class="anchoCarga"><a href="#"> CARGA ACUSES </a></th>
+<th class="anchoProc"><a href="#"> PROCEDIMIENTO </a></th>
+<th class="anchoFecha"><a href="#"> FECHA </a></th>
+<th class="anchoDest"><a href="#"> DESTINATARIO</a></th>
+<th class="anchoDep"><a href="#"> DEPENDENCIA </a></th>
+<th class="anchoDep"><a href="#"> ASUNTO </a></th>
+<th class="anchoDep"><a href="#"> ABOGADO SOLICITANTE </a></th>
+<th class="anchoArea"><a href="#"> ÁREA </a></th>
+<th class="anchoFirma"><a href="#"> FIRMA </a></th>
+<th class="anchoObs"><a href="#"> OBSERVACIONES </a></th>
+<th class="anchoStatus"><a href="#"> ESTATUS </a></th>
 </tr>
 <!-- </thead> -->
 </table>
@@ -80,13 +90,8 @@ $tabla = '
 <tbody> 
 ';
 
-	//while($r = mysql_fetch_array($sql))
 	while($r = mysqli_fetch_array($query,MYSQLI_ASSOC))
 	{
-		// $i++;
-		// $res = $i%2;
-		// if($res == 0) $estilo = "class='non'";
-		// else 
 		$estilo = "class='non'";
 		
 		//------------ MUESTRA FILAS LA FUNCION PROCESO PO SE ENCARGA DE ABRIR EL CUADRO Y CARGAR LA PAGINA ---------------
@@ -105,14 +110,11 @@ $tabla = '
 		$procedimiento = $r['procedimiento'];
 		$procedimientoF = cadenaSinEspeciales($procedimiento);
 		
-		// $sqlO = $conexion->select("SELECT * FROM archivos WHERE oficioDoc = '".$folioOk ."' ",false);
-		// $ofi = mysql_fetch_array($sqlO);
+
         $sql0 = "SELECT * FROM archivos WHERE oficioDoc = '".$folioOk ."' ";
 		$z = mysqli_query($enlace, $sql0); //pasas la query a la conexion
         $ofi = mysqli_fetch_array($z,MYSQLI_BOTH);
 		$idOficio = $r['id']; //***************Este es el Id que identifica cada Oficio******************
-
-
                       
         if ($ofi != 0) {
         	$linkSubirArchivo = "";
@@ -122,23 +124,10 @@ $tabla = '
 		else  {
 			$linkSubirArchivo2 = "";
 			$status = 'PENDIENTE';
-			// $linkSubirArchivo = '<a href="#" title="Subir Archivo" onclick=\'new mostrarCuadro(300,400,"Subir archivo",70,"cont/pfrr_oficio_subir.php","folio='.$folioOk.'")\' >  <img src="images/Upload.png" /> </a>';
 			$linkSubirArchivo = '<a href="#" title="Subir Archivo" onclick=\'new mostrarCuadro(300,400,"Subir archivo",70,"cont/pfrr_oficio_subir.php","idOficio='.$idOficio.'&procedimiento='.$procedimientoF.'&folio='.$folioF.'")\'>  <img src="images/Upload.png" /> </a>';
 		      }
-
-			  //---------- Saca el nombre del Usuario, y el Nivel---------------------//
-			  $abogado = $r['abogado_solicitante'];
-			//   $users = $conexion->select("SELECT nombre,nivel FROM usuarios WHERE usuario = '".$r['abogado_solicitante']."' ",false);
-			//   $userF = mysql_fetch_array($users);
-			  $users = "SELECT nombre,nivel FROM usuarios WHERE usuario = '".$r['abogado_solicitante']."' ";
-			  $a = mysqli_query($enlace, $users); //pasas la query a la conexion
-			  $userF  = mysqli_fetch_array($a,MYSQLI_BOTH);
-			  $nombre = $userF['nombre'];
-			  $nivel  = $userF['nivel'];
-			  //---------- Termina el Query para sacar el Nombre del Usuario y el Nivel---------------------//
 			  
 			  //---------- Aquí se imprimen las columnas de la Tabla Oficios---------------------//
-			  $destinatario = $r['destinatario'];
 		$tabla .= '
 				<tr '.$estilo.' >
 				    <td class="ofiNum">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['id']).'</td>
@@ -146,11 +135,12 @@ $tabla = '
 					<td class="ofiCarga"> '.$linkSubirArchivo.''.$linkSubirArchivo2.' </td>
 					<td class="ofiProc">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['procedimiento']).'</td>
 					<td class="ofiFecha">'.fechaNormal($r['fecha_oficio']).'</td>
-					<td class="ofiDest">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$destinatario).'</td>
+					<td class="ofiDest">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['destinatario']).'</td>
 					<td class="ofiDep">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['dependencia']).'</td>
-						<td class="ofiDep">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['asunto']).'</td>
-					<td class="ofiSoli">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$nombre).'</td>
-					<td class="ofiArea">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$nivel ).'</td>
+					<td class="ofiDep">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['asunto']).'</td>
+					<td class="ofiSoli">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['abogado_solicitante']).'</td>
+					<td class="ofiArea">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['nivel']).'</td>
+					<td class="ofiFirma">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['firma_oficio']).'</td>
 					<td class="ofiObs">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['observaciones']).'  </td>
 					<td class="ofiStatus">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$status).'</td>
                 

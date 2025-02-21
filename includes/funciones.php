@@ -60,7 +60,7 @@ function menu($direccion, $nivel, $soloReportes)
 				<div class="nav-divider">&nbsp;</div>
 				';
 	} 
-
+ 
 	if ($direccion == "A"  || $direccion == "DG" || $direccion == "AP") {
 		$menu .= '<ul class="select menu" id="mInicio"> <li><a href="#nogo" class="munuSup"><b>Oficios DGSUB</b><!--[if IE 7]><!--></a><!--<![endif]-->
 				<!--[if lte IE 6]><table><tr><td><![endif]-->
@@ -477,7 +477,7 @@ function verificaOficioLink($oficio)
 }
 
 //------------------------------------ GENERADOR DE OFICIOS -----------------------------------------------
-function generaOficios($tipo = "", $fechaOficio, $horaOficio, $procedimiento, $nivel, $oficioRef, $remitente, $cargo, $dependencia, $asunto, $userForm, $userForm2, $dirForm, $tipoOficio)
+function generaOficios($tipo = "", $procedimiento, $fechaOficio, $horaOficio, $remitente, $cargo, $dependencia, $asunto, $oficioRef, $userForm, $dirForm, $userForm2, $tipoOficio)
 {
 
 	if ($dirForm == 'ST') {
@@ -502,14 +502,14 @@ function generaOficios($tipo = "", $fechaOficio, $horaOficio, $procedimiento, $n
 									nivel = '$dirForm',
 									observaciones = '$oficioRef',
 									destinatario = '$remitente',
-									cargo_destinatario = '" . $cargo . "',
+									cargo_destinatario = '$cargo',
 									dependencia = '$dependencia',
 									asunto = '" . $asunto . "',
 									abogado_solicitante = '" . $userForm . "',
 									firma_oficio = '$userForm2',
 									tipo = '$tipoOficio',
 									tipoOficio = '" . $tipo . "',
-									status = 2,
+									status = 1,
 									juridico = 1 ";
 			mysqli_query($enlace, $query);
 			return $folio;
@@ -537,14 +537,14 @@ function generaOficios($tipo = "", $fechaOficio, $horaOficio, $procedimiento, $n
 								nivel = '$dirForm',
 								observaciones = '$oficioRef',
 								destinatario = '$remitente',
-								cargo_destinatario = '.cargo',
+								cargo_destinatario = '$cargo',
 								dependencia = '$dependencia',
 								asunto = '$asunto',
 								abogado_solicitante = '" . $userForm . "',
 								firma_oficio = '$userForm2',
 								tipo = '$tipoOficio',
 								tipoOficio = '" . $tipo . "',
-								status = 2,
+								status = 1,
 								juridico = 1 ";
 
 			mysqli_query($enlace, $query);

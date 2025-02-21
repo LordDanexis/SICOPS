@@ -3,18 +3,18 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
 header("Content-Type: text/html;charset=utf-8");
 require_once("../includes/clases.php");
 require_once("../includes/funciones.php");
-$conexion = new conexion;
-$conexion->conectar();
+$enlace = mysqli_connect("127.0.0.1","root","","dgsub_sicops");
+
 //----------------------- Estado del Sistema ----------------------------
 if($_REQUEST['proceso'] == "estadoSistema") {
 	//estado sistema
 	$query= "UPDATE configuracion set boleano = ".$_REQUEST['sistemaEdo']." WHERE proceso = '".$_REQUEST['proceso']."' ";
-	$sql = $conexion->update($query,false);
+	mysqli_query($enlace, $query); 
 	//mensaje
 	$query= "UPDATE configuracion set boleano = ".$_REQUEST['sistemaEdo'].",opciones = '".$_REQUEST['mensajeTxt']."' WHERE proceso = 'mensajeCierre' ";
-	$sql = $conexion->update($query,false);
+	mysqli_query($enlace, $query); 
 
-	if($sql) echo "Datos guardados...";
+	if($query) echo "Datos guardados...";
 }
 //----------------------------------------Asistencia----------------------------
 ?>

@@ -1772,8 +1772,9 @@ a:hover.back-login	{
 	/*background: url(../images/login/submit_login.gif) no-repeat 0 -29px;*/
 	background:#000;
 	}
-.redonda3{border-radius: 3px;-ms-border-radius: 3px;-moz-border-radius: 3px;-webkit-border-radius: 3px;-khtml-border-radius: 3px;}
+.redonda3{border-radius: 5px;-ms-border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;-khtml-border-radius: 5px;}
 .redonda5{border-radius: 5px;-ms-border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;-khtml-border-radius: 5px;}
+.redonda6{border-radius: 5px;-ms-border-radius: 5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;-khtml-border-radius: 5px;}
 .redonda10{border-radius: 10px;-ms-border-radius: 10px;-moz-border-radius: 10px;-webkit-border-radius: 10px;-khtml-border-radius: 10px;}
 .redonda15{border-radius: 15px;-ms-border-radius: 15px;-moz-border-radius: 15px;-webkit-border-radius: 15px;-khtml-border-radius: 15px;}
 /* --------------- sombras -------------------------- */
@@ -1933,6 +1934,7 @@ border-radius: 10px 10px 0 0;
 .anchoDep{width:194px !important}
 .anchoSoli{width:193px !important}
 .anchoArea{width:117px !important}
+.anchoFirma{width:117px !important}
 .anchoObs{width:239px !important}
 .anchoCarga{width:94px !important}
 .anchoStatus{width:123px !important}
@@ -1947,6 +1949,7 @@ border-radius: 10px 10px 0 0;
 .ofiDep{width:180px}
 .ofiSoli{width:180px}
 .ofiArea{width:103px}
+.ofiFirma{width:103px}
 .ofiObs{width:225px}
 .ofiCarga{width:80px}
 .ofiStatus{width:108px}
