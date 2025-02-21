@@ -6,15 +6,16 @@ require_once("../includes/clases.php");
 require_once("../includes/funciones.php");
 // $conexion = new conexion;
 // $conexion->conectar();
+$enlace = mysqli_connect("127.0.0.1","root","","dgsub_sicops");
+$nivel = ivalorSeguro($enlace, $_REQUEST['nivel']);
 //-------------------------- DESINFECTAR VARIABLES -----------------------------
 //------------------------------------------------------------------------------
-
-// foreach($_POST as $nombre_campo => $valor)
-// {
-//    $asignacion = "\$" . $nombre_campo . " = '" . ivalorSeguro2($valor) . "';"; 
-//    eval($asignacion);
-//    //echo "\n ".$asignacion;
-// } 
+foreach($_POST as $nombre_campo => $valor)
+{
+   $asignacion = "\$" . $nombre_campo . " = '" .  ivalorSeguro($enlace, $valor). "';"; 
+   eval($asignacion);
+   //echo "\n ".$asignacion;
+   }
 
 //-------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------
@@ -37,41 +38,40 @@ require_once("../includes/funciones.php");
 	//-- si los años son diferentes se reinicia el consecutivo de folios ------------
 	//-------------------------------------------------------------------------------
 	
+	// 	$sql = $conexion->select("SELECT * FROM usuarios where usuario='$userForm' ", false);
+	// $r = mysql_fetch_array($sql);
+
 	$sql = "SELECT * FROM usuarios where usuario='$userForm' ";
-	$result = $conn->query($sql);
-	$r = $result->fetch_array(MYSQLI_ASSOC);
+	$query = mysqli_query($enlace, $sql); 
+	$r = mysqli_fetch_array($query, MYSQLI_ASSOC);
+
+
 	$user = $r['usuario']; 
 	$contrase = $r['password']; 
 	$cont=$r['veces'];
 	if($contrase != $old_contra ) 	
 	
 	{
-	echo "<center><h2>Contraseña Anterior Incorrecta </center></h2>";
+	echo " <br> <center><h2> Contraseña Anterior Incorrecta.</center></h2>";
+	echo " <br> <center><h2> Verifica tu contraseña o Contacta al Administrador del Sistema</center></h2>";
+	echo ' <img src="images/problema.png" align="center" alt="" width="128" height="128">';
 	}
 	else 
 	{ 
     $cont=$cont+1;
 
-	// $sql = $conexion->update("update usuarios set password='$new_contra', veces='$cont' where usuario ='$userForm'",false);
-	$update = "update usuarios set password='$new_contra', veces='$cont' where usuario ='$userForm'";
-	$result = $conn->query($update);
-	printf("Affected rows (UPDATE): %d\n", $conn->affected_rows);
-							
-	$ultimo_id = $conn->insert_id; 
+	$sql = "UPDATE usuarios set password = '$new_contra', veces='$cont' WHERE usuario ='$userForm' ";
+	mysqli_query($enlace, $sql); 
+	// printf("Nuevo registro con el id %d.\n", mysqli_insert_id($enlace));
 
-
+	echo "<center><h2> Cambio de Contraseña Correcto </center></h2>";
+	echo ' <img src="images/problema.png" align="center" width="128" height="128">';
 	
-	echo "<center><h2>Cambio de Contraseña Correcto </center></h2>";
-	echo $userForm;
-
-	echo $ultimo_id;
 	session_start();
-$_SESSION['acceso'] == false;
+    $_SESSION['acceso'] == false;
 
 session_destroy();
 	}
-	//echo "<center><font face='Arial size='10''><b>[Tiempo de espera estimado 60 minutos]</b> ";
-// end TO
-//@mysqli_free_result($r);
-//@$result->free();
+@mysqli_free_result($query);
+
 ?>

@@ -161,7 +161,7 @@ function validaVolante(valor)
 function comprobarForm(form,estado,volantes,oficios,cral,SolventacionBaja)
 {
 	
-	var mensaje = "Los campos marcados en color rojo son ocsdcbligatorios";
+	var mensaje = "Los Campos Marcados en Color Rojo son Obligatorios";
 	var elementos = "";
 	var error = 0;
 	var adver = 0;
@@ -174,7 +174,7 @@ function comprobarForm(form,estado,volantes,oficios,cral,SolventacionBaja)
 			mensaje += '\n - '+ele.name;	
 			document.getElementById(ele.name).style.borderColor = 'red';
 			error++;	
-		} 		
+		} 		 
 		if((ele.value != '') && (ele.type != 'button' && ele.type != 'hidden' && ele.type != 'image') && (ele.disabled == false))
 			document.getElementById(ele.name).style.borderColor = 'silver';
 	}
@@ -275,77 +275,77 @@ function calculaMontos()
 	validaNum('montoPO')
 }
 //---------------------------------------------------------------------------------------------------------------------------
-function comprobarFormMontos(form,tipo,accion,correo,estado)
-{
-	//alert('m');
-	var mensaje = "Los campos marcados en color rojo son obligatorios o estan mal capturadas las cantidades";
-	var elementos = "";
-	var error = 0;
-	var mir = document.getElementById('montoIR').value;
-	var mr = document.getElementById('montoR').value;
-	var ma = document.getElementById('montoA').value;
-	var mc = document.getElementById('montoC').value;
-	var mj = document.getElementById('montoJ').value;	
-	var mp = document.getElementById('montoPO').value
+// function comprobarFormMontos(form,tipo,accion,correo,estado)
+// {
+// 	//alert('m');
+// 	var mensaje = "Los campos marcados en color rojo son obligatorios o estan mal capturadas las cantidades";
+// 	var elementos = "";
+// 	var error = 0;
+// 	var mir = document.getElementById('montoIR').value;
+// 	var mr = document.getElementById('montoR').value;
+// 	var ma = document.getElementById('montoA').value;
+// 	var mc = document.getElementById('montoC').value;
+// 	var mj = document.getElementById('montoJ').value;	
+// 	var mp = document.getElementById('montoPO').value
 	
-	var coma = /,/g;
-	mir = parseFloat(mir.replace(coma,""));	
-	mr = parseFloat(mr.replace(coma,""));
-	ma = parseFloat(ma.replace(coma,""));
-	mc = parseFloat(mc.replace(coma,""));
-	mj = parseFloat(mj.replace(coma,""));
+// 	var coma = /,/g;
+// 	mir = parseFloat(mir.replace(coma,""));	
+// 	mr = parseFloat(mr.replace(coma,""));
+// 	ma = parseFloat(ma.replace(coma,""));
+// 	mc = parseFloat(mc.replace(coma,""));
+// 	mj = parseFloat(mj.replace(coma,""));
 	
-	var suma = mr+ma+mc+mj;
-	var TPO = mir - suma;
-	document.getElementById('montoPO').value = TPO;
+// 	var suma = mr+ma+mc+mj;
+// 	var TPO = mir - suma;
+// 	document.getElementById('montoPO').value = TPO;
 	
-	frm = document.forms[form];
-	for(i=0; ele=frm.elements[i]; i++)
-	{
-		elementos += " Nombre = "+ele.name+" | Tipo = "+ele.type+" | Valor = "+ele.value+"\n";
-		if((ele.value == ' ' || ele.value == '' || ele.value == 'nada') && (ele.type != 'button' && ele.type != 'hidden' && ele.type != 'image'))
-		{
-			//mensaje += '\n - '+ele.name;	
-			document.getElementById(ele.name).style.borderColor = 'red';
-			error++;	
-		} 		
-		if((ele.value != '') && (ele.type != 'button' && ele.type != 'hidden' && ele.type != 'image'))
-			document.getElementById(ele.name).style.borderColor = 'silver';
-	}
+// 	frm = document.forms[form];
+// 	for(i=0; ele=frm.elements[i]; i++)
+// 	{
+// 		elementos += " Nombre = "+ele.name+" | Tipo = "+ele.type+" | Valor = "+ele.value+"\n";
+// 		if((ele.value == ' ' || ele.value == '' || ele.value == 'nada') && (ele.type != 'button' && ele.type != 'hidden' && ele.type != 'image'))
+// 		{
+// 			//mensaje += '\n - '+ele.name;	
+// 			document.getElementById(ele.name).style.borderColor = 'red';
+// 			error++;	
+// 		} 		
+// 		if((ele.value != '') && (ele.type != 'button' && ele.type != 'hidden' && ele.type != 'image'))
+// 			document.getElementById(ele.name).style.borderColor = 'silver';
+// 	}
 	
-	if(!validaNum('montoIR')) error++;
-	if(!validaNum('montoR')) error++;
-	if(!validaNum('montoA')) error++;
-	if(!validaNum('montoC')) error++;
-	if(!validaNum('montoJ')) error++;
-	if(!validaNum('montoPO')) error++;
+// 	if(!validaNum('montoIR')) error++;
+// 	if(!validaNum('montoR')) error++;
+// 	if(!validaNum('montoA')) error++;
+// 	if(!validaNum('montoC')) error++;
+// 	if(!validaNum('montoJ')) error++;
+// 	if(!validaNum('montoPO')) error++;
 	
-	if(error != 0)	alert(mensaje);
-	else 
-	{
-		if(tipo == 'confirma')
-		{
-			  var advertencia = 'El estado de la accion '+accion+' cambiara a: \n \n - '+estado;
-			  advertencia += "\n\n  - Monto Irregularidad = "+formatNumber(mir,"$");
-			  advertencia += "\n  - Monto Resarcido = "+formatNumber(mr,"$");
-			  advertencia += "\n  - Monto Justificado= "+formatNumber(mj,"$");
-			  advertencia += "\n  - Monto Comprobado = "+formatNumber(mc,"$");
-			  advertencia += "\n  - Monto Aclarado = "+formatNumber(ma,"$");
-			  advertencia += "\n  - Monto Pliego = "+formatNumber(document.getElementById('montoPO').value,"$");
+// 	if(error != 0)	alert(mensaje);
+// 	else 
+// 	{
+// 		if(tipo == 'confirma')
+// 		{
+// 			  var advertencia = 'El estado de la accion '+accion+' cambiara a: \n \n - '+estado;
+// 			  advertencia += "\n\n  - Monto Irregularidad = "+formatNumber(mir,"$");
+// 			  advertencia += "\n  - Monto Resarcido = "+formatNumber(mr,"$");
+// 			  advertencia += "\n  - Monto Justificado= "+formatNumber(mj,"$");
+// 			  advertencia += "\n  - Monto Comprobado = "+formatNumber(mc,"$");
+// 			  advertencia += "\n  - Monto Aclarado = "+formatNumber(ma,"$");
+// 			  advertencia += "\n  - Monto Pliego = "+formatNumber(document.getElementById('montoPO').value,"$");
 			  
-			  advertencia += "\n \n ¿Desea Continuar?";
+// 			  advertencia += "\n \n ¿Desea Continuar?";
 			  
-			  var res = confirm(advertencia);
-			  if(res == true) 
-			  { 
-			    if(correo != '') window.location = correo;
-			  	frm.submit(); 
-			  }
-			  else { return false }
-		}
-	}
-	//alert(elementos);
-}
+// 			  var res = confirm(advertencia);
+// 			  if(res == true) 
+// 			  { 
+// 			    if(correo != '') window.location = correo;
+// 			  	frm.submit(); 
+// 			  }
+// 			  else { return false }
+// 		}
+// 	}
+// 	//alert(elementos);
+// }
 //-------------------------------------
 function formatNumber(num,prefix){
 prefix = prefix || "";

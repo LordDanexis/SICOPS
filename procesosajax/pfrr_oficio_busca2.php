@@ -11,52 +11,47 @@ $enlace = mysqli_connect("127.0.0.1","root","","dgsub_sicops");
 $texto = ivalorSeguro($enlace, $_REQUEST['texto']);
 $usuario = ivalorSeguro($enlace, $_REQUEST['usuario']);
 $direccion = ivalorSeguro($enlace, $_REQUEST['direccion']);
-// $nivel = ivalorSeguro($enlace, $_REQUEST['nivel']);
-// $nivel = valorSeguro(trim($_REQUEST['nivel']));
-//$idOficio = valorSeguro(trim($_REQUEST['id_oficio']));
+$nivel = ivalorSeguro($enlace, $_REQUEST['nivel']);
 
-// if($nivel == "DG")
-// {	
-	$sql = "SELECT *,
-	                           o.folio Folio,
-							   o.id,
-							   o.tipo idFol,
-							   o.status as state  
-	                     FROM oficios o
-								WHERE 
-								(   
-									folio LIKE '%".$texto."%' OR 
-								    procedimiento LIKE '%".$texto."%' OR
-									fecha_oficio LIKE '%".$texto."%' OR  
-									consecutivo LIKE '%".$texto."%' OR
-									destinatario LIKE '%".$texto."%' OR 
-									observaciones LIKE '%".$texto."%' OR 
-									asunto LIKE '%".$texto."%' OR 
-									Folio LIKE '%".$texto."%' OR
-									id LIKE '%".$texto."%' AND
-									nivel = 'A.2'
-								) 
-							group by folio ORDER BY o.id";	
-// }
-// else 
-// {
-// 	$sql = $conexion->select("SELECT *,o.folio Folio,o.id,o.tipo idFol,o.status as state  FROM oficios o
-// 							  INNER JOIN usuarios u
-// 							  ON o.abogado_solicitante = u.usuario
-// 							  WHERE
-							
-// 								(
-// 									folio LIKE '%".$texto."%' OR 
-// 								    procedimiento LIKE '%".$texto."%' OR
-// 									fecha_oficio LIKE '%".$texto."%' OR  
-// 									consecutivo LIKE '%".$texto."%' OR
-// 									destinatario LIKE '%".$texto."%' OR 
-// 									dependencia LIKE '%".$texto."%' OR 
-// 									observaciones LIKE '%".$texto."%'
-// 								) 
-// 							group by folio ORDER BY o.id",false);
-// }
-					
+	switch($nivel) {
+		case "A.1":
+			$sql = "SELECT *,o.folio Folio,o.id, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' AND nivel = 'A.1') 
+	        group by folio ORDER BY o.id";  
+		break;
+		
+		case "A.2":
+			$sql = "SELECT *,o.folio Folio,o.id, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' AND nivel = 'A.2') 
+	        group by folio ORDER BY o.id";  
+		break;
+		
+		case "ST":
+			$sql = "SELECT *,o.folio Folio,o.id, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' AND nivel = 'ST') 
+	        group by folio ORDER BY o.id";
+		break;
+		
+		default:
+		  $sql = "El usuario que ingreso no se Encuentra Registrado en el Área Adscrita";
+	}
+
+	// $sql = "SELECT *,
+	//                            o.folio Folio,
+	// 						   o.id,
+	// 						   o.tipo idFol,
+	// 						   o.status as state  
+	//                      FROM oficios o
+	// 							WHERE 
+	// 							(   
+	// 								folio LIKE '%".$texto."%' OR 
+	// 							    procedimiento LIKE '%".$texto."%' OR
+	// 								fecha_oficio LIKE '%".$texto."%' OR  
+	// 								consecutivo LIKE '%".$texto."%' OR
+	// 								destinatario LIKE '%".$texto."%' OR 
+	// 								observaciones LIKE '%".$texto."%' OR 
+	// 								asunto LIKE '%".$texto."%' OR 
+	// 								Folio LIKE '%".$texto."%' OR
+	// 								id LIKE '%".$texto."%'
+	// 							) 
+	// 						group by folio ORDER BY o.id";		
 
 $query = mysqli_query($enlace, $sql);
 $total = mysqli_num_rows($query);
