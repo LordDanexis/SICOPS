@@ -8,7 +8,7 @@ $enlace = mysqli_connect("127.0.0.1","root","","dgsub_sicops");
 //**********VARIABLES QUE SE ENVÍAN A LA FUNCIÓN QUE GENERA EL OFICIO************* */
 $userForm      = $_POST['userForm'];
 $userForm2     = $_POST['userForm2'];
-//$procedimiento = $_POST['procedimiento']; 
+$procedimiento = $_POST['procedimiento']; 
 $remitente     = $_POST['remitente'];
 $cargo         = $_POST['cargo']; 
 $dependencia   = $_POST['dependencia']; 
@@ -16,10 +16,10 @@ $asunto        = $_POST['asunto'];
 $dirForm       = $_POST['dirForm']; 
 $oficioRef     = $_POST['oficioRef'];
 $usuario       = $_POST['indexUser']; 
-$equipo        = gethostbyaddr($_SERVER['REMOTE_ADDR']);
-$equipo_final  = explode(".",$equipo_C);
+$equipo_C = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+$equipo_final = explode(".",$equipo_C);
 $equipo_format = $equipo_final[0];
-$equipo_final2 = str_replace("1a6","",$equipo_format);
+$equipo = str_replace("1a6","",$equipo_format);
 $tipo          = "pfrr";
 $tipoOficio    = "null";
 $fechaOficio   = date('Y-m-d');
@@ -39,12 +39,18 @@ if($TO == 0){
 	$sqlX = "INSERT INTO oficios_contenido 
  										SET 
  											 folio = '".$folio."',
- 											 nombre_equipo = '".$equipo."',
- 											 observaciones = '".$oficioRef."',
-											 usuario = '".$usuario."',
- 											 juridico = 1 ";
+ 											 usuario = '".$usuario."',
+ 											 equipo = '".$equipo."',
+											 equipo_completo = '".$equipo_C."',
+											 idPresunto = '0',
+ 											 juridico = '1',
+											 atendido = '0',
+											 visto = '0',
+											 respondido = '0'
+											 ";
 											mysqli_query($enlace, $sqlX); 
-
+											//printf("Nuevo registro con el id %d.\n", mysqli_insert_id($enlace));
+                                            //$id = mysqli_insert_id($enlace);
 
 	//--------------------- SUMAMOS 90 DÍAS NATURALES A FECHA ------------------------------------------
 	$fecha90 = strtotime ( '+90 day' , strtotime ( $fechaOficio ) ) ;
