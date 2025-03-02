@@ -65,17 +65,17 @@
                     <table class="table table-sm table-bordered table-striped">
                         <thead>
                             <th class="sort asc">#</th>
-                            <th class="sort asc">Folio</th>
-                            <!-- <th class="sort asc">Carga Acuses</th> -->
-                            <th class="sort asc">Procedimiento</th>
-                            <th class="sort asc">Fecha</th>
-                            <th class="sort asc">Destinatario</th>
-                            <th class="sort asc">Dependencia</th>
-                            <th class="sort asc">Asunto</th>
-                            <th class="sort asc">Abogado Solicitante</th>
-                            <!-- <th class="sort asc">Área</th> -->
-                            <th class="sort asc">Observaciones</th>
-                            <!-- <th class="sort asc">Estatus</th> -->
+                            <th class="sort asc">OFICIO</th>
+                            <th class="sort asc">PROCEDIMIENTO</th> 
+                            <th class="sort asc">FECHA</th>
+                            <th class="sort asc">DESTINATARIO</th>
+                            <th class="sort asc">CARGO</th>
+                            <th class="sort asc">DEPENDENCIA</th>
+                            <th class="sort asc">ASUNTO</th>
+                            <th class="sort asc">ABOGADO SOLICITANTE</th>
+                            <th class="sort asc">ÁREA</th> 
+                            <th class="sort asc">FIRMA</th>
+                            <!-- <th class="sort asc">Estatus</th>  -->
                             <th></th>
                             <th></th>
                         </thead>

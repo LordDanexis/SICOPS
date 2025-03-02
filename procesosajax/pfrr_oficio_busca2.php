@@ -16,25 +16,25 @@ $nombre = ivalorSeguro($enlace, $_REQUEST['nombre']);
 
 	switch($nivel) {
 		case "A.1":
-			$sql = "SELECT *,o.folio Folio,o.id, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' AND nivel = 'A.1') 
-	        group by folio ORDER BY o.id";  
+			$sql = "SELECT *,o.folio Folio, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' AND nivel = 'A.1') 
+	        group by folio ORDER BY o.consecutivo DESC";  
 		break;
 		
 		case "A.2":
-			$sql = "SELECT *,o.folio Folio,o.id, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' AND nivel = 'A.2') 
-	         ORDER BY o.id";  
+			$sql = "SELECT *,o.folio Folio, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' AND nivel = 'A.2') 
+	         ORDER BY o.consecutivo DESC";  
 		break;
 		
 		case "ST":
 			if ($usuario == "ioleon" || $usuario == "bhcalva")
 			{
-				$sql = "SELECT *,o.folio Folio,o.id, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' AND nivel = 'ST') 
-				group by folio ORDER BY o.id";
+				$sql = "SELECT *,o.folio Folio, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' AND nivel = 'ST') 
+				group by folio ORDER BY o.consecutivo DESC";
 			}
 			else
 			{
-			$sql = "SELECT *,o.folio Folio,o.id, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' ) 
-	        group by folio ORDER BY o.id";
+			$sql = "SELECT *,o.folio Folio, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' ) 
+	        group by folio ORDER BY o.consecutivo DESC";
 			}
 		break;
 		
@@ -60,7 +60,7 @@ $nombre = ivalorSeguro($enlace, $_REQUEST['nombre']);
 	// 								Folio LIKE '%".$texto."%' OR
 	// 								id LIKE '%".$texto."%'
 	// 							) 
-	// 						group by folio ORDER BY o.id";		
+	// 						group by folio ORDER BY o.consecutivo";		
 
 $query = mysqli_query($enlace, $sql);
 $total = mysqli_num_rows($query);
@@ -71,27 +71,26 @@ $tabla = '
 <tr>
 <th class="anchoNum"><a href="#">#</a></th>
 <th class="anchoFolio"><a href="#"> OFICIO </a></th>
-<th class="anchoCarga"><a href="#"> CARGA ACUSES </a></th>
+<th class="anchoCarga"><a href="#"> ACUSES </a></th>
 <th class="anchoProc"><a href="#"> PROCEDIMIENTO </a></th>
 <th class="anchoFecha"><a href="#"> FECHA </a></th>
 <th class="anchoDest"><a href="#"> DESTINATARIO</a></th>
+<th class="anchoCarg"><a href="#"> CARGO</a></th>
 <th class="anchoDep"><a href="#"> DEPENDENCIA </a></th>
-<th class="anchoDep"><a href="#"> ASUNTO </a></th>
-<th class="anchoDep"><a href="#"> ABOGADO SOLICITANTE </a></th>
+<th class="anchoAsu"><a href="#"> ASUNTO </a></th>
+<th class="anchoSoli"><a href="#"> ABOGADO SOLICITANTE </a></th>
 <th class="anchoArea"><a href="#"> ÁREA </a></th>
 <th class="anchoFirma"><a href="#"> FIRMA </a></th>
-<th class="anchoObs"><a href="#"> OBSERVACIONES </a></th>
 <th class="anchoStatus"><a href="#"> ESTATUS </a></th>
+<!-- <th class="anchoObs" title="OBSERVACIONES"><a href="#"> OBS... </a></th> -->
 </tr>
 <!-- </thead> -->
-</table>
-<div style="height:250px;width:100%;overflow:auto">
-<table border="0" align="center" cellpadding="0" cellspacing="0" id="product-table" >
 <tbody> 
 ';
-
+	$row=0;
 	while($r = mysqli_fetch_array($query,MYSQLI_ASSOC))
 	{
+		$row++;
 		$estilo = "class='non'";
 		
 		//------------ MUESTRA FILAS LA FUNCION PROCESO PO SE ENCARGA DE ABRIR EL CUADRO Y CARGAR LA PAGINA ---------------
@@ -114,7 +113,7 @@ $tabla = '
         $sql0 = "SELECT * FROM archivos WHERE oficioDoc = '".$folioOk ."' ";
 		$z = mysqli_query($enlace, $sql0); //pasas la query a la conexion
         $ofi = mysqli_fetch_array($z,MYSQLI_BOTH);
-		$idOficio = $r['id']; //***************Este es el Id que identifica cada Oficio******************
+		$idOficio = $r['consecutivo']; //***************Este es el Id que identifica cada Oficio******************
                       
         if ($ofi != 0) {
         	$linkSubirArchivo = "";
@@ -130,27 +129,27 @@ $tabla = '
 			  //---------- Aquí se imprimen las columnas de la Tabla Oficios---------------------//
 		$tabla .= '
 				<tr '.$estilo.' >
-				    <td class="ofiNum">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['id']).'</td>
+				    <td class="ofiNum">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',subject: $row).'</td>
 					<td class="ofiFolio">'.$txtStatus.' '.verificaOficioLink($folioOf).'</td> 
 					<td class="ofiCarga"> '.$linkSubirArchivo.''.$linkSubirArchivo2.' </td>
 					<td class="ofiProc">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['procedimiento']).'</td>
 					<td class="ofiFecha">'.fechaNormal($r['fecha_oficio']).'</td>
-					<td class="ofiDest">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['destinatario']).'</td>
+					<td class="ofiCarg">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['destinatario']).'</td>
+					<td class="ofiDest">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['cargo_destinatario']).'</td>
 					<td class="ofiDep">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['dependencia']).'</td>
-					<td class="ofiDep">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['asunto']).'</td>
+					<td class="ofiAsu" title="Observaciones: '.$r['observaciones'].'">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['asunto']).'</td>
 					<td class="ofiSoli">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['abogado_solicitante']).'</td>
 					<td class="ofiArea">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['nivel']).'</td>
 					<td class="ofiFirma">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['firma_oficio']).'</td>
-					<td class="ofiObs">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['observaciones']).'  </td>
 					<td class="ofiStatus">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$status).'</td>
-                
+
+				<!--	<td class="ofiObs">'.str_ireplace($texto,'<span class="b">'.$texto.'</span>',$r['observaciones']).'  </td> -->
                     <!-- <a href="#" title="Ver Informacion" onclick=\'new mostrarCuadro(500,700,"Información del Oficio",70,"cont/pfrr_oficio_notifica2.php","id='.$r['id'].'&abogado='.$r['abogado_solicitante'].'&folio='.$folioOk.'")\' >  <img src="images/ver_informacion.png"> </a>	-->
 				</tr>';
 			}
 		$tabla .= '
 				</tbody>
 				</table>
-				</div>
 				';
 	         //---------- Aquí termina el código que imprime las columnas de la Tabla de Oficios---------------------//
 

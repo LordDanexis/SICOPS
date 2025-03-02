@@ -483,7 +483,7 @@ function generaOficios($tipo = "", $procedimiento, $fechaOficio, $horaOficio, $r
 	if ($dirForm == 'ST') {
 
 		$enlace = mysqli_connect("127.0.0.1", "root", "", "dgsub_sicops");
-		$sql = "SELECT ifnull(max(consecutivo),0) + 1 as consecutivo, concat('DGSUB\"A\"/','" . "',lpad(ifnull(max(consecutivo),0) + 1,4,'0'),'/',year(now())) as folio FROM oficios";
+		$sql = "SELECT consecutivo, concat('DGSUB\"A\"/','" . "',lpad(consecutivo,4,'0'),'/',year(now())) as folio from ( SELECT ifnull(max(consecutivo),0) + 1 as consecutivo FROM oficios WHERE fecha_oficio BETWEEN concat(year(now()),'-01-01') and concat(year(now()),'-12-31 23:59:59')  ) dos";
 		$q = mysqli_query($enlace, $sql);
 		$r = mysqli_fetch_array($q, MYSQLI_BOTH);
 		//$fechaPartes = explode("-", $fechaOficio);

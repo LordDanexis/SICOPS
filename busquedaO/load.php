@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Script para cargar datos de lado del servidor con PHP y MySQL
  *
@@ -10,9 +9,8 @@
 
 require 'config.php';
 
-
 // Columnas a mostrar en la tabla
-$columns = ['id', 'folio', 'procedimiento', 'fecha_oficio', 'destinatario', 'dependencia','asunto', 'abogado_solicitante', 'destinatario'];
+$columns = ['consecutivo', 'folio', 'procedimiento', 'fecha_oficio', 'destinatario', 'cargo_destinatario','dependencia', 'asunto', 'abogado_solicitante', 'nivel', 'firma_oficio'];
 
 // Nombre de la tablas
 $table = "oficios";
@@ -89,23 +87,25 @@ $output['totalFiltro'] = $totalFiltro;
 $output['data'] = '';
 $output['paginacion'] = '';
 
-['id', 'folio', 'procedimiento', 'fecha_oficio', 'destinatario', 'dependencia', 'asunto', 'abogado_solicitante', 'destinatario'];
+['consecutivo', 'folio', 'procedimiento', 'fecha_oficio', 'destinatario', 'cargo_destinatario','dependencia', 'asunto', 'abogado_solicitante', 'nivel', 'firma_oficio'];
 
 
 if ($num_rows > 0) {
     while ($row = $resultado->fetch_assoc()) {
         $output['data'] .= '<tr>';
-        $output['data'] .= '<td>' . $row['id'] . '</td>';
+        $output['data'] .= '<td>' . $row['consecutivo'] . '</td>';
         $output['data'] .= '<td>' . $row['folio'] . '</td>';
         $output['data'] .= '<td>' . $row['procedimiento'] . '</td>';
         $output['data'] .= '<td>' . $row['fecha_oficio'] . '</td>';
         $output['data'] .= '<td>' . $row['destinatario'] . '</td>';
+        $output['data'] .= '<td>' . $row['cargo_destinatario'] . '</td>';
         $output['data'] .= '<td>' . $row['dependencia'] . '</td>';
         $output['data'] .= '<td>' . $row['asunto'] . '</td>';
         $output['data'] .= '<td>' . $row['abogado_solicitante'] . '</td>';
-        $output['data'] .= '<td>' . $row['destinatario'] . '</td>';
-        $output['data'] .= '<td><a class="btn btn-warning btn-sm" href="editar.php?id=' . $row['id'] . '">Editar</a></td>';
-        $output['data'] .= "<td><a class='btn btn-danger btn-sm' href='elimiar.php?id=" . $row['id'] . "'>Eliminar</a></td>";
+        $output['data'] .= '<td>' . $row['nivel'] . '</td>';
+        $output['data'] .= '<td>' . $row['firma_oficio'] . '</td>';
+        $output['data'] .= '<td><a class="btn btn-warning btn-sm" href="editar.php?id=' . $row['consecutivo'] . '">Editar</a></td>';
+        $output['data'] .= "<td><a class='btn btn-danger btn-sm' href='elimiar.php?id=" . $row['consecutivo'] . "'>Eliminar</a></td>";
         $output['data'] .= '</tr>';
     }
 } else {

@@ -37,8 +37,8 @@ body	{
 	/* background-image: linear-gradient( 135deg, #494e4e 10%, #22c4e9 100%);
 	border-bottom: 1px solid #7e7e7e;
 	height: 92px; */
-	background-image: linear-gradient( 171.8deg,  #dbbd7c 13.5%, #8b8b8b 78.6% );
-	border-bottom: 1px solid #b4a426;
+	background-image: linear-gradient( 230deg,  #1c4f6a 13.5%, #b7b7b7 78.6%);
+	border-bottom: 1px solid #00a7ff;
 	height: 92px;
 	}
 #page-top	{
@@ -67,10 +67,9 @@ body	{
 
 
 .nomSis{ 
-	    color:#726969d4;
-		font-family: "Anton", serif;
-		font-weight: 400;
-		font-size: 25px;
+	font-family: "Monomakh", system-ui;
+	font-weight: 400;
+	font-style: normal;
 	}
 	
 	.nomSis2{ 
@@ -80,8 +79,9 @@ body	{
 		font-family: "serif";
 		font-weight: 400;
 		font-style: normal;
-		font-size: 20px;
+		font-size: 17px;
      }	
+
 
 #nombre{
 	display:block;
@@ -91,9 +91,12 @@ body	{
 	height:30px;
 	}
 #texto{
-	display:block;
+	font-family: "DM Serif Display", serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size:16px;
 	color:#FFF;
-	font-size:14px;
+	display:block;
 	}
 #logo	{
 	float: right;
@@ -540,8 +543,8 @@ table-layout: fixed;
 	min-width: 110px;
 	}
 #product-table td	{
-	border: 2px solid #d2d2d2;
-	padding: 6px;
+	border: 1px solid #d2d2d2;
+	padding: 2px;
 	}
 #product-table tr.alternate-row	{
 	background: #ececec;
@@ -1597,7 +1600,8 @@ label	{
 
 #login-bg	{
 	/* background-image: linear-gradient(145deg,#080808, #686768, #079ec7, #1bdb2a, #dbe315, #d77907, #bd0d0d ); */
-	background-image: linear-gradient(14deg,#308bce, #617cccc9, #3dd2f6b0, #76868ce3, #a4a75eb3, #b5b875, #b7dca8  );
+	/* background-image: linear-gradient(14deg,#308bce, #617cccc9, #3dd2f6b0, #76868ce3, #a4a75eb3, #b5b875, #b7dca8  ); */
+	background-image: linear-gradient(210deg,#444a4e, #666c6cc9, #99c9d8b0, #3f9ed0a6, #55aedcd9, #1f85ae, #004087);
     background-size: 600%;
     animation: fanimado 60s infinite;
 	}
@@ -1920,40 +1924,45 @@ border-radius: 10px 10px 0 0;
 	background:#333;
 	border: none;
 	cursor: pointer;
-	display: inline-block;
+	display: inline-block; 	
 	padding:5px 10px;
 	color:#FFF;
 	font-weight:bold;
 	}
 /* -------------- Ajusta Tamaño Nombre de Campos Tabla Oficios --------------------*/
-.anchoNum{width:39px !important}
-.anchoFolio{width:194px !important}
-.anchoProc{width:196px !important}
-.anchoFecha{width:117px !important}
-.anchoDest{width:277px !important}
-.anchoDep{width:194px !important}
-.anchoSoli{width:193px !important}
-.anchoArea{width:117px !important}
-.anchoFirma{width:117px !important}
-.anchoObs{width:239px !important}
-.anchoCarga{width:94px !important}
-.anchoStatus{width:123px !important}
+.anchoNum{width: 30px !important;}
+.anchoFolio{width: 164px !important;}
+.anchoCarga{width:73px !important}
+.anchoProc{width:178px !important}
+.anchoFecha{width:82px !important}
+.anchoDest{width:240px !important}
+.anchoCarg{width:240px !important}
+.anchoDep{width:168px !important}
+.anchoAsu{width:216px !important}
+.anchoSoli{width:168px !important}
+.anchoArea{width:98px !important}
+.anchoFirma{width:98px !important}
+.anchoObs{ }
+.anchoStatus{width:109px !important}
 /* --------------FIN Ajusta Tamaño Nombre de Campos Tabla Oficios --------------------*/
 
 /* --------------- Ajusta Tamaño Columnas Tabla Oficios--------------------------*/
-.ofiNum{width:24px}
-.ofiFolio{width:180px}
-.ofiProc{width:182px}
-.ofiFecha{width:103px}
-.ofiDest{width:263px}
-.ofiDep{width:180px}
-.ofiSoli{width:180px}
+.ofiNum{width:22px}
+.ofiFolio{width:161px}
+.ofiCarga{width:70px}
+.ofiProc{width:175px}
+.ofiFecha{width:77px}
+.ofiDest{width:248px}
+.ofiCarg{width:210px}
+.ofiDep{width:170px}
+.ofiAsu{width:168px}
+.ofiSoli{width:182px}
 .ofiArea{width:103px}
 .ofiFirma{width:103px}
-.ofiObs{width:225px}
-.ofiCarga{width:80px}
+.ofiObs{ }
 .ofiStatus{width:108px}
 /* --------------- FIN Ajusta Tamaño Columnas Tabla Oficios--------------------------*/
+
 
 .right{
     float: left;

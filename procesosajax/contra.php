@@ -54,7 +54,7 @@ foreach($_POST as $nombre_campo => $valor)
 	{
 	echo " <br> <center><h2> Contraseña Anterior Incorrecta.</center></h2>";
 	echo " <br> <center><h2> Verifica tu contraseña o Contacta al Administrador del Sistema</center></h2>";
-	echo ' <img src="images/contra_incorrecta.png" alt="" width="128" height="128">';
+	// echo ' <img src="images/contra_incorrecta.png" align="center" alt="" width="128" height="128">';
 	}
 	else 
 	{ 
@@ -65,7 +65,7 @@ foreach($_POST as $nombre_campo => $valor)
 	// printf("Nuevo registro con el id %d.\n", mysqli_insert_id($enlace));
 
 	echo "<center><h2> Cambio de Contraseña Correcto </center></h2>";
-	echo ' <img src="images/cambio_correcto.png" align="center" width="128" height="128">';
+	// echo ' <img src="images/cambio_correcto.png" align="center" width="128" height="128">';
 	
 	session_start();
     $_SESSION['acceso'] == false;

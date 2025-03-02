@@ -52,7 +52,7 @@ $queryc= "UPDATE configuracion set boleano = 0 WHERE proceso = 'estadoSistema' "
     <link REL="shortcut icon" HREF="legal3.ico">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Bungee+Inline&family=Doto:wght,ROND@700,4&family=Faculty+Glyphic&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Bungee+Inline&family=DM+Serif+Display:ital@0;1&family=Doto:wght,ROND@700,4&family=Faculty+Glyphic&family=Monomakh&family=Shafarik&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/estilo1234y.css" type="text/css" media="screen" title="default" />
 	<link href="js/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet">
 	<link href="js/jquery-ui-1.12.1.custom/jquery-ui.theme.min.css" rel="stylesheet">
@@ -136,7 +136,7 @@ $.datepicker.setDefaults($.datepicker.regional['es']);
         <div id='sagap'>
             <a href="index.php">
                 <div id='logoSis'><img src="images/logo.png" alt="" /></div>
-                <div id='nombre'> <span class='nomSis'> SICOPS </span> <span class='nomSis2'> DGSUB </span> </div> 
+                <div class='nomSis' id='nombre'> <span class='nomSis'> SICOPS </span> <span class='nomSis2'> DGSUB </span> </div> 
                 <div id='texto'> Sistema de Consulta y Organización para Substanciación 	
 					<!-- <?php 	echo date(' d/m/Y '); echo date(' g:ia '); ?> -->
 				<div id="current_date">
@@ -198,7 +198,7 @@ var hour = (d.getHours(),':'+d.getMinutes(),':'+d.getSeconds());
 							   ?>
                             <ul class="setup div2" id="setup"  >
                                 <li><!---img  class="zoom" src="empleados/<?php //echo $id;?>.png"  width="25" height="30"/--->
-								<img  class="zoom" src="images/user.png"  width="25" height="30"/>
+								<img  class="zoom" src="images/userF.png"  width="25" height="30"/>
                                     <ul class="submenuSetup redonda5">
                                     
                                             <?php
