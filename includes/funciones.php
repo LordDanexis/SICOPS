@@ -36,7 +36,7 @@ function quitar_espaciales($cadena)
 //-------------------------------------------------- MENU -------------------------------------------------------
 function menu($direccion, $nivel, $soloReportes)
 {
-	if ($direccion == "A" || $direccion == "DG"  || $direccion == "AP") {
+	if ($direccion == "A" || $direccion == "DG"  || $direccion == "AP" || $direccion == "C") {
 
 
 		$menu = '
@@ -61,7 +61,7 @@ function menu($direccion, $nivel, $soloReportes)
 				';
 	} 
  
-	if ($direccion == "A"  || $direccion == "DG" || $direccion == "AP") {
+	if ($direccion == "A"  || $direccion == "DG" || $direccion == "AP" | $direccion == "C") {
 		$menu .= '<ul class="select menu" id="mInicio"> <li><a href="#nogo" class="munuSup"><b>Oficios DGSUB</b><!--[if IE 7]><!--></a><!--<![endif]-->
 				<!--[if lte IE 6]><table><tr><td><![endif]-->
     <ul class="sub submenu redonda5 ulPfrr">';
@@ -479,14 +479,14 @@ function verificaOficioLink($oficio)
 //------------------------------------ GENERADOR DE OFICIOS -----------------------------------------------
 function generaOficios($tipo = "", $procedimiento, $fechaOficio, $horaOficio, $remitente, $cargo, $dependencia, $asunto, $oficioRef, $userForm, $dirForm, $userForm2, $tipoOficio)
 {
-
+	
+    
 	if ($dirForm == 'ST') {
 
 		$enlace = mysqli_connect("127.0.0.1", "root", "", "dgsub_sicops");
 		$sql = "SELECT consecutivo, concat('DGSUB\"A\"/','" . "',lpad(consecutivo,4,'0'),'/',year(now())) as folio from ( SELECT ifnull(max(consecutivo),0) + 1 as consecutivo FROM oficios WHERE fecha_oficio BETWEEN concat(year(now()),'-01-01') and concat(year(now()),'-12-31 23:59:59')  ) dos";
 		$q = mysqli_query($enlace, $sql);
 		$r = mysqli_fetch_array($q, MYSQLI_BOTH);
-		//$fechaPartes = explode("-", $fechaOficio);
 		$consecutivo = $r['consecutivo'];
 		$folio = $r['folio'];
 
@@ -519,7 +519,8 @@ function generaOficios($tipo = "", $procedimiento, $fechaOficio, $horaOficio, $r
 	} else {
 
 		$enlace = mysqli_connect("127.0.0.1", "root", "", "dgsub_sicops");
-		$sql = "SELECT ifnull(max(consecutivo),0) + 1 as consecutivo, concat('DGSUB\"A\"/','" . $dirForm . '/' . "',lpad(ifnull(max(consecutivo),0) + 1,4,'0'),'/',year(now())) as folio FROM oficios";
+		$sql = "SELECT consecutivo, concat('DGSUB\"A\"/','" . $dirForm . '/' . "',lpad(consecutivo,4,'0'),'/',year(now())) as folio from ( SELECT ifnull(max(consecutivo),0) + 1 as consecutivo FROM oficios WHERE fecha_oficio BETWEEN concat(year(now()),'-01-01') and concat(year(now()),'-12-31 23:59:59')  ) dos";
+		//$sql = "SELECT ifnull(max(consecutivo),0) + 1 as consecutivo, concat('DGSUB\"A\"/','" . $dirForm . '/' . "',lpad(ifnull(max(consecutivo),0) + 1,4,'0'),'/',year(now())) as folio FROM oficios";
 		$query = mysqli_query($enlace, $sql);
 		$r = mysqli_fetch_array($query, MYSQLI_BOTH);
 		$consecutivo = $r['consecutivo'];

@@ -24,6 +24,11 @@ $nombre = ivalorSeguro($enlace, $_REQUEST['nombre']);
 			$sql = "SELECT *,o.folio Folio, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' AND nivel = 'A.2') 
 	         ORDER BY o.consecutivo DESC";  
 		break;
+
+		case "C":
+			$sql = "SELECT *,o.folio Folio, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' AND nivel = 'C') 
+	         ORDER BY o.consecutivo DESC";  
+		break;
 		
 		case "ST":
 			if ($usuario == "ioleon" || $usuario == "bhcalva")
@@ -39,31 +44,17 @@ $nombre = ivalorSeguro($enlace, $_REQUEST['nombre']);
 		break;
 		
 		default:
-		  $sql = "El usuario que ingreso no se Encuentra Registrado en el Área Adscrita";
+		  $sql = "";
 	}
 
-	// $sql = "SELECT *,
-	//                            o.folio Folio,
-	// 						   o.id,
-	// 						   o.tipo idFol,
-	// 						   o.status as state  
-	//                      FROM oficios o
-	// 							WHERE 
-	// 							(   
-	// 								folio LIKE '%".$texto."%' OR 
-	// 							    procedimiento LIKE '%".$texto."%' OR
-	// 								fecha_oficio LIKE '%".$texto."%' OR  
-	// 								consecutivo LIKE '%".$texto."%' OR
-	// 								destinatario LIKE '%".$texto."%' OR 
-	// 								observaciones LIKE '%".$texto."%' OR 
-	// 								asunto LIKE '%".$texto."%' OR 
-	// 								Folio LIKE '%".$texto."%' OR
-	// 								id LIKE '%".$texto."%'
-	// 							) 
-	// 						group by folio ORDER BY o.consecutivo";		
-
-$query = mysqli_query($enlace, $sql);
-$total = mysqli_num_rows($query);
+if ($sql == ""){
+	echo  "<h1> EL USUARIO NO SE ENCUENTRA REGISTRADO EN EL SISTEMA Y NO PUEDE VISUALIZAR LOS OFICIOS DEL ÁREA.</h1>";
+	echo  "<h2> Contacte Al Administrador De Sistemas</h2>";
+}
+else 
+{
+	$query = mysqli_query($enlace, $sql);
+	$total = mysqli_num_rows($query);
 
 $tabla = '
 <table border="0" align="center" cellpadding="0" cellspacing="0" id="product-table" >
@@ -157,6 +148,8 @@ $tabla = '
 	echo $tabla;
     //mysql_free_result($sql);	
 	mysqli_free_result($query);
-	mysqli_close($enlace)
+	mysqli_close($enlace);
+		}
+		
 ?>
 
