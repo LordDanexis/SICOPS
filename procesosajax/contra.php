@@ -2,10 +2,9 @@
 header("Cache-Control: no-store, no-cache, must-revalidate");
 header("Content-Type: text/html;charset=utf-8");
 error_reporting(E_ERROR | E_PARSE);
-require_once("../includes/clases.php");
+//require_once("../includes/clases.php");
 require_once("../includes/funciones.php");
-// $conexion = new conexion;
-// $conexion->conectar();
+
 $enlace = mysqli_connect("127.0.0.1","root","","dgsub_sicops");
 $nivel = ivalorSeguro($enlace, $_REQUEST['nivel']);
 //-------------------------- DESINFECTAR VARIABLES -----------------------------

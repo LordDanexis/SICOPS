@@ -5,7 +5,7 @@ session_start();
 header("Cache-Control: no-store, no-cache, must-revalidate");
 header("Content-Type: text/html;charset=utf-8");
 //------------------------------------------------------------------------------
-include("../includes/clases.php");
+//include("../includes/clases.php");
 include("../includes/funciones.php");
 $enlace = mysqli_connect("127.0.0.1","root","","dgsub_sicops");
 //$conexion = new conexion;

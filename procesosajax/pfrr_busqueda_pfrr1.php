@@ -7,14 +7,6 @@ require_once("../includes/funciones.php");
 $enlace = mysqli_connect("127.0.0.1","root","","dgsub_sicops");
 $procedimiento = $_REQUEST["term"];
 $cont = 0;
-// $conexion = new conexion;
-// $conexion->conectar();
-//$acciones = $_REQUEST["acciones"];
-//$accion = str_replace("|","",$acciones);
-//$tipo = $_REQUEST["tipo"];
-
-
-//printf("$procedimiento");
 
 $sql= "SELECT * FROM pfrr WHERE pra like '%$procedimiento%'";
 $consulta = mysqli_query($enlace, $sql);

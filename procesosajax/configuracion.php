@@ -1,7 +1,7 @@
 <?php
 header("Cache-Control: no-store, no-cache, must-revalidate");
 header("Content-Type: text/html;charset=utf-8");
-require_once("../includes/clases.php");
+//require_once("../includes/clases.php");
 require_once("../includes/funciones.php");
 $enlace = mysqli_connect("127.0.0.1","root","","dgsub_sicops");
 

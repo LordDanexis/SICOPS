@@ -1,7 +1,6 @@
 <?php
-require_once("clases.php");
-//$conexion = new conexion;
-//$conexion->conectar();
+//require_once("clases.php");
+
 $enlace = mysqli_connect("127.0.0.1","root","","dgsub_sicops");
 
 //$sql = $conexion->select("SELECT * FROM configuracion",false);
