@@ -97,7 +97,7 @@ if ($num_rows > 0) {
         $output['data'] .= '<td>' . $row['abogado_solicitante'] . '</td>';
         $output['data'] .= '<td>' . $row['nivel'] . '</td>';
         $output['data'] .= '<td>' . $row['firma_oficio'] . '</td>';
-        // $output['data'] .= '<td><a class="btn btn-warning btn-sm" href="edita_registro.php?id=' . $row['consecutivo'] . '">Editar</a></td>';
+        $output['data'] .= '<td><a class="btn btn-warning btn-sm" href="edita_registro.php?id=' . $row['consecutivo'] . '">Editar</a></td>';
         $output['data'] .= "<td><a class='btn btn-danger btn-sm' href='elimiar.php?id=" . $row['consecutivo'] . "'>Eliminar</a></td>";
         $output['data'] .= '</tr>';
     }

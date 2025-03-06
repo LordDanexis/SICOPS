@@ -1,8 +1,6 @@
 <?php
 session_start();
-//include("includes/clases.php");
 include("includes/funciones.php");
-//$conexion = new conexion;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -80,12 +78,6 @@ include("includes/funciones.php");
 	<div class="clear"></div>
 	<a href="" class="forgot-pwd">¿Olvidó su contraseña?</a>
  </div>
- 
- 	<!-- logo buho -->
-	<!-- <div id="logo-asf">
-		<a href="#"><img src="images/logo.png" alt="" /></a>
-	</div> -->
-	<!-- end logo buho -->
 
 </div>
 <!-- End: login-holder -->

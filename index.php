@@ -256,9 +256,9 @@ var hour = (d.getHours(),':'+d.getMinutes(),':'+d.getSeconds());
 			<div class="table menuSup">
             	<?php 
 				if($sistemaCerrado && $_SESSION['nivel'] != 'DG')
-					echo menu($_SESSION['direccion'] ,$_SESSION['nivel'],$soloReportes=1 );
+					echo menu($_SESSION['direccion'] ,$_SESSION['nivel']);
 				else
-					echo menu($_SESSION['direccion'] ,$_SESSION['nivel'],$soloReportes=0 );
+					echo menu($_SESSION['direccion'] ,$_SESSION['nivel']);
 				?>
                 <div class="clear"></div>
             </div>

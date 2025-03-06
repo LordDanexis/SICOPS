@@ -20,6 +20,7 @@
     <div class="row mt-5">
       <div class="col">
         <h1>Gastos <a href="index.php" class="btn btn-dark">Regresar</a></h1>
+        
       </div>
     </div>
     <form action="" method="POST">
