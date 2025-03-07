@@ -220,7 +220,7 @@ var hour = (d.getHours(),':'+d.getMinutes(),':'+d.getSeconds());
 												echo '<li><a class="mSetup redonda3" href="?cont=cambiar_contra"> <img src="images/password.png" /> Cambiar Contraseña</a></li>';
 												echo '<li><a class="mSetup redonda3" href="?cont=configuracion"> <img src="images/config.png" /> Configurar Sistema</a></li>';
 												echo '<li><a class="mSetup redonda3" href="procesosAjax/ajax_login_cerrar.php"> <img src="images/Exit.png" /> Cerrar Sesión </a></li>';
-
+                                                echo '<li><a class="mSetup redonda3" href="Usuarios/Alta_Usuario/alta_usuario.php"> <img src="images/alta_usuario.png" /> Alta de Usuarios </a></li>';
 											} 
 											else 
 											{
@@ -294,11 +294,6 @@ var hour = (d.getHours(),':'+d.getMinutes(),':'+d.getSeconds());
 		";
 
 
-	//ESTA PARTE CONTROLA SI EL SISTEMA ESTA CERRADO O ABIERTO Y VISUALIZA LAS ALERTAS
-	//echo $_REQUEST['cont'];
-	//include('cont/inicio1234y.php');	
-	//$_REQUEST['cont'] = "";
-	//$_REQUEST['cont'] = "configuracion";
 	$edoSystem = @estadoSistema();
 			if(!$sistemaCerrado)
 			{	
@@ -323,12 +318,8 @@ var hour = (d.getHours(),':'+d.getMinutes(),':'+d.getSeconds());
 					else 
 						echo "No se cargo contenido...";
 			}
-		
-     	//AQUI TERMINA LA PARTE QUE COMPRUEBA SI EL SISTEMA ESTA CERRADO O ABIERTO Y VISUALIZA LAS ALERTAS		
-
-	//si esta cerrado
     ?>
-    </div> <!--SE QUITA EL DIV 30/07/2019 ----->     
+    </div> 
 <!---------------------------------------  end content ------------------------------------>
 <div class="clear">&nbsp;</div> 
 </div>
