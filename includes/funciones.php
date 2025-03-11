@@ -32,8 +32,9 @@ function quitar_espaciales($cadena)
 	$texto = str_replace($no_permitidas, $permitidas, $cadena);
 	return $texto;
 }
-//-------------------------------------------------- MENU -------------------------------------------------------
-//-------------------------------------------------- MENU -------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------- MENÚ PRINCIPAL -------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------------
 function menu($direccion)
 {
 
@@ -46,13 +47,13 @@ function menu($direccion)
 	//********************************************MENÚ DE OFICIOS DGSUB********************************************************* */
 	if ($direccion == "A"  || $direccion == "DG" || $direccion == "AP" | $direccion == "C") {
 
-		$menu .='
+		$menu .= '
 		
 		<ul class="select menu" id="mInicio"> 
 		    <li><a href="#nogo" class="munuSup"><b>Oficios DGSUB</b> <!--[if IE 7]><!--></a><!--<![endif]-->
 		        <ul class="sub submenu redonda5 ulPfrr">
 		        <li><a class="menu_pfrr redonda3" href="?cont=pfrr_oficios3"> <img src="images/volantes.png" /> <span>Alta Oficio </span> </a></li> ';
-		          if ($direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="busquedaO/oficiosB.php"> <img src="images/volantes.png" /> <span>Búsqueda de Oficios  </span> </a></li>
+		if ($direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="busquedaO/oficiosB.php"> <img src="images/volantes.png" /> <span>Búsqueda de Oficios  </span> </a></li>
 		    </li>
 		        </ul>  
 		</ul>';
@@ -76,8 +77,12 @@ function menu($direccion)
 					</ul> ';
 	}
 	return $menu;
-}
-    //*******************************************TERMINA MENÚ ALTA PFRR********************************************************* */	
+}   //*******************************************TERMINA MENÚ ALTA PFRR********************************************************* */	
+
+//------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------- TERMINA MENÚ PRINCIPAL -------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------------
+
 
 //--------------------------------------------------------------------------------------------------------------------------------
 //-------------------------------------------FUNCIÓN QUE GÉNERA EL VALOR SEGURO PARA PHP 8.2.12----------------------------------- 
@@ -88,6 +93,11 @@ function ivalorSeguro($conn, $_Cadena)
 	$_Cadena = str_replace(chr(160), '', $_Cadena);
 	return 	mysqli_real_escape_string($conn, $_Cadena);
 	//return 	$_Cadena;
+}
+function ivalorSeguro2($_Cadena)
+{
+	$_Cadena = @htmlspecialchars($_Cadena);
+	return $_Cadena;
 }
 //--------------------------------------------------------------------------------------------------------------------------------
 //--------------------------------TERMINA LA FUNCIÓN QUE GÉNERA EL VALOR SEGURO PARA PHP 8.2.12-----------------------------------  
@@ -261,8 +271,6 @@ function verificaOficioLink($oficio)
 //------------------------------------ GENERADOR DE OFICIOS -----------------------------------------------
 function generaOficios($tipo = "", $procedimiento, $fechaOficio, $horaOficio, $remitente, $cargo, $dependencia, $asunto, $oficioRef, $userForm, $dirForm, $userForm2, $tipoOficio)
 {
-
-
 	if ($dirForm == 'ST') {
 
 		$enlace = mysqli_connect("127.0.0.1", "root", "", "dgsub_sicops");

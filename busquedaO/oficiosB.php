@@ -16,10 +16,10 @@
     <title>OFICIOS</title>
 
     <!-- Bootstrap core CSS -->
-    <!--link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">-->   
+    <!--link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">-->
     <link rel="stylesheet" href="../css/bootstrap_5.3.3/css/bootstrap.min.css">
 </head>
- 
+
 <body>
     <main>
         <div class="container py-4 text-center">
@@ -53,7 +53,7 @@
                 <div class="col-6 col-md-3 text-end">
                     <input type="text" name="campo" id="campo" class="form-control">
                 </div>
-                
+
                 <div class="col-3">
                     <a href="../index.php">REGRESAR</a>
                 </div>
@@ -66,14 +66,14 @@
                         <thead>
                             <th class="sort asc">#</th>
                             <th class="sort asc">OFICIO</th>
-                            <th class="sort asc">PROCEDIMIENTO</th> 
+                            <th class="sort asc">PROCEDIMIENTO</th>
                             <th class="sort asc">FECHA</th>
                             <th class="sort asc">DESTINATARIO</th>
                             <th class="sort asc">CARGO</th>
                             <th class="sort asc">DEPENDENCIA</th>
                             <th class="sort asc">ASUNTO</th>
                             <th class="sort asc">ABOGADO SOLICITANTE</th>
-                            <th class="sort asc">ÁREA</th> 
+                            <th class="sort asc">ÁREA</th>
                             <th class="sort asc">FIRMA</th>
                             <!-- <th class="sort asc">Estatus</th>  -->
                             <th></th>
@@ -124,7 +124,7 @@
             formaData.append('orderCol', orderCol)
             formaData.append('orderType', orderType)
 
-            fetch("load.php", {
+            fetch("carga.php", {
                     method: "POST",
                     body: formaData
                 })

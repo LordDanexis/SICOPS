@@ -14,6 +14,8 @@ $result = $conexion->query($query);
   <title>Alta de PRA</title>
   <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="../css/bootstrap_5.3.3/css/bootstrap.min.css">
+  <script href="../css/bootstrap_5.3.3/jss/bootstrap.bundle.min.js"> </script>
+  <script type="text/javascript" src="../js/funciones.js"></script>
 </head>
 
 <body>
@@ -75,38 +77,27 @@ $result = $conexion->query($query);
         </div>
 
         <div class="col-6 mb-3">
-          <label for="categoria" class="form-label">Dirección:</label>
-          <select class="form-select" name="categoria" id="categoria">
-            <option value="0" selected>Selecciona tu opción</option>
-            <?php
-            while ($r = $result->fetch_assoc()) {
-            ?>
-              <option value="<?php echo $r['id']; ?>"><?php echo $r['nombre']; ?></option>
-            <?php } ?>
+          <label for="direccion" class="form-label">Dirección:</label>
+          <select class="form-control" id="direccion" onchange="completarCampos()">
+            <option value="" disabled selected>Escoge la Dirección...</option>
+            <option value="A.1">A.1</option>
+            <option value="A.2">A.2</option>
           </select>
         </div>
 
-        <div class="col-6 mb-3">
-          <label for="categoria" class="form-label">Director de Área:</label>
-          <select class="form-select" name="categoria" id="categoria">
-            <option value="0" selected>Selecciona tu opción</option>
-            <?php
-            while ($r = $result->fetch_assoc()) {
-            ?>
-              <option value="<?php echo $r['id']; ?>"><?php echo $r['nombre']; ?></option>
-            <?php } ?>
-          </select>
+        <div class="col-6">
+          <label for="director" class="form-label">Director de Área:</label>
+          <input type="text" class="form-control" name="director" id="director">
         </div>
 
         <div class="col-6 mb-3">
           <label for="categoria" class="form-label">Subdirector Responsable:</label>
           <select class="form-select" name="categoria" id="categoria">
-            <option value="0" selected>Selecciona tu opción</option>
-            <?php
-            while ($r = $result->fetch_assoc()) {
-            ?>
-              <option value="<?php echo $r['id']; ?>"><?php echo $r['nombre']; ?></option>
-            <?php } ?>
+            <option value="" disabled selected>Subdirector Responsable...</option>
+            <option value="Mtra. Ivonne Celis Morales">Mtra. Ivonne Celis Morales</option>
+            <option value="Lic. Daniela Armas Rendón">Lic. Daniela Armas Rendón</option>
+            <option value="Mtro. Jorge Jiménez Santana">Mtro. Jorge Jiménez Santana</option>
+            <option value="Lic. Jazmín Alejandra Arriaga Hernández">Lic. Jazmín Alejandra Arriaga Hernández</option>
           </select>
         </div>
 
@@ -209,24 +200,24 @@ $result = $conexion->query($query);
               <option value="<?php echo $r['id']; ?>"><?php echo $r['nombre']; ?></option>
             <?php } ?>
           </select>
-          </div>
+        </div>
 
-          <div class="col-6">
-            <label for="presuntos" class="form-label">Cargo de los Presuntos Responsables:</label>
-            <input type="text" class="form-control" name="presuntos" id="presuntos">
-          </div>
+        <div class="col-6">
+          <label for="presuntos" class="form-label">Cargo de los Presuntos Responsables:</label>
+          <input type="text" class="form-control" name="presuntos" id="presuntos">
+        </div>
 
-          <div class="col-6">
-            <label for="montoGlob" class="form-label">Monto Global del EPRA:</label>
-            <input type="text" class="form-control" name="montoGlob" id="montoGlob">
-          </div>
+        <div class="col-6">
+          <label for="montoGlob" class="form-label">Monto Global del EPRA:</label>
+          <input type="text" class="form-control" name="montoGlob" id="montoGlob">
+        </div>
 
-          <div class="col-6">
-            <label for="montoPres" class="form-label">Desglose del Monto por Presunto:</label>
-            <input type="text" class="form-control" name="montoPres" id="montoPres">
-          </div>
+        <div class="col-6">
+          <label for="montoPres" class="form-label">Desglose del Monto por Presunto:</label>
+          <input type="text" class="form-control" name="montoPres" id="montoPres">
+        </div>
 
-          
+
         <div class="col-6 mb-3">
           <label for="caliFalta" class="form-label">Calificación de la Falta:</label>
           <select class="form-select" name="caliFalta" id="caliFalta">
@@ -238,7 +229,7 @@ $result = $conexion->query($query);
             <?php } ?>
           </select>
         </div>
-          
+
         <div class="col-6 mb-3">
           <label for="faltaGrave" class="form-label">Tipo de falta Administrativa Grave:</label>
           <select class="form-select" name="faltaGrave" id="faltaGrave">
@@ -263,12 +254,12 @@ $result = $conexion->query($query);
           </select>
         </div>
 
-          <div class="col-6">
-            <label for="periodoIrre" class="form-label">Fecha/Periodo de Irregularidad:</label>
-            <input type="text" class="form-control" name="periodoIrre" id="periodoIrre">
-          </div>
+        <div class="col-6">
+          <label for="periodoIrre" class="form-label">Fecha/Periodo de Irregularidad:</label>
+          <input type="text" class="form-control" name="periodoIrre" id="periodoIrre">
+        </div>
 
-          <div class="col-6 mb-3">
+        <div class="col-6 mb-3">
           <label for="denuncia" class="form-label">Denuncia:</label>
           <select class="form-select" name="denuncia" id="denuncia">
             <option value="0" selected>Selecciona tu opción</option>
@@ -278,19 +269,19 @@ $result = $conexion->query($query);
               <option value="<?php echo $r['id']; ?>"><?php echo $r['nombre']; ?></option>
             <?php } ?>
           </select>
-          </div>
+        </div>
 
-          <div class="col-6">
-            <label for="presuntos" class="form-label">No. de Tomos de EPRA:</label>
-            <input type="text" class="form-control" name="presuntos" id="presuntos">
-          </div>
+        <div class="col-6">
+          <label for="presuntos" class="form-label">No. de Tomos de EPRA:</label>
+          <input type="text" class="form-control" name="presuntos" id="presuntos">
+        </div>
 
-          <div class="col-6">
-            <label for="presuntos" class="form-label">Tomas de Copias de Traslado:</label>
-            <input type="text" class="form-control" name="presuntos" id="presuntos">
-          </div>
+        <div class="col-6">
+          <label for="presuntos" class="form-label">Tomas de Copias de Traslado:</label>
+          <input type="text" class="form-control" name="presuntos" id="presuntos">
+        </div>
 
-          <div class="col-6 mb-3">
+        <div class="col-6 mb-3">
           <label for="autoriAnt" class="form-label">Autorizados DGI (Anteriores):</label>
           <select class="form-select" name="autoriAnt" id="autoriAnt">
             <option value="0" selected>Selecciona tu opción</option>
@@ -300,14 +291,14 @@ $result = $conexion->query($query);
               <option value="<?php echo $r['id']; ?>"><?php echo $r['nombre']; ?></option>
             <?php } ?>
           </select>
-          </div>
+        </div>
 
-          <div class="col-6">
-            <label for="autoriDGI" class="form-label">Autorizados DGI (modificable):</label>
-            <input type="text" class="form-control" name="autoriDGI" id="autoriDGI">
-          </div>
+        <div class="col-6">
+          <label for="autoriDGI" class="form-label">Autorizados DGI (modificable):</label>
+          <input type="text" class="form-control" name="autoriDGI" id="autoriDGI">
+        </div>
 
-          <!-- <div class="col-12 mb-3">
+        <!-- <div class="col-12 mb-3">
           <label for="descripcion" class="form-label">Descripción</label>
           <input type="text" class="form-control" name="descripcion" id="descripcion">
         </div> -->
@@ -315,7 +306,7 @@ $result = $conexion->query($query);
           <div class="col-12 mt-4">
             <button type="submit" class="btn btn-success">Guardar</button>
           </div>
-        </div>
+      </div>
     </form>
   </div>
 

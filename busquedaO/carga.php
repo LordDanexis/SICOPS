@@ -1,9 +1,9 @@
 <?php
 
-require 'config.php';
+require 'conexion.php';
 
 // Columnas a mostrar en la tabla
-$columns = ['consecutivo', 'folio', 'procedimiento', 'fecha_oficio', 'destinatario', 'cargo_destinatario','dependencia', 'asunto', 'abogado_solicitante', 'nivel', 'firma_oficio'];
+$columns = ['consecutivo', 'folio', 'procedimiento', 'fecha_oficio', 'destinatario', 'cargo_destinatario', 'dependencia', 'asunto', 'abogado_solicitante', 'nivel', 'firma_oficio'];
 
 // Nombre de la tablas
 $table = "oficios";
@@ -13,7 +13,7 @@ $table2 = "usuarios";
 $id = 'id';
 
 // Campo a buscar
-$campo = isset($_POST['campo']) ? $conn->real_escape_string($_POST['campo']) : null;
+$campo = isset($_POST['campo']) ? $conexion->real_escape_string($_POST['campo']) : null;
 
 // Filtrado
 $where = '';
@@ -30,8 +30,8 @@ if ($campo != null) {
 }
 
 // Limites
-$limit = isset($_POST['registros']) ? $conn->real_escape_string($_POST['registros']) : 10;
-$pagina = isset($_POST['pagina']) ? $conn->real_escape_string($_POST['pagina']) : 0;
+$limit = isset($_POST['registros']) ? $conexion->real_escape_string($_POST['registros']) : 10;
+$pagina = isset($_POST['pagina']) ? $conexion->real_escape_string($_POST['pagina']) : 0;
 
 if (!$pagina) {
     $inicio = 0;
@@ -58,18 +58,18 @@ FROM $table
 $where
 $sOrder
 $sLimit";
-$resultado = $conn->query($sql);
+$resultado = $conexion->query($sql);
 $num_rows = $resultado->num_rows;
 
 // Consulta para total de registro filtrados
 $sqlFiltro = "SELECT FOUND_ROWS()";
-$resFiltro = $conn->query($sqlFiltro);
+$resFiltro = $conexion->query($sqlFiltro);
 $row_filtro = $resFiltro->fetch_array();
 $totalFiltro = $row_filtro[0];
 
 // Consulta para total de registro
 $sqlTotal = "SELECT count($id) FROM $table ";
-$resTotal = $conn->query($sqlTotal);
+$resTotal = $conexion->query($sqlTotal);
 $row_total = $resTotal->fetch_array();
 $totalRegistros = $row_total[0];
 
@@ -80,7 +80,7 @@ $output['totalFiltro'] = $totalFiltro;
 $output['data'] = '';
 $output['paginacion'] = '';
 
-['consecutivo', 'folio', 'procedimiento', 'fecha_oficio', 'destinatario', 'cargo_destinatario','dependencia', 'asunto', 'abogado_solicitante', 'nivel', 'firma_oficio'];
+['consecutivo', 'folio', 'procedimiento', 'fecha_oficio', 'destinatario', 'cargo_destinatario', 'dependencia', 'asunto', 'abogado_solicitante', 'nivel', 'firma_oficio'];
 
 
 if ($num_rows > 0) {
