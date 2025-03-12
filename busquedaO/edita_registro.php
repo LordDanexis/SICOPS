@@ -9,7 +9,7 @@ $resultado = $conexion->query($sql);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -31,9 +31,7 @@ $resultado = $conexion->query($sql);
     </div>
     <form action="" method="POST">
       <div class="row mt-5">
-
-        <?php
-        include "actualiza_registro.php";
+        <?php include "actualiza_registro.php";
         while ($r = $resultado->fetch_assoc()) { ?>
           <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
           <div class="col-6">
@@ -106,8 +104,6 @@ $resultado = $conexion->query($sql);
         } ?>
 
         <div class="col-12 mt-4">
-
-          <!-- <a href="../busquedaO/actualiza_registro.php" class="btn btn-success">Modificar Oficio</a></h1> -->
           <button type="submit" class="btn btn-success" name="btnactualizar" value="ok">Modificar Oficio</button>
         </div>
 
