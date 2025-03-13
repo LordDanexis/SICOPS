@@ -3,7 +3,7 @@
 require 'config.php';
 
 // Columnas a mostrar en la tabla
-$columns = ['consecutivo', 'folio', 'procedimiento', 'fecha_oficio', 'destinatario', 'cargo_destinatario','dependencia', 'asunto', 'abogado_solicitante', 'nivel', 'firma_oficio'];
+$columns = ['consecutivo', 'folio', 'procedimiento', 'fecha_oficio', 'destinatario', 'cargo_destinatario', 'dependencia', 'asunto', 'abogado_solicitante', 'nivel', 'firma_oficio'];
 
 // Nombre de la tablas
 $table = "oficios";
@@ -80,7 +80,7 @@ $output['totalFiltro'] = $totalFiltro;
 $output['data'] = '';
 $output['paginacion'] = '';
 
-['consecutivo', 'folio', 'procedimiento', 'fecha_oficio', 'destinatario', 'cargo_destinatario','dependencia', 'asunto', 'abogado_solicitante', 'nivel', 'firma_oficio'];
+['consecutivo', 'folio', 'procedimiento', 'fecha_oficio', 'destinatario', 'cargo_destinatario', 'dependencia', 'asunto', 'abogado_solicitante', 'nivel', 'firma_oficio'];
 
 
 if ($num_rows > 0) {

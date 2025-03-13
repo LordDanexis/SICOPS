@@ -45,7 +45,7 @@ function menu($direccion)
 				';
 
 	//********************************************MENÚ DE OFICIOS DGSUB********************************************************* */
-	if ($direccion == "A"  || $direccion == "DG" || $direccion == "AP" | $direccion == "C") {
+	if ($direccion == "A"  || $direccion == "DG" || $direccion == "AP" || $direccion == "C" || $direccion == "ST") {
 
 		$menu .= '
 		
@@ -53,7 +53,7 @@ function menu($direccion)
 		    <li><a href="#nogo" class="munuSup"><b>Oficios DGSUB</b> <!--[if IE 7]><!--></a><!--<![endif]-->
 		        <ul class="sub submenu redonda5 ulPfrr">
 		        <li><a class="menu_pfrr redonda3" href="?cont=pfrr_oficios3"> <img src="images/volantes.png" /> <span>Alta Oficio </span> </a></li> ';
-		if ($direccion == "AP") $menu .= '<li><a class="menu_pfrr redonda3" href="busquedaO/oficiosB.php"> <img src="images/volantes.png" /> <span>Búsqueda de Oficios  </span> </a></li>
+		if ($direccion == "AP" || $direccion == "ST") $menu .= '<li><a class="menu_pfrr redonda3" href="oficios/oficios.php"> <img src="images/volantes.png" /> <span>Búsqueda de Oficios  </span> </a></li>
 		    </li>
 		        </ul>  
 		</ul>';

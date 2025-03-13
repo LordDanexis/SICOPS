@@ -30,13 +30,23 @@ switch ($nivel) {
 	         ORDER BY o.consecutivo DESC";
 		break;
 
+	case "A":
+		$sql = "SELECT *,o.folio Folio, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' ) 
+	        group by folio ORDER BY o.consecutivo DESC";
+		break;
+
 	case "ST":
 		if ($usuario == "ioleon" || $usuario == "bhcalva") {
 			$sql = "SELECT *,o.folio Folio, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' AND nivel = 'ST' AND o.status = '1') 
 				group by folio ORDER BY o.consecutivo DESC";
 		} else {
-			$sql = "SELECT *,o.folio Folio, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' ) 
-	        group by folio ORDER BY o.consecutivo DESC";
+			if ($usuario == "gespinosa" || $usuario == "aduardo") {
+				$sql = "SELECT *,o.folio Folio, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%'  AND o.status = '1' ) 
+				group by folio ORDER BY o.consecutivo DESC";
+			} else {
+				$sql = "SELECT *,o.folio Folio, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' ) 
+				group by folio ORDER BY o.consecutivo DESC";
+			}
 		}
 		break;
 
