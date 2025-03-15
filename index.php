@@ -213,16 +213,18 @@ if (in_array($f1, $fechasCierre, true)) {
 								$direccion = $_SESSION['direccion'];
 								switch ($direccion) {
 									case "AP":
-										echo '<li><a class="mSetup redonda3" href="?cont=cambiar_contra"> <img src="images/password.png" /> Cambiar Contraseña</a></li>';
+										echo '<li><a class="mSetup redonda3" href="usuarios/Alta_Usuarios/alta_usuario.php"> <img src="images/alta_usuario.png" /> Alta de Usuarios </a></li>';
+										echo '<li><a class="mSetup redonda3" href="usuarios/Lista_Usuarios/usuarios.php"> <img src="images/usuarios.png" />Editar Usuarios </a></li>';
 										echo '<li><a class="mSetup redonda3" href="?cont=configuracion"> <img src="images/config.png" /> Configurar Sistema</a></li>';
+										echo '<li><a class="mSetup redonda3" href="?cont=cambiar_contra"> <img src="images/password.png" /> Cambiar Contraseña</a></li>';
 										echo '<li><a class="mSetup redonda3" href="procesosAjax/ajax_login_cerrar.php"> <img src="images/Exit.png" /> Cerrar Sesión </a></li>';
-										echo '<li><a class="mSetup redonda3" href="Usuarios/Alta_Usuarios/alta_usuario.php"> <img src="images/alta_usuario.png" /> Alta de Usuarios </a></li>';
 										break;
 
 									case "ST":
+										echo '<li><a class="mSetup redonda3" href="Usuarios/Alta_Usuarios/alta_usuario.php"> <img src="images/alta_usuario.png" /> Alta de Usuarios </a></li>';
+										echo '<li><a class="mSetup redonda3" href="usuarios/Lista_Usuarios/usuarios.php"> <img src="images/usuarios.png" /> Editar Usuarios </a></li>';
 										echo '<li><a class="mSetup redonda3" href="?cont=cambiar_contra"> <img src="images/password.png" /> Cambiar Contraseña</a></li>';
 										echo '<li><a class="mSetup redonda3" href="procesosAjax/ajax_login_cerrar.php"> <img src="images/Exit.png" /> Cerrar Sesión </a></li>';
-										echo '<li><a class="mSetup redonda3" href="Usuarios/Alta_Usuarios/alta_usuario.php"> <img src="images/alta_usuario.png" /> Alta de Usuarios </a></li>';
 										break;
 
 									case "DG":

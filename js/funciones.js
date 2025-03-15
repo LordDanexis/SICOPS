@@ -247,35 +247,35 @@ function validaNum(miNum)
 		return true
 	}
 }
-function calculaMontos()
-{
-	var mir = document.getElementById('montoIR').value;
-	var mr = document.getElementById('montoR').value;
-	var ma = document.getElementById('montoA').value;
-	var mc = document.getElementById('montoC').value;
-	var mj = document.getElementById('montoJ').value;
+// function calculaMontos()
+// {
+// 	var mir = document.getElementById('montoIR').value;
+// 	var mr = document.getElementById('montoR').value;
+// 	var ma = document.getElementById('montoA').value;
+// 	var mc = document.getElementById('montoC').value;
+// 	var mj = document.getElementById('montoJ').value;
 	
-	var coma = /,/g;
-	mir = parseFloat(mir.replace(coma,""));	
-	mr = parseFloat(mr.replace(coma,""));
-	ma = parseFloat(ma.replace(coma,""));
-	mc = parseFloat(mc.replace(coma,""));
-	mj = parseFloat(mj.replace(coma,""));
+// 	var coma = /,/g;
+// 	mir = parseFloat(mir.replace(coma,""));	
+// 	mr = parseFloat(mr.replace(coma,""));
+// 	ma = parseFloat(ma.replace(coma,""));
+// 	mc = parseFloat(mc.replace(coma,""));
+// 	mj = parseFloat(mj.replace(coma,""));
 	
-	var suma = mr+ma+mc+mj;
-	var TPO = mir - suma;
+// 	var suma = mr+ma+mc+mj;
+// 	var TPO = mir - suma;
 
-	document.getElementById('montoPO').value = TPO;
+// 	document.getElementById('montoPO').value = TPO;
 
-	validaNum('montoIR');
-	validaNum('montoR');
-	validaNum('montoA');
-	validaNum('montoC');
-	validaNum('montoJ');
-	validaNum('montoPO')
-}
+// 	validaNum('montoIR');
+// 	validaNum('montoR');
+// 	validaNum('montoA');
+// 	validaNum('montoC');
+// 	validaNum('montoJ');
+// 	validaNum('montoPO')
+// }
 
-//**********************ESTA FUNCIÓN  COMPLETA LOS CAMPOS AL SELECCIÓNAR EL ÁREA************************************* 
+//**********************ESTA FUNCIÓN  COMPLETA LOS CAMPOS AL SELECCIÓNAR EL ÁREA DEL MÓDULO DE ALTA PRA************************************* 
 
 function completarCampos() {
 	const select = document.getElementById("direccion");
@@ -284,20 +284,81 @@ function completarCampos() {
 	
 	switch (select.value) {
 	  case "A.1":
-		director.value = "Dr. Alfonso Javier Arredondo Huerta";
-		subdirector.value = "Dr. Alfonso Javier Arredondo Huerta";
+		director.value = "Alfonso Javier Arredondo Huerta";
+		subdirector.value = "Alfonso Javier Arredondo Huerta";
 		break;
 	  case "A.2":
-		director.value = "Lic. Isaid Rodríguez Esquivel";
-		subdirector.value = "Dr. Alfonso Javier Arredondo Huerta";
+		director.value = "Isaid Rodríguez Esquivel";
+		subdirector.value = "Alfonso Javier Arredondo Huerta";
 		break;
 	  default:
 		campo1.value = "";
 		campo2.value = "";
 	}
   }
-  //*******************TERMINA FUNCIÓN  COMPLETA LOS CAMPOS AL SELECCIÓNAR EL ÁREA************************************* 
+  //*******************TERMINA FUNCIÓN  COMPLETA LOS CAMPOS AL SELECCIÓNAR EL ÁREA DEL MÓDULO DE ALTA PRA************************************* 
 
+//**********************ESTA FUNCIÓN  COMPLETA LOS CAMPOS DEL Subdirector Adscrito: AL SELECCIÓNAR EL ÁREA DEL MÓDULO DE EDITAR USUARIO************************************* 
+
+function completarCamposUsuarios() {
+	const datos = {
+		"A.1": ["Daniela Armas Rendón", "Ivonne Celis Morales"],
+		"A.2": ["Jazmín Alejandra Arriaga Hernández", "Jorge Jiménez Santana"],
+		"A":   ["Diana Teresa Sedano Toledo"],
+		"ST":  ["Eumir Fernando Zaldívar Jiménez"]
+	};
+
+	// Función para actualizar el segundo select
+
+		const nivel = document.getElementById("nivel");
+		const subAdscrito = document.getElementById("subAdscrito");
+		const seleccion = nivel.value; // Valor seleccionado
+
+		// Limpia las opciones actuales
+		subAdscrito.innerHTML = "";
+
+		// Agrega las opciones nuevas
+		if (datos[seleccion]) {
+			datos[seleccion].forEach(function(opcion) {
+				const nuevaOpcion = document.createElement("option");
+				nuevaOpcion.value = opcion;
+				nuevaOpcion.textContent = opcion;
+				subAdscrito.appendChild(nuevaOpcion);
+			});
+		}
+  }
+  //*******************TERMINA FUNCIÓN  COMPLETA LOS CAMPOS DEL Subdirector Adscrito: AL SELECCIÓNAR EL ÁREA DEL MÓDULO DE EDITAR USUARIO************************************* 
+
+  //**********************ESTA FUNCIÓN  COMPLETA LOS CAMPOS DEL Subdirector Adscrito: AL SELECCIÓNAR EL ÁREA DEL MÓDULO DE EDITAR USUARIO************************************* 
+
+function completarCamposUsuariosJD() {
+	const datos = {
+		"Daniela Armas Rendón": ["Cuauhtémoc Correa Sánchez", "Jazmín Ruiz Córdova"],
+		"Ivonne Celis Morales": ["Raúl Israel Mancilla Salazar", "José Manuel Palafox Pichardo"],
+		"Jazmín Alejandra Arriaga Hernández": ["Irving Alcántara González Machorro Nieves", "Mario Jair Hernández Ibañez"],
+		"Jorge Jiménez Santana": ["Janin Jounuen Silva González", "Carlo Iván Muraira Torres"],
+	};
+
+	// Función para actualizar el segundo select
+
+		const subAdscrito = document.getElementById("subAdscrito");
+		const jefeAdscrito = document.getElementById("jefeAdscrito");
+		const seleccion = subAdscrito.value; // Valor seleccionado
+
+		// Limpia las opciones actuales
+		jefeAdscrito.innerHTML = "";
+
+		// Agrega las opciones nuevas
+		if (datos[seleccion]) {
+			datos[seleccion].forEach(function(opcion) {
+				const nuevaOpcion = document.createElement("option");
+				nuevaOpcion.value = opcion;
+				nuevaOpcion.textContent = opcion;
+				jefeAdscrito.appendChild(nuevaOpcion);
+			});
+		}
+  }
+  //*******************TERMINA FUNCIÓN  COMPLETA LOS CAMPOS DEL Subdirector Adscrito: AL SELECCIÓNAR EL ÁREA DEL MÓDULO DE EDITAR USUARIO************************************* 
 
 //-------------------------------------
 function formatNumber(num,prefix){

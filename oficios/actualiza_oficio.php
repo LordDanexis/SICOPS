@@ -1,7 +1,5 @@
 <?php
 
-require_once("../includes/conexion.php");
-
 if (!empty($_POST["btnactualizar"])) {
     // if (!empty($_POST["status"])) {
     $id = $_POST["id"];
@@ -19,13 +17,8 @@ if (!empty($_POST["btnactualizar"])) {
     $status = $_POST["status"];
     $sql = $conexion->query("UPDATE oficios set folio='$folio', procedimiento ='$procedimiento', fecha_oficio ='$fechaOficio', destinatario ='$destinatario', cargo_destinatario ='$cargo', dependencia ='$dependencia', nivel ='$nivel', observaciones ='$observaciones', asunto ='$asunto', abogado_solicitante ='$abogado', firma_oficio ='$firma', status ='$status'  WHERE consecutivo = '$id' ");
     if ($sql == 1) {
-        header("Location:oficios.php");
-        $mensaje = "¡ACTUALIZASTE CORRECTAMENTE EL REGISTRO!";
-        return $mensaje;
+        echo "<div class='alert alert-success'>Modificación Exitosa</div>";
     } else {
         echo "<div class='alert alert-warning'>Error al Modificar</div>";
     }
-    // } else {
-    //     echo "<div class='alert alert-warning'>Necesita llenar el Campo Estatus</div>";
-    // }
 }

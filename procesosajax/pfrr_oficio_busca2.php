@@ -17,36 +17,31 @@ $nombre = ivalorSeguro($enlace, $_REQUEST['nombre']);
 switch ($nivel) {
 	case "A.1":
 		$sql = "SELECT *,o.folio Folio, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' AND nivel = 'A.1' AND o.status = '1') 
-	        group by folio ORDER BY o.consecutivo DESC";
+	        GROUP BY folio ORDER BY o.consecutivo DESC";
 		break;
 
 	case "A.2":
 		$sql = "SELECT *,o.folio Folio, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' AND nivel = 'A.2' AND o.status = '1') 
-	         ORDER BY o.consecutivo DESC";
+	        GROUP BY folio ORDER BY o.consecutivo DESC";
 		break;
 
 	case "C":
 		$sql = "SELECT *,o.folio Folio, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' AND nivel = 'C' AND o.status = '1') 
-	         ORDER BY o.consecutivo DESC";
+	        GROUP BY folio ORDER BY o.consecutivo DESC";
 		break;
 
 	case "A":
-		$sql = "SELECT *,o.folio Folio, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' ) 
-	        group by folio ORDER BY o.consecutivo DESC";
+		$sql = "SELECT *,o.folio Folio, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%') 
+			GROUP BY folio ORDER BY o.consecutivo DESC";
 		break;
 
 	case "ST":
 		if ($usuario == "ioleon" || $usuario == "bhcalva") {
 			$sql = "SELECT *,o.folio Folio, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' AND nivel = 'ST' AND o.status = '1') 
-				group by folio ORDER BY o.consecutivo DESC";
+		    GROUP BY folio ORDER BY o.consecutivo DESC";
 		} else {
-			if ($usuario == "gespinosa" || $usuario == "aduardo") {
-				$sql = "SELECT *,o.folio Folio, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%'  AND o.status = '1' ) 
-				group by folio ORDER BY o.consecutivo DESC";
-			} else {
-				$sql = "SELECT *,o.folio Folio, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' ) 
-				group by folio ORDER BY o.consecutivo DESC";
-			}
+			$sql = "SELECT *,o.folio Folio, o.tipo idFol,o.status as state  FROM oficios o WHERE (folio LIKE '%" . $texto . "%' ) 
+			GROUP BY folio ORDER BY o.consecutivo DESC";
 		}
 		break;
 

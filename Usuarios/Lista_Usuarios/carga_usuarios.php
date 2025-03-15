@@ -1,19 +1,18 @@
 <?php
 
-require 'config.php';
+require_once('../../includes/conexion.php');
 
 // Columnas a mostrar en la tabla
-$columns = ['consecutivo', 'folio', 'procedimiento', 'fecha_oficio', 'destinatario', 'cargo_destinatario', 'dependencia', 'asunto', 'abogado_solicitante', 'nivel', 'firma_oficio'];
+$columns = ['id', 'nombre', 'curp', 'genero', 'usuario', 'password', 'contrato', 'nivel', 'direccion', 'no_empleado', 'tipo_emp', 'puesto', 'sub_adscrito', 'jefe_depto_adscrito', 'status'];
 
 // Nombre de la tablas
-$table = "oficios";
-$table2 = "usuarios";
+$table = "usuarios";
 
 // Clave principal de la tabla
 $id = 'id';
 
 // Campo a buscar
-$campo = isset($_POST['campo']) ? $conn->real_escape_string($_POST['campo']) : null;
+$campo = isset($_POST['campo']) ? $conexion->real_escape_string($_POST['campo']) : null;
 
 // Filtrado
 $where = '';
@@ -30,8 +29,8 @@ if ($campo != null) {
 }
 
 // Limites
-$limit = isset($_POST['registros']) ? $conn->real_escape_string($_POST['registros']) : 10;
-$pagina = isset($_POST['pagina']) ? $conn->real_escape_string($_POST['pagina']) : 0;
+$limit = isset($_POST['registros']) ? $conexion->real_escape_string($_POST['registros']) : 10;
+$pagina = isset($_POST['pagina']) ? $conexion->real_escape_string($_POST['pagina']) : 0;
 
 if (!$pagina) {
     $inicio = 0;
@@ -58,18 +57,18 @@ FROM $table
 $where
 $sOrder
 $sLimit";
-$resultado = $conn->query($sql);
+$resultado = $conexion->query($sql);
 $num_rows = $resultado->num_rows;
 
 // Consulta para total de registro filtrados
 $sqlFiltro = "SELECT FOUND_ROWS()";
-$resFiltro = $conn->query($sqlFiltro);
+$resFiltro = $conexion->query($sqlFiltro);
 $row_filtro = $resFiltro->fetch_array();
 $totalFiltro = $row_filtro[0];
 
 // Consulta para total de registro
 $sqlTotal = "SELECT count($id) FROM $table ";
-$resTotal = $conn->query($sqlTotal);
+$resTotal = $conexion->query($sqlTotal);
 $row_total = $resTotal->fetch_array();
 $totalRegistros = $row_total[0];
 
@@ -80,25 +79,29 @@ $output['totalFiltro'] = $totalFiltro;
 $output['data'] = '';
 $output['paginacion'] = '';
 
-['consecutivo', 'folio', 'procedimiento', 'fecha_oficio', 'destinatario', 'cargo_destinatario', 'dependencia', 'asunto', 'abogado_solicitante', 'nivel', 'firma_oficio'];
+['id', 'nombre', 'curp', 'genero', 'usuario', 'password', 'contrato', 'nivel', 'direccion', 'no_empleado', 'tipo_emp', 'puesto', 'sub_adscrito', 'jefe_depto_adscrito', 'status'];
 
 
 if ($num_rows > 0) {
     while ($row = $resultado->fetch_assoc()) {
         $output['data'] .= '<tr>';
-        $output['data'] .= '<td>' . $row['consecutivo'] . '</td>';
-        $output['data'] .= '<td>' . $row['folio'] . '</td>';
-        $output['data'] .= '<td>' . $row['procedimiento'] . '</td>';
-        $output['data'] .= '<td>' . $row['fecha_oficio'] . '</td>';
-        $output['data'] .= '<td>' . $row['destinatario'] . '</td>';
-        $output['data'] .= '<td>' . $row['cargo_destinatario'] . '</td>';
-        $output['data'] .= '<td>' . $row['dependencia'] . '</td>';
-        $output['data'] .= '<td>' . $row['asunto'] . '</td>';
-        $output['data'] .= '<td>' . $row['abogado_solicitante'] . '</td>';
+        $output['data'] .= '<td>' . $row['id'] . '</td>';
+        $output['data'] .= '<td>' . $row['nombre'] . '</td>';
+        $output['data'] .= '<td>' . $row['curp'] . '</td>';
+        $output['data'] .= '<td>' . $row['genero'] . '</td>';
+        $output['data'] .= '<td>' . $row['usuario'] . '</td>';
+        $output['data'] .= '<td>' . $row['password'] . '</td>';
+        $output['data'] .= '<td>' . $row['contrato'] . '</td>';
         $output['data'] .= '<td>' . $row['nivel'] . '</td>';
-        $output['data'] .= '<td>' . $row['firma_oficio'] . '</td>';
-        $output['data'] .= '<td><a class="btn btn-warning btn-sm" href="edita_registro.php?id=' . $row['consecutivo'] . '">Editar</a></td>';
-        $output['data'] .= "<td><a class='btn btn-danger btn-sm' href='elimiar.php?id=" . $row['consecutivo'] . "'>Eliminar</a></td>";
+        $output['data'] .= '<td>' . $row['direccion'] . '</td>';
+        $output['data'] .= '<td>' . $row['no_empleado'] . '</td>';
+        $output['data'] .= '<td>' . $row['tipo_emp'] . '</td>';
+        $output['data'] .= '<td>' . $row['puesto'] . '</td>';
+        $output['data'] .= '<td>' . $row['sub_adscrito'] . '</td>';
+        $output['data'] .= '<td>' . $row['jefe_depto_adscrito'] . '</td>';
+        $output['data'] .= '<td>' . $row['status'] . '</td>';
+        $output['data'] .= '<td><a class="btn btn-warning btn-sm" href="edita_usuario.php?id=' . $row['id'] . '">Editar</a></td>';
+        $output['data'] .= "<td><a class='btn btn-danger btn-sm' href='elimiar.php?id=" . $row['id'] . "'>Eliminar</a></td>";
         $output['data'] .= '</tr>';
     }
 } else {

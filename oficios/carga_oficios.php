@@ -7,7 +7,6 @@ $columns = ['consecutivo', 'folio', 'procedimiento', 'fecha_oficio', 'destinatar
 
 // Nombre de la tablas
 $table = "oficios";
-$table2 = "usuarios";
 
 // Clave principal de la tabla
 $id = 'id';

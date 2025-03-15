@@ -1,9 +1,3 @@
-<?php
-// session_start();
-// if ($_SESSION['acceso'] != true)    header("Location: ../../login.php ");
-// require '../../i/api/sesion.php';
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,12 +8,11 @@
     <meta name="author" content="Marco Robles">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>USUARIOS</title>
-
     <!-- Bootstrap core CSS -->
-    <!--link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">-->   
-    <link rel="stylesheet" href="../css/bootstrap_5.3.3/css/bootstrap.min.css">
+    <!--link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="../../css/bootstrap_5.3.3/css/bootstrap.min.css">
 </head>
- 
+
 <body>
     <main>
         <div class="container py-4 text-center">
@@ -53,9 +46,9 @@
                 <div class="col-6 col-md-3 text-end">
                     <input type="text" name="campo" id="campo" class="form-control">
                 </div>
-                
+
                 <div class="col-3">
-                    <a href="../index.php">REGRESAR</a>
+                    <a href="../../index.php">REGRESAR</a>
                 </div>
 
             </div>
@@ -65,17 +58,22 @@
                     <table class="table table-sm table-bordered table-striped">
                         <thead>
                             <th class="sort asc">#</th>
-                            <th class="sort asc">OFICIO</th>
-                            <th class="sort asc">PROCEDIMIENTO</th> 
-                            <th class="sort asc">FECHA</th>
-                            <th class="sort asc">DESTINATARIO</th>
-                            <th class="sort asc">CARGO</th>
-                            <th class="sort asc">DEPENDENCIA</th>
-                            <th class="sort asc">ASUNTO</th>
-                            <th class="sort asc">ABOGADO SOLICITANTE</th>
-                            <th class="sort asc">ÁREA</th> 
-                            <th class="sort asc">FIRMA</th>
-                            <!-- <th class="sort asc">Estatus</th>  -->
+                            <th class="sort asc">NOMBRE</th>
+                            <th class="sort asc">CURP</th>
+                            <th class="sort asc">GÉNERO</th>
+                            <th class="sort asc">USUARIO</th>
+                            <th class="sort asc">CONTRASEÑA</th>
+                            <th class="sort asc">CONTRATO</th>
+                            <th class="sort asc">NIVEL</th>
+                            <th class="sort asc">DIRECCIÓN</th>
+                            <th class="sort asc">NO. EMPLEADO</th>
+                            <th class="sort asc">TIPO EMPLEADO</th>
+                            <th class="sort asc">PUESTO</th>
+                            <!-- <th class="sort asc">TIPO</th>-->
+                            <th class="sort asc">SUB ADSCRITO</th>
+                            <th class="sort asc">JEFE ADSCRITO</th>
+                            <th class="sort asc">STATUS</th>
+
                             <th></th>
                             <th></th>
                         </thead>
@@ -124,7 +122,7 @@
             formaData.append('orderCol', orderCol)
             formaData.append('orderType', orderType)
 
-            fetch("load.php", {
+            fetch("carga_usuarios.php", {
                     method: "POST",
                     body: formaData
                 })
@@ -174,4 +172,4 @@
 
     <!-- Bootstrap core JS -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
-    <script src="../css/bootstrap_5.3.3/js/bootstrap.bundle.min.js"></script>
+    <script src="../../css/bootstrap_5.3.3/js/bootstrap.bundle.min.js"></script>

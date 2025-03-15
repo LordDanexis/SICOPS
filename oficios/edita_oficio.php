@@ -4,7 +4,10 @@ require_once('../includes/funciones.php');
 $id = $_GET['id']; //saca el registro del Registro cuando es igual que el ID
 $sql =  "SELECT * FROM oficios WHERE consecutivo = $id";
 $resultado = $conexion->query($sql);
-//$consulta = ("SELECT * FROM oficios WHERE consecutivo = $id");
+
+$sql2 = "SELECT * FROM usuarios";
+$resultado2 = $conexion->query($sql2);
+
 ?>
 
 <!DOCTYPE html>
@@ -24,8 +27,7 @@ $resultado = $conexion->query($sql);
   <div class="container">
     <div class="row mt-5">
       <div class="col">
-        <h1>Editar Oficio DGSUB <a href="../oficios/Oficios.php" class="btn btn-dark">Regresar</a></h1>
-
+        <h1>EDITAR OFICIO DGSUB <a href="../oficios/Oficios.php" class="btn btn-dark">Regresar</a></h1>
       </div>
     </div>
     <form action="" method="POST">
@@ -73,9 +75,14 @@ $resultado = $conexion->query($sql);
             <input type="text" class="form-control" name="asunto" id="asunto" value="<?php echo ivalorSeguro2($r['asunto']); ?>">
           </div>
 
-          <div class="col-6">
-            <label for="solicitante" class="form-label">Abogado solicitante:</label>
-            <input type="text" class="form-control" name="solicitante" id="solicitante" value="<?php echo ivalorSeguro2($r['abogado_solicitante']); ?>">
+          <div class="col-6 mb-3">
+            <label for="solicitante" class="form-label">Abogado Solicitante:</label>
+            <select class="form-select" name="solicitante" id="solicitante">
+              <?php echo '<option value="' . $r['abogado_solicitante'] . '"selected>' . $r['abogado_solicitante'] . '</option>'; ?>
+              <?php while ($r2 = $resultado2->fetch_assoc()) { ?>
+                <option value="<?php echo $r2['nombre']; ?>"><?php echo $r2['nombre']; ?></option>
+              <?php } ?>
+            </select>
           </div>
 
           <div class="col-6 mb-3">
@@ -84,7 +91,7 @@ $resultado = $conexion->query($sql);
               <?php echo '<option value="' . $r['nivel'] . '"selected>' . $r['nivel'] . '</option>'; ?>
               <option value="A.1">A.1</option>
               <option value="A.2">A.2</option>
-              <option value="A.3">A.3</option>
+              <option value="ST">ST</option>
             </select>
           </div>
 

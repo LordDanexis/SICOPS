@@ -30,20 +30,22 @@ $result = $conexion->query($query);
           <label for="nombre" class="form-label">Nombre:</label>
           <input type="text" class="form-control" name="nombre" id="nombre">
         </div>
-        <div class="col-6">
+        <div class="col-6 mb-3">
           <label for="curp" class="form-label">Curp:</label>
           <input type="text" class="form-control" name="curp" id="curp">
         </div>
-        <div class="col-6 mb-3">
+
+        <div class="col-6">
           <label for="genero" class="form-label">Género:</label>
           <select class="form-select" name="genero" id="genero">
             <option value="" disabled selected>Que Género es el Usuario...</option>
-            <option value="masculino">Masculino</option>
-            <option value="femenino">Femenino</option>
-            <option value="indefinido">Indefinido</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+            <option value="Indefinido">Indefinido</option>
           </select>
         </div>
-        <div class="col-6">
+
+        <div class="col-6 mb-3">
           <label for="usuario" class="form-label">Usuario:</label>
           <input type="text" class="form-control" name="usuario" id="usuario">
         </div>
@@ -51,7 +53,7 @@ $result = $conexion->query($query);
           <label for="contraseña" class="form-label">Contraseña:</label>
           <input type="text" class="form-control" name="contraseña" id="contraseña">
         </div>
-        <div class="col-6">
+        <div class="col-6 mb-3">
           <label for="contrato" class="form-label">Contrato:</label>
           <input type="text" class="form-control" name="contrato" id="contrato">
         </div>
@@ -59,21 +61,23 @@ $result = $conexion->query($query);
         <div class="col-6 mb-3">
           <label for="nivel" class="form-label">Nivel:</label>
           <select class="form-select" name="nivel" id="nivel">
-            <option value="" disabled selected>A que Área esta Adscrito el Usuario...</option>
+            <option value="" disabled selected>A que área esta Adscrito el Usuario...</option>
             <option value="A.1">A.1</option>
             <option value="A.2">A.2</option>
+            <option value="ST">ST</option>
+            <option value="C">C</option>
           </select>
         </div>
 
-        <div class="col-6 mb-3">
+        <div class="col-6 mb-4">
           <label for="direccion" class="form-label">Dirección:</label>
           <select class="form-select" name="direccion" id="direccion">
             <option value="" disabled selected>Dirección del Usuario...</option>
-            <option value="AP">AP</option>
-            <option value="ST">ST</option>
-            <option value="DG">DG</option>
-            <option value="A">A</option>
-            <option value="C">C</option>
+            <option value="AP">AP (Administrador Principal)</option>
+            <option value="ST">ST (Secretaria Técnica)</option>
+            <option value="DG">DG (Dirección General)</option>
+            <option value="A">A (Todos los Abogados de la dirección A)</option>
+            <option value="C">C (Dirección C por incorporarse)</option>
           </select>
         </div>
 
@@ -94,7 +98,7 @@ $result = $conexion->query($query);
         <div class="col-6 mb-3">
           <label for="puesto" class="form-label">Puesto:</label>
           <select class="form-select" name="puesto" id="puesto">
-            <option value="" selected>Selecciona el Nivel del Usuario...</option>
+            <option value="" disabled selected>Selecciona el Puesto del Usuario...</option>
             <?php
             while ($r = $result->fetch_assoc()) {
             ?>
@@ -117,18 +121,18 @@ $result = $conexion->query($query);
           <label for="status" class="form-label">Estatus del Usuario:</label>
           <select class="form-select" name="status" id="status">
             <option value="" disabled selected>Cuál es el Estatus del Usuario...</option>
-            <option value="0">Inactivo</option>
-            <option value="1">Activo</option>
+            <option value="0">0 - Inactivo</option>
+            <option value="1">1 - Activo</option>
           </select>
         </div>
-
         <div class="col-12">
-          <button type="submit" name="btninsertar" class="btn btn-success">Guardar</button>
+          <button type="submit" class="btn btn-success" name="btninsertar" value="ok">Guardar</button>
         </div>
       </div>
     </form>
   </div>
 
+  <script src="../../css/bootstrap_5.3.3/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -52,8 +52,8 @@ function menu($direccion)
 		<ul class="select menu" id="mInicio"> 
 		    <li><a href="#nogo" class="munuSup"><b>Oficios DGSUB</b> <!--[if IE 7]><!--></a><!--<![endif]-->
 		        <ul class="sub submenu redonda5 ulPfrr">
-		        <li><a class="menu_pfrr redonda3" href="?cont=pfrr_oficios3"> <img src="images/volantes.png" /> <span>Alta Oficio </span> </a></li> ';
-		if ($direccion == "AP" || $direccion == "ST") $menu .= '<li><a class="menu_pfrr redonda3" href="oficios/oficios.php"> <img src="images/volantes.png" /> <span>Búsqueda de Oficios  </span> </a></li>
+		        <li><a class="menu_pfrr redonda3" href="?cont=pfrr_oficios3"> <img src="images/alta.png" /> <span>Alta Oficio </span> </a></li> ';
+		if ($direccion == "AP" || $direccion == "ST" || $direccion == "DG") $menu .= '<li><a class="menu_pfrr redonda3" href="oficios/oficios.php"> <img src="images/editar_oficio.png" /> <span>Editar Oficio </span> </a></li>
 		    </li>
 		        </ul>  
 		</ul>';
@@ -68,7 +68,7 @@ function menu($direccion)
 						<li><a href="#" class="munuSup"><b>Alta PRA</b><!--[if IE 7]><!--></a><!--<![endif]-->
 							<!--[if lte IE 6]><table><tr><td><![endif]-->
 						   <ul class="sub submenu redonda5 ulMd">
-							  <li> <a class="menu_md redonda3" href="Alta_PRA/registra_Pra.php"> <img src="images/medio_actores_small.png" /> <span> Alta de Expedientes de Responsabilidad Administrativa</span> </a>
+							  <li> <a class="menu_md redonda3" href="Alta_PRA/registra_Pra.php"> <img src="images/alta.png" /> <span> Alta de Expedientes de Responsabilidad Administrativa</span> </a>
 							     <!--<ul class="submenu2 redonda5">  <li> <a class="menu_md redonda3" href="cont=medios_rr_actores"> <img src="images/actor.png" /> Ver Actores </a> </li> </ul>-->
 							   </li>
 						   </ul>
