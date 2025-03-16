@@ -26,7 +26,7 @@ $resultado2 = $conexion->query($query2);
   <div class="container">
     <div class="row mt-5">
       <div class="col">
-        <h1>EDITAR USUARIO DGSUBsadasd <a href="../Lista_Usuarios/usuarios.php" class="btn btn-dark">Regresar</a></h1>
+        <h1>EDITAR USUARIO DGSUB <a href="../Lista_Usuarios/usuarios.php" class="btn btn-dark">Regresar</a></h1>
       </div>
     </div>
     <form action="" method="POST">
