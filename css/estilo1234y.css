@@ -1228,7 +1228,9 @@ Copyright (c) 2005-2007 Stu Nicholls. All rights reserved. This stylesheet and t
 .submenu3{ position:relative; right:-170px; top:0px;  }
 /* ---------------------------------------------------------- */
 /* FOOTER -------------------------------------------------------------- */
-
+.campoMayusc {
+	text-transform: uppercase;
+}
  
 #footer	{
 height: 50px;

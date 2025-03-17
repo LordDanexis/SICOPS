@@ -1,14 +1,11 @@
 <?php
 session_start();
 if ($_SESSION['acceso'] != true && $_SESSION['SICOPS-BETA'] != true)	header("Location: login.php ");
-//header("Cache-Control: no-store, no-cache, must-revalidate");
 date_default_timezone_set("America/Mexico_City");
 
 include("includes/configuracion.php");
 include("includes/funciones.php");
 $enlace = mysqli_connect("127.0.0.1", "root", "", "dgsub_sicops");
-//$conexion = new conexion;
-//$conn = $conexion->conectar();
 if (ESTADOSISTEMA == false) {
 	$sistemaCerrado = true;
 	$sistemaCorte = true;
@@ -19,10 +16,7 @@ if (ESTADOSISTEMA == false) {
 
 
 $fechasCierre = array('2017-09-14', '2017-09-29', '2017-10-13', '2017-10-30', '2017-11-14', '2017-11-29', '2017-12-15', '2017-12-20');
-
 $f1 = date('Y-m-d');
-
-
 
 if (in_array($f1, $fechasCierre, true)) {
 	$queryc = "UPDATE configuracion set boleano = 0 WHERE proceso = 'estadoSistema' ";
@@ -58,7 +52,7 @@ if (in_array($f1, $fechasCierre, true)) {
 	<script type="text/javascript" src="js/menu.js"></script>
 	<script type="text/javascript" src="js/funciones.js"></script>
 	<script type="text/javascript" src="js/ajax.js"></script>
-	<script type="text/javascript" src="js/ajaxMisa.js"></script>
+	<!-- <script type="text/javascript" src="js/ajaxMisa.js"></script> -->
 	<script type="text/javascript" src="js/ajaxConfiguracion.js"></script>
 
 	<script type="text/javascript" src="js/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
@@ -134,8 +128,8 @@ if (in_array($f1, $fechasCierre, true)) {
 					<div id='logoSis'><img src="images/logo.png" alt="" /></div>
 					<div class='nomSis' id='nombre'> <span class='nomSis'> SICOPS </span> <span class='nomSis2'> DGSUB </span> </div>
 					<div id='texto'> Sistema de Consulta y Organización para Substanciación
-						<!-- <?php echo date(' d/m/Y ');
-								echo date(' g:ia '); ?> -->
+						<?php echo date(' d/m/Y ');
+						echo date(' g:ia '); ?>
 						<div id="current_date">
 							<script>
 								var d = new Date();
@@ -175,15 +169,8 @@ if (in_array($f1, $fechasCierre, true)) {
 
 					<?php
 
-
-
 					$user_av = $u = $_SESSION['usuario'];
-
-					//$r=$conexion->select( $sql="Select * from usuarios where usuario = '$u'");
 					$sql = "Select * from usuarios where usuario = '$u'";
-
-					//   $r = mysqli_query($enlace, $sql);
-
 
 					while ($m = mysqli_fetch_array($r, MYSQLI_BOTH)) {
 						$id = $m['id'];

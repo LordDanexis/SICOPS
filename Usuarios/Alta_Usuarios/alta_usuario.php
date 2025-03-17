@@ -28,7 +28,7 @@ $result = $conexion->query($query);
         <?php include "inserta_usuario.php"; ?>
         <div class="col-6">
           <label for="nombre" class="form-label">Nombre:</label>
-          <input type="text" class="form-control" name="nombre" id="nombre">
+          <input type="text" class="form-control" name="nombre" id="nombre" oninput="convertirMayusculas()">
         </div>
         <div class="col-6 mb-3">
           <label for="curp" class="form-label">Curp:</label>
@@ -133,6 +133,7 @@ $result = $conexion->query($query);
   </div>
 
   <script src="../../css/bootstrap_5.3.3/js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/funciones.js"></script>
 </body>
 
 </html>

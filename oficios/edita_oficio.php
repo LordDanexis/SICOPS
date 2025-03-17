@@ -4,10 +4,8 @@ require_once('../includes/funciones.php');
 $id = $_GET['id']; //saca el registro del Registro cuando es igual que el ID
 $sql =  "SELECT * FROM oficios WHERE consecutivo = $id";
 $resultado = $conexion->query($sql);
-
-$sql2 = "SELECT * FROM usuarios";
+$sql2 = "SELECT * FROM usuarios order by usuario";
 $resultado2 = $conexion->query($sql2);
-
 ?>
 
 <!DOCTYPE html>
@@ -99,10 +97,10 @@ $resultado2 = $conexion->query($sql2);
             <label for="firma" class="form-label">Firma Oficio:</label>
             <select class="form-select" name="firma" id="firma">
               <?php echo '<option value="' . $r['firma_oficio'] . '"selected>' . $r['firma_oficio'] . '</option>'; ?>
-              <option value="Diana Teresa Sedano Toledo">Diana Teresa Sedano Toledo</option>
-              <option value="Eumir Fernando Zaldívar Jiménez">Eumir Fernando Zaldívar Jiménez</option>
-              <option value="Isaid Rodríguez Esquivel">Isaid Rodríguez Esquivel</option>
-              <option value="Alfonso Javier Arredondo Huerta">Alfonso Javier Arredondo Huerta</option>
+              <option value="Diana Teresa Sedano Toledo">DIANA TERESA SEDANO TOLEDO</option>
+              <option value="Eumir Fernando Zaldívar Jiménez">EUMIR FERNANDO ZALDÍVAR JIMÉNEZ</option>
+              <option value="Isaid Rodríguez Esquivel">ISAID RODRÍGUEZ ESQUIVEL</option>
+              <option value="Alfonso Javier Arredondo Huerta">ALFONSO JAVIER ARREDONDO HUERTA</option>
             </select>
           </div>
 
