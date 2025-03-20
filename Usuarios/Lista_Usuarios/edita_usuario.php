@@ -4,7 +4,7 @@ $id = $_GET['id']; //saca el registro del Registro cuando es igual que el ID
 $query =  "SELECT * FROM usuarios WHERE id = $id";
 $resultado = $conexion->query($query);
 
-$query2 =  "SELECT * FROM puestos";
+$query2 =  "SELECT * FROM puestos ORDER by id";
 $resultado2 = $conexion->query($query2);
 ?>
 
@@ -144,7 +144,7 @@ $resultado2 = $conexion->query($query2);
         } ?>
 
         <div class="col-12">
-          <button type="submit" class="btn btn-success" name="btnModificar" value="ok">Modificar Usuario</button>
+          <button type="submit" class="btn btn-primary" name="btnModificar" value="ok">Modificar Usuario</button>
         </div>
       </div>
     </form>

@@ -87,6 +87,7 @@ if ($sql == "") {
 		if ($r['state'] == 0) $txtStatus = "CANCELADO";
 		if ($r['state'] == 1) $txtStatus = " ";
 		if ($r['state'] == 2) $txtStatus = " ";
+		$estado = $r['state'];
 
 
 		//---------- vemos si esta en archivos ---------------------//
@@ -105,8 +106,12 @@ if ($sql == "") {
 		$z = mysqli_query($enlace, $sql0); //pasas la query a la conexion
 		$ofi = mysqli_fetch_array($z, MYSQLI_BOTH);
 		$idOficio = $r['consecutivo']; //***************Este es el Id que identifica cada Oficio******************
-		// $statusO = $r['state'];
-		// $disabled = "";
+
+		if ($estado == 0) {
+			$linkSubirArchivo ="";
+			$linkSubirArchivo2 ="";
+			$status = "CANCELADO";
+		} else {
 
 		if ($ofi != 0) {
 			$linkSubirArchivo = "";
@@ -118,13 +123,15 @@ if ($sql == "") {
 			$linkSubirArchivo = '<a href="#" title="Subir Archivo" onclick=\'new mostrarCuadro(300,400,"Subir archivo",70,"cont/pfrr_oficio_subir.php","idOficio=' . $idOficio . '&procedimiento=' . $procedimientoF . '&folio=' . $folioF . '")\'>  <img src="images/Upload.png" /> </a>';
 		}
 
+		}
+
 		//---------- Aquí se imprimen las columnas de la Tabla Oficios---------------------//
 		$tabla .= '
 				<tr ' . $estilo . ' >
 			
 				    <td class="ofiNum">' . str_ireplace($texto, '<span class="b">' . $texto . '</span>', subject: $row) . '</td>
-					<td class="ofiFolio">' . $txtStatus . ' ' . verificaOficioLink($folioOf) . '</td> 
-					<td class="ofiCarga"> ' . $linkSubirArchivo . '' . $linkSubirArchivo2 . ' </td>
+					<td class="ofiFolio">' . $txtStatus . ' ' . verificaOficioLink($folioOf, $estado) . '</td> 
+					<td class="ofiCarga"> ' . $linkSubirArchivo . '' . $linkSubirArchivo2 . ' </td> 
 					<td class="ofiProc">' . str_ireplace($texto, '<span class="b">' . $texto . '</span>', $r['procedimiento']) . '</td>
 					<td class="ofiFecha">' . fechaNormal($r['fecha_oficio']) . '</td>
 					<td class="ofiCarg">' . str_ireplace($texto, '<span class="b">' . $texto . '</span>', $r['destinatario']) . '</td>

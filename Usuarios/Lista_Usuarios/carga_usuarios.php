@@ -101,7 +101,7 @@ if ($num_rows > 0) {
         $output['data'] .= '<td>' . $row['jefe_depto_adscrito'] . '</td>';
         $output['data'] .= '<td>' . $row['status'] . '</td>';
         $output['data'] .= '<td><a class="btn btn-warning btn-sm" href="edita_usuario.php?id=' . $row['id'] . '">Editar</a></td>';
-        $output['data'] .= "<td><a class='btn btn-danger btn-sm' href='elimiar.php?id=" . $row['id'] . "'>Eliminar</a></td>";
+        // $output['data'] .= "<td><a class='btn btn-danger btn-sm' href='elimiar.php?id=" . $row['id'] . "'>Eliminar</a></td>";
         $output['data'] .= '</tr>';
     }
 } else {

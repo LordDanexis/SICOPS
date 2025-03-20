@@ -1,9 +1,7 @@
 <?php
 
 if (!empty($_POST["btninsertar"])) {
-    if (!empty($_POST["nombre"]) and !empty($_POST["curp"]) and !empty($_POST["genero"]) and !empty($_POST["usuario"]) and !empty($_POST["contraseña"]) and !empty($_POST["contrato"]) and !empty($_POST["nivel"]) and !empty($_POST["direccion"]) and !empty($_POST["noEmpleado"]) and !empty($_POST["tipoEmple"]) and !empty($_POST["puesto"]) and !empty($_POST["subAdscrito"]) and !empty($_POST["jefeAdscrito"]) and !empty($_POST["status"])) {
-        //echo "todo ok";
-        //$id = $_POST["id"];
+    if (!empty($_POST["nombre"]) and !empty($_POST["curp"]) and !empty($_POST["genero"]) and !empty($_POST["usuario"]) and !empty($_POST["contraseña"]) and !empty($_POST["contrato"]) and !empty($_POST["nivel"]) and !empty($_POST["direccion"]) and !empty($_POST["noEmpleado"]) and !empty($_POST["tipoEmple"]) and !empty($_POST["puesto"]) and !empty($_POST["status"])) {
         $nombre = $_POST["nombre"];
         $curp = $_POST["curp"];
         $genero = $_POST["genero"];

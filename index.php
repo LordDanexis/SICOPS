@@ -38,7 +38,7 @@ if (in_array($f1, $fechasCierre, true)) {
 
 
 	<title> SICOPS </title>
-	<link href=" " rel="stylesheet">
+	<link href="" rel="stylesheet">
 	<link REL="shortcut icon" HREF="legal3.ico">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -256,19 +256,37 @@ if (in_array($f1, $fechasCierre, true)) {
 			</div>
 
 			<!--  start nav -->
+			<!-- <div class="nav">
+				<div class="table menuSup">
+					<?php
+					// if ($sistemaCerrado && $_SESSION['nivel'] != 'DG')
+					// 	echo menu($_SESSION['direccion'], $_SESSION['nivel']);
+					// else
+					// 	echo menu($_SESSION['direccion'], $_SESSION['nivel']);
+					?>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div> -->
+			<!--  start nav -->
+
+			<!--  start nav -->
 			<div class="nav">
 				<div class="table menuSup">
 					<?php
-					if ($sistemaCerrado && $_SESSION['nivel'] != 'DG')
-						echo menu($_SESSION['direccion'], $_SESSION['nivel']);
+					if ($sistemaCerrado == '1' AND $_SESSION['direccion'] != 'AP'){
+                
+					 echo "<script>alert('¡EL SISTEMA ESTA EN MANTENIMIENTO ESPERE A QUE EL DEPARTAMENTO DE SISTEMAS TERMINE DE ACTUALIZAR EL APLICATIVO!');</script>";
+					}
 					else
-						echo menu($_SESSION['direccion'], $_SESSION['nivel']);
+					echo menu($_SESSION['direccion'], $_SESSION['nivel'])
 					?>
 					<div class="clear"></div>
 				</div>
 				<div class="clear"></div>
 			</div>
 			<!--  start nav -->
+
 
 		</div>
 		<div class="clear"></div>

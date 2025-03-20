@@ -241,20 +241,12 @@ function transformaOficio($cadena)
 
 
 //--------------- sacamos los oficios de la tabla archivos y los reemplazamos por sus respectivos links ------------------
-function verificaOficioLink($oficio)
+function verificaOficioLink($oficio, $estado)
 {
 	//Aquí se guarda el oficio normal en ofiNormal
 	$ofiNormal = $oficio;
 
 	$oficio = cadenaSinEspecialesR($oficio);
-	// $oficio = str_replace("\'", "", $oficio);
-	// $oficio = str_replace("\"", "", $oficio);
-	// $oficio = str_replace("/", "!", $oficio);
-	// $oficio = str_replace(" ", "", $oficio);
-
-	// $sqlO = mysql_query("SELECT * FROM archivos WHERE oficioDoc = '" . $oficio . "' limit 1");
-	// $o = mysql_fetch_assoc($sqlO);
-	// $no = mysql_num_rows($sqlO);
 
 	$enlace = mysqli_connect("127.0.0.1", "root", "", "dgsub_sicops");
 	$sqlO = "SELECT * FROM archivos WHERE oficioDoc = '" . $oficio . "' limit 1";
@@ -262,10 +254,19 @@ function verificaOficioLink($oficio)
 	$o = mysqli_fetch_array($sql, MYSQLI_BOTH);
 	$no = mysqli_num_rows($sql);
 
-	if ($no)
+	if ($no != 0){
+
+		if($estado == 1){
+
 		return $link = "<a href=\"#\" onclick=\"verPdf('" . $o['nombreDoc'] . "')\"> " . $ofiNormal . " </a> ";
-	else
+		}
+
+		else {
+		return $link = $ofiNormal;}
+	}
+	else{
 		return $link = $ofiNormal;
+	}
 }
 
 //------------------------------------ GENERADOR DE OFICIOS -----------------------------------------------

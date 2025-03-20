@@ -1,6 +1,6 @@
 <?php
-require_once('config2.php');
-$query =  "SELECT * FROM gastos_categorias";
+require_once('../includes/conexion.php');
+$query =  "SELECT * FROM pra";
 $result = $conexion->query($query);
 ?>
 
@@ -36,7 +36,7 @@ $result = $conexion->query($query);
           <label for="accion" class="form-label">Clave de Acción:</label>
           <input type="text" class="form-control" name="accion" id="accion">
         </div>
-        <div class="col-6">
+        <div class="col-6 mb-3">
           <label for="cp" class="form-label">Cuenta Pública (CP):</label>
           <input type="text" class="form-control" name="cp" id="cp">
         </div>
@@ -44,7 +44,7 @@ $result = $conexion->query($query);
           <label for="auditoria" class="form-label">No. Auditoria:</label>
           <input type="text" class="form-control" name="auditoria" id="auditoria">
         </div>
-        <div class="col-6">
+        <div class="col-6 mb-3">
           <label for="epra" class="form-label">EPRA:</label>
           <input type="text" class="form-control" name="epra" id="epra">
         </div>
@@ -52,7 +52,7 @@ $result = $conexion->query($query);
           <label for="entidad" class="form-label">Entidad Fiscalizada:</label>
           <input type="text" class="form-control" name="entidad" id="entidad">
         </div>
-        <div class="col-6">
+        <div class="col-6 mb-5">
           <label for="infraccion" class="form-label">Infracción Imputada en el IPRA:</label>
           <input type="text" class="form-control" name="infraccion" id="infraccion">
         </div>
@@ -63,11 +63,11 @@ $result = $conexion->query($query);
           <label for="fechaRecep" class="form-label">Fecha de Recepción del EPRA:</label>
           <input type="text" class="form-control" name="fechaRecep" id="fechaRecep">
         </div>
-        <div class="col-6">
+        <div class="col-6 mb-3">
           <label for="fechaAsig" class="form-label">Fecha de Asignación del EPRA:</label>
           <input type="text" class="form-control" name="fechaAsig" id="fechaAsig">
         </div>
-        <div class="col-6">
+        <div class="col-6 mb-3">
           <label for="oficioDGI" class="form-label">No. de Oficio DGI:</label>
           <input type="text" class="form-control" name="oficioDGI" id="oficioDGI">
         </div>
@@ -76,7 +76,7 @@ $result = $conexion->query($query);
           <input type="text" class="form-control" name="fechOfiDGI" id="fechOfiDGI">
         </div>
 
-        <div class="col-6 mb-3">
+        <div class="col-6">
           <label for="direccion" class="form-label">Dirección:</label>
           <select class="form-control" id="direccion" onchange="completarCampos()">
             <option value="" disabled selected>Escoge la Dirección...</option>
@@ -85,12 +85,12 @@ $result = $conexion->query($query);
           </select>
         </div>
 
-        <div class="col-6">
+        <div class="col-6 mb-3">
           <label for="director" class="form-label">Director de Área:</label>
           <input type="text" class="form-control" name="director" id="director">
         </div>
 
-        <div class="col-6 mb-3">
+        <div class="col-6">
           <label for="categoria" class="form-label">Subdirector Responsable:</label>
           <select class="form-select" name="categoria" id="categoria">
             <option value="" disabled selected>Subdirector Responsable...</option>
@@ -113,7 +113,7 @@ $result = $conexion->query($query);
           </select>
         </div>
 
-        <div class="col-6 mb-3">
+        <div class="col-6">
           <label for="categoria" class="form-label">Abogado Responsable:</label>
           <select class="form-select" name="categoria" id="categoria">
             <option value="0" selected>Selecciona tu opción</option>
@@ -125,7 +125,7 @@ $result = $conexion->query($query);
           </select>
         </div>
 
-        <div class="col-6 mb-3">
+        <div class="col-6 mb-5">
           <label for="categoria" class="form-label">Responsable 2:</label>
           <select class="form-select" name="categoria" id="categoria">
             <option value="0" selected>Selecciona tu opción</option>
@@ -144,7 +144,7 @@ $result = $conexion->query($query);
           <input type="text" class="form-control" name="dt" id="dt">
         </div>
 
-        <div class="col-6">
+        <div class="col-6 mb-3">
           <label for="tituloAudi" class="form-label">Título de Auditoria:</label>
           <input type="text" class="form-control" name="tituloAudi" id="tituloAudi">
         </div>
@@ -166,7 +166,7 @@ $result = $conexion->query($query);
           </select>
         </div>
 
-        <div class="col-6 mb-3">
+        <div class="col-6 mb-5">
           <label for="categoria" class="form-label">Daño /Perjuicio a:</label>
           <select class="form-select" name="categoria" id="categoria">
             <option value="0" selected>Selecciona tu opción</option>
@@ -185,12 +185,12 @@ $result = $conexion->query($query);
           <input type="text" class="form-control" name="noPresuntos" id="noPresuntos">
         </div>
 
-        <div class="col-6">
+        <div class="col-6 mb-3">
           <label for="presuntos" class="form-label">Presuntos:</label>
           <input type="text" class="form-control" name="presuntos" id="presuntos">
         </div>
 
-        <div class="col-6 mb-3">
+        <div class="col-6">
           <label for="categoria" class="form-label">Calidad de los Presuntos:</label>
           <select class="form-select" name="categoria" id="categoria">
             <option value="0" selected>Selecciona tu opción</option>
@@ -202,7 +202,7 @@ $result = $conexion->query($query);
           </select>
         </div>
 
-        <div class="col-6">
+        <div class="col-6 mb-3">
           <label for="presuntos" class="form-label">Cargo de los Presuntos Responsables:</label>
           <input type="text" class="form-control" name="presuntos" id="presuntos">
         </div>
@@ -212,13 +212,13 @@ $result = $conexion->query($query);
           <input type="text" class="form-control" name="montoGlob" id="montoGlob">
         </div>
 
-        <div class="col-6">
+        <div class="col-6 mb-3">
           <label for="montoPres" class="form-label">Desglose del Monto por Presunto:</label>
           <input type="text" class="form-control" name="montoPres" id="montoPres">
         </div>
 
 
-        <div class="col-6 mb-3">
+        <div class="col-6">
           <label for="caliFalta" class="form-label">Calificación de la Falta:</label>
           <select class="form-select" name="caliFalta" id="caliFalta">
             <option value="0" selected>Selecciona tu opción</option>
@@ -242,7 +242,7 @@ $result = $conexion->query($query);
           </select>
         </div>
 
-        <div class="col-6 mb-3">
+        <div class="col-6">
           <label for="faltEsp" class="form-label">Modalidades (Faltas de Particulares en Situación Especial):</label>
           <select class="form-select" name="faltEsp" id="faltEsp">
             <option value="0" selected>Selecciona tu opción</option>
@@ -254,12 +254,12 @@ $result = $conexion->query($query);
           </select>
         </div>
 
-        <div class="col-6">
+        <div class="col-6 mb-3">
           <label for="periodoIrre" class="form-label">Fecha/Periodo de Irregularidad:</label>
           <input type="text" class="form-control" name="periodoIrre" id="periodoIrre">
         </div>
 
-        <div class="col-6 mb-3">
+        <div class="col-6">
           <label for="denuncia" class="form-label">Denuncia:</label>
           <select class="form-select" name="denuncia" id="denuncia">
             <option value="0" selected>Selecciona tu opción</option>
@@ -271,7 +271,7 @@ $result = $conexion->query($query);
           </select>
         </div>
 
-        <div class="col-6">
+        <div class="col-6 mb-3">
           <label for="presuntos" class="form-label">No. de Tomos de EPRA:</label>
           <input type="text" class="form-control" name="presuntos" id="presuntos">
         </div>
@@ -304,7 +304,7 @@ $result = $conexion->query($query);
         </div> -->
         <bd>
           <div class="col-12 mt-4">
-            <button type="submit" class="btn btn-success">Guardar</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
           </div>
       </div>
     </form>

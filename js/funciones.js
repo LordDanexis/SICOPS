@@ -181,7 +181,9 @@ function completarCamposUsuarios() {
 		"A.1": ["Daniela Armas Rendón", "Ivonne Celis Morales"],
 		"A.2": ["Jazmín Alejandra Arriaga Hernández", "Jorge Jiménez Santana"],
 		"A":   ["Diana Teresa Sedano Toledo"],
-		"ST":  ["Eumir Fernando Zaldívar Jiménez"]
+		"ST":  ["Eumir Fernando Zaldívar Jiménez"],
+		"C":   ["Gustavo Rios Castro"],
+
 	};
 
 	// Función para actualizar el segundo select
@@ -212,7 +214,9 @@ function completarCamposUsuariosJD() {
 		"Daniela Armas Rendón": ["Cuauhtémoc Correa Sánchez", "Jazmín Ruiz Córdova"],
 		"Ivonne Celis Morales": ["Raúl Israel Mancilla Salazar", "José Manuel Palafox Pichardo"],
 		"Jazmín Alejandra Arriaga Hernández": ["Irving Alcántara González Machorro Nieves", "Mario Jair Hernández Ibañez"],
-		"Jorge Jiménez Santana": ["Janin Jounuen Silva González", "Carlo Iván Muraira Torres"],
+		"Jorge Jiménez Santana":["Janin Jounuen Silva González", "Carlo Iván Muraira Torres"],
+		"Gustavo Rios Castro":["Gustavo Rios Castro"],
+		"Eumir Fernando Zaldívar Jiménez":["Eumir Fernando Zaldívar Jiménez"]
 	};
 
 	// Función para actualizar el segundo select

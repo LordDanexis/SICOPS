@@ -49,7 +49,7 @@
                 </div>
 
                 <div class="col-3">
-                    <a href="../index.php">REGRESAR</a>
+                    <a href="../index.php" class="btn btn-secondary">REGRESAR</a>
                 </div>
 
             </div>
@@ -70,7 +70,7 @@
                             <th class="sort asc">ÁREA</th>
                             <th class="sort asc">FIRMA</th>
                             <!-- <th class="sort asc">Estatus</th>  -->
-                            <th></th>
+                            <!-- <th></th> -->
                             <th></th>
                         </thead>
 

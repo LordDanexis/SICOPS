@@ -4,7 +4,8 @@ require_once('../includes/funciones.php');
 $id = $_GET['id']; //saca el registro del Registro cuando es igual que el ID
 $sql =  "SELECT * FROM oficios WHERE consecutivo = $id";
 $resultado = $conexion->query($sql);
-$sql2 = "SELECT * FROM usuarios order by usuario";
+
+$sql2 = "SELECT * FROM usuarios ORDER BY nombre ASC";
 $resultado2 = $conexion->query($sql2);
 ?>
 
@@ -68,9 +69,9 @@ $resultado2 = $conexion->query($sql2);
             <input type="text" class="form-control" name="observaciones" id="observaciones" value="<?php echo ivalorSeguro2($r['observaciones']); ?>">
           </div>
 
-          <div class="col-12 mb-3">
-            <label for="asunto" class="form-label">Asunto:</label>
-            <input type="text" class="form-control" name="asunto" id="asunto" value="<?php echo ivalorSeguro2($r['asunto']); ?>">
+          <div class="mb-3">
+             <label for="asunto" class="form-label">Asunto:</label>
+              <textarea class="form-control" id="asunto" name="asunto" rows="3" value="<?php echo ivalorSeguro2($r['asunto']); ?>"><?php echo ivalorSeguro2($r['asunto']); ?></textarea>
           </div>
 
           <div class="col-6 mb-3">
@@ -78,7 +79,7 @@ $resultado2 = $conexion->query($sql2);
             <select class="form-select" name="solicitante" id="solicitante">
               <?php echo '<option value="' . $r['abogado_solicitante'] . '"selected>' . $r['abogado_solicitante'] . '</option>'; ?>
               <?php while ($r2 = $resultado2->fetch_assoc()) { ?>
-                <option value="<?php echo $r2['nombre']; ?>"><?php echo $r2['nombre']; ?></option>
+                <option value="<?php echo $r2['nombre']; ?>"><?php echo $r2['nombre'].' - '.$r2['nivel']; ?></option>
               <?php } ?>
             </select>
           </div>
@@ -90,6 +91,7 @@ $resultado2 = $conexion->query($sql2);
               <option value="A.1">A.1</option>
               <option value="A.2">A.2</option>
               <option value="ST">ST</option>
+              <option value="C">C</option>
             </select>
           </div>
 
@@ -97,10 +99,11 @@ $resultado2 = $conexion->query($sql2);
             <label for="firma" class="form-label">Firma Oficio:</label>
             <select class="form-select" name="firma" id="firma">
               <?php echo '<option value="' . $r['firma_oficio'] . '"selected>' . $r['firma_oficio'] . '</option>'; ?>
-              <option value="Diana Teresa Sedano Toledo">DIANA TERESA SEDANO TOLEDO</option>
-              <option value="Eumir Fernando Zaldívar Jiménez">EUMIR FERNANDO ZALDÍVAR JIMÉNEZ</option>
-              <option value="Isaid Rodríguez Esquivel">ISAID RODRÍGUEZ ESQUIVEL</option>
-              <option value="Alfonso Javier Arredondo Huerta">ALFONSO JAVIER ARREDONDO HUERTA</option>
+              <option value="DIANA TERESA SEDANO TOLEDO">DIANA TERESA SEDANO TOLEDO - A</option>
+              <option value="EUMIR FERNANDO ZALDÍVAR JIMÉNEZ">EUMIR FERNANDO ZALDÍVAR JIMÉNEZ - ST</option>
+              <option value="ISAID RODRÍGUEZ ESQUIVEL">ISAID RODRÍGUEZ ESQUIVEL - A.2</option>
+              <option value="ALFONSO JAVIER ARREDONDO HUERTA">ALFONSO JAVIER ARREDONDO HUERTA - A.1</option>
+              <option value="GUSTAVO RIOS CASTRO">GUSTAVO RIOS CASTRO - C</option>
             </select>
           </div>
 
@@ -119,7 +122,7 @@ $resultado2 = $conexion->query($sql2);
         } ?>
 
         <div class="col-12 mt-4">
-          <button type="submit" class="btn btn-success" name="btnactualizar" value="ok">Modificar Oficio</button>
+          <button type="submit" class="btn btn-primary" name="btnactualizar" value="ok">Modificar Oficio</button>
         </div>
 
       </div>

@@ -8,7 +8,7 @@ $enlace = mysqli_connect("127.0.0.1","root","","dgsub_sicops");
 $procedimiento = $_REQUEST["term"];
 $cont = 0;
 
-$sql= "SELECT * FROM pfrr WHERE pra like '%$procedimiento%'";
+$sql= "SELECT * FROM pra WHERE pra like '%$procedimiento%'";
 $consulta = mysqli_query($enlace, $sql);
 
 while ($r=mysqli_fetch_array($consulta,MYSQLI_BOTH))
