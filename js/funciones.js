@@ -245,6 +245,19 @@ function completarCamposUsuariosJD() {
 	const campo = document.getElementById("nombre");
 	campo.value = campo.value.toUpperCase();
 }
+
+function convertirFormularioMayusculasAltaOficios() {
+	// Seleccionar todos los elementos del formulario
+	let elementos = document.querySelectorAll('#oficioForm input, #oficioForm textarea');
+	// Iterar sobre los elementos y convertir a mayúsculas
+	elementos.forEach(function(elemento) {
+		if (elemento.type === 'text' || elemento.tagName === 'TEXTAREA') {
+			elemento.value = elemento.value.toUpperCase();
+		}
+	});
+}
+
+
   //************************************************************** TERMINA FUNCION PARA ONVERTIR EN MAYÚSCULAS LOS CAMPOS ESCRITOS*********************************//
 function cerrarMsg()
 {
