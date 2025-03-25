@@ -210,6 +210,7 @@ function cadenaSinEspeciales($cadena)
 	$cadenaOK = urldecode($cadena);
 	$cadenaOK = html_entity_decode($cadenaOK);
 	$cadenaOK = str_replace("\"", "!", $cadenaOK);
+	$cadenaOK = trim($cadenaOK);
 
 	return $cadenaOK;
 }
@@ -222,23 +223,11 @@ function cadenaSinEspecialesR($cadena)
 	$cadenaOK = html_entity_decode($cadenaOK);
 	$cadenaOK = str_replace("\"", "!", $cadenaOK);
 	$cadenaOK = str_replace("/", "!", $cadenaOK);
+	$cadenaOK = trim($cadenaOK);
 
 	return $cadenaOK;
 }
 //**********TERMINA Funcion Reversa cambia los signos (!) por comillas dobles (")**********************//
-
-
-//*************Función que vuelve a su formato original el oficio*****************/
-function transformaOficio($cadena)
-{
-	$cadenaOK = urldecode($cadena);
-	//$cadenaOK = stripslashes($cadenaOK);
-	$cadenaOK = html_entity_decode($cadenaOK);
-	$cadenaOK = str_replace("!A!", "\"", $cadenaOK);
-}
-//***********************TERMINA Función que vuelve a su formato original el oficio*****************//
-
-
 
 //--------------- sacamos los oficios de la tabla archivos y los reemplazamos por sus respectivos links ------------------
 function verificaOficioLink($oficio, $estado)
@@ -254,17 +243,15 @@ function verificaOficioLink($oficio, $estado)
 	$o = mysqli_fetch_array($sql, MYSQLI_BOTH);
 	$no = mysqli_num_rows($sql);
 
-	if ($no != 0){
+	if ($no != 0) {
 
-		if($estado == 1){
+		if ($estado == 1) {
 
-		return $link = "<a href=\"#\" onclick=\"verPdf('" . $o['nombreDoc'] . "')\"> " . $ofiNormal . " </a> ";
+			return $link = "<a href=\"#\" onclick=\"verPdf('" . $o['nombreDoc'] . "')\"> " . $ofiNormal . " </a> ";
+		} else {
+			return $link = $ofiNormal;
 		}
-
-		else {
-		return $link = $ofiNormal;}
-	}
-	else{
+	} else {
 		return $link = $ofiNormal;
 	}
 }

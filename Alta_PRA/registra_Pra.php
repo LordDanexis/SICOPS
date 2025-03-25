@@ -1,7 +1,17 @@
 <?php
+//****************************** CONEXIÓN A LAS BASES DE DATOS **********************************************
 require_once('../includes/conexion.php');
-$query =  "SELECT * FROM pra";
-$result = $conexion->query($query);
+$sql =  "SELECT * FROM pra";
+$result = $conexion->query($sql);
+
+$sql2 = "SELECT * FROM usuarios WHERE Status != 0 ORDER BY nombre";
+$result2 = $conexion->query($sql2);
+
+$sql3 = "SELECT * FROM usuarios WHERE Status != 0 ORDER BY nombre";
+$result3 = $conexion->query($sql3);
+
+$sql4 = "SELECT * FROM faltas_admin";
+$result4 = $conexion->query($sql4);
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +25,7 @@ $result = $conexion->query($query);
   <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="../css/bootstrap_5.3.3/css/bootstrap.min.css">
   <script href="../css/bootstrap_5.3.3/jss/bootstrap.bundle.min.js"> </script>
-  <script type="text/javascript" src="../js/funciones.js"></script>
+
 </head>
 
 <body>
@@ -67,75 +77,67 @@ $result = $conexion->query($query);
           <label for="fechaAsig" class="form-label">Fecha de Asignación del EPRA:</label>
           <input type="text" class="form-control" name="fechaAsig" id="fechaAsig">
         </div>
-        <div class="col-6 mb-3">
+        <div class="col-6">
           <label for="oficioDGI" class="form-label">No. de Oficio DGI:</label>
           <input type="text" class="form-control" name="oficioDGI" id="oficioDGI">
         </div>
-        <div class="col-6">
+        <div class="col-6 mb-3">
           <label for="fechOfiDGI" class="form-label">Fecha del Oficio DGI:</label>
           <input type="text" class="form-control" name="fechOfiDGI" id="fechOfiDGI">
         </div>
 
         <div class="col-6">
-          <label for="direccion" class="form-label">Dirección:</label>
-          <select class="form-control" id="direccion" onchange="completarCampos()">
-            <option value="" disabled selected>Escoge la Dirección...</option>
+          <label for="direccion" class="form-label">Direccion:</label>
+          <select class="form-select" id="direccion" oninput="seleccionDireccion()">
+            <option value="" selected disabled>Selecciona la dirección del PRA...</option>
             <option value="A.1">A.1</option>
             <option value="A.2">A.2</option>
           </select>
         </div>
 
         <div class="col-6 mb-3">
-          <label for="director" class="form-label">Director de Área:</label>
-          <input type="text" class="form-control" name="director" id="director">
+          <label for="director" class="form-label">Director:</label>
+          <select class="form-select" id="director">
+            <option value="" selected disabled>Selecciona un Director de Área...</option>
+          </select>
         </div>
 
         <div class="col-6">
-          <label for="categoria" class="form-label">Subdirector Responsable:</label>
-          <select class="form-select" name="categoria" id="categoria">
-            <option value="" disabled selected>Subdirector Responsable...</option>
-            <option value="Mtra. Ivonne Celis Morales">Mtra. Ivonne Celis Morales</option>
-            <option value="Lic. Daniela Armas Rendón">Lic. Daniela Armas Rendón</option>
-            <option value="Mtro. Jorge Jiménez Santana">Mtro. Jorge Jiménez Santana</option>
-            <option value="Lic. Jazmín Alejandra Arriaga Hernández">Lic. Jazmín Alejandra Arriaga Hernández</option>
+          <label for="subdirector" class="form-label">Subdirector:</label>
+          <select class="form-select" id="subdirector">
+            <option value="" selected disabled>Selecciona un Subdirector de Área...</option>
           </select>
         </div>
 
         <div class="col-6 mb-3">
-          <label for="categoria" class="form-label">Jefe de Departamento:</label>
-          <select class="form-select" name="categoria" id="categoria">
-            <option value="0" selected>Selecciona tu opción</option>
-            <?php
-            while ($r = $result->fetch_assoc()) {
-            ?>
-              <option value="<?php echo $r['id']; ?>"><?php echo $r['nombre']; ?></option>
-            <?php } ?>
+          <label for="jefeDepto" class="form-label">Jefe de Departamento:</label>
+          <select class="form-select" id="jefeDepto">
+            <option value="" selected disabled>Selecciona un Jefe de Departamento...</option>
           </select>
         </div>
 
+        <script type="text/javascript" src="../js/funciones.js"></script>
+
         <div class="col-6">
-          <label for="categoria" class="form-label">Abogado Responsable:</label>
-          <select class="form-select" name="categoria" id="categoria">
-            <option value="0" selected>Selecciona tu opción</option>
-            <?php
-            while ($r = $result->fetch_assoc()) {
-            ?>
-              <option value="<?php echo $r['id']; ?>"><?php echo $r['nombre']; ?></option>
+          <label for="solicitante" class="form-label">Abogado Responsable:</label>
+          <select class="form-select" name="solicitante" id="solicitante">
+            <option value="" selected disabled>Selecciona el Abogado Responsable...</option>
+            <?php while ($r2 = $result2->fetch_assoc()) { ?>
+              <option value=""><?php echo $r2['nombre'] . ' - ' . $r2['nivel']; ?> </option>
             <?php } ?>
           </select>
         </div>
 
         <div class="col-6 mb-5">
-          <label for="categoria" class="form-label">Responsable 2:</label>
-          <select class="form-select" name="categoria" id="categoria">
-            <option value="0" selected>Selecciona tu opción</option>
-            <?php
-            while ($r = $result->fetch_assoc()) {
-            ?>
-              <option value="<?php echo $r['id']; ?>"><?php echo $r['nombre']; ?></option>
+          <label for="solicitante2" class="form-label">Abogado Responsable 2:</label>
+          <select class="form-select" name="solicitante2" id="solicitante2">
+            <option value="" selected disabled>Selecciona el Segundo Abogado Responsable...</option>
+            <?php while ($r3 = $result3->fetch_assoc()) { ?>
+              <option value=""><?php echo $r3['nombre'] . ' - ' . $r3['nivel']; ?> </option>
             <?php } ?>
           </select>
         </div>
+
 
         <h2>DATOS DEL DICTAMEN TÉCNICO (DT):</h2>
 
@@ -155,28 +157,28 @@ $result = $conexion->query($query);
         </div>
 
         <div class="col-6 mb-3">
-          <label for="categoria" class="form-label">Daño y/o perjuicio:</label>
-          <select class="form-select" name="categoria" id="categoria">
-            <option value="0" selected>Selecciona tu opción</option>
-            <?php
-            while ($r = $result->fetch_assoc()) {
-            ?>
-              <option value="<?php echo $r['id']; ?>"><?php echo $r['nombre']; ?></option>
-            <?php } ?>
+          <label for="daño" class="form-label">Daño y/o perjuicio:</label>
+          <select class="form-select" name="daño" id="daño">
+            <option value="" selected disabled> Daño y/o Perjuicio... </option>
+            <option value="Perjuicio"> Perjuicio </option>
+            <option value="Daño"> Daño </option>
+            <option value="No Precisa"> No Precisa </option>
+            <option value="Daño y/o Perjucio"> Daño y/o Perjucio </option>
           </select>
         </div>
 
+
         <div class="col-6 mb-5">
-          <label for="categoria" class="form-label">Daño /Perjuicio a:</label>
-          <select class="form-select" name="categoria" id="categoria">
-            <option value="0" selected>Selecciona tu opción</option>
-            <?php
-            while ($r = $result->fetch_assoc()) {
-            ?>
-              <option value="<?php echo $r['id']; ?>"><?php echo $r['nombre']; ?></option>
-            <?php } ?>
+          <label for="dañoa" class="form-label">Daño y/o Perjuicio a:</label>
+          <select class="form-select" name="dañoa" id="dañoa">
+            <option value="" selected disabled> Daño y/o Perjuicio a... </option>
+            <option value="Hacienda Pública Federal"> Hacienda Pública Federal </option>
+            <option value="Hacienda Pública Local"> Hacienda Pública Local </option>
+            <option value="Hacienda Pública Municipal"> Hacienda Pública Municipal </option>
+            <option value="Patrimonio de Entes Públicos"> Patrimonio de Entes Públicos </option>
           </select>
         </div>
+
 
         <h2>DATOS DEL IPRA Y EPRA:</h2>
 
@@ -191,14 +193,17 @@ $result = $conexion->query($query);
         </div>
 
         <div class="col-6">
-          <label for="categoria" class="form-label">Calidad de los Presuntos:</label>
-          <select class="form-select" name="categoria" id="categoria">
-            <option value="0" selected>Selecciona tu opción</option>
-            <?php
-            while ($r = $result->fetch_assoc()) {
-            ?>
-              <option value="<?php echo $r['id']; ?>"><?php echo $r['nombre']; ?></option>
-            <?php } ?>
+          <label for="calidad" class="form-label">Calidad de los Presuntos:</label>
+          <select class="form-select" name="calidad" id="calidad">
+            <option value="" selected disabled> Calidad de los Presuntos... </option>
+            <option value="Particular Persona Física"> Particular Persona Física </option>
+            <option value="Particular Persona Moral"> Particular Persona Moral </option>
+            <option value="Servidor Público y Particular Persona Física"> Servidor Público y Particular Persona Física </option>
+            <option value="Servidor Público y Particular Persona Moral"> Servidor Público y Particular Persona Moral </option>
+            <option value="Servidor Público, Particular Persona Física y Particular Persona Moral"> Servidor Público, Particular Persona Física y Particular Persona Moral </option>
+            <option value="Particular en Situación Especial"> Particular en Situación Especial </option>
+            <option value="Receptor de Recursos Públicos"> Receptor de Recursos Públicos </option>
+            <option value="N/A"> N/A </option>
           </select>
         </div>
 
@@ -219,25 +224,24 @@ $result = $conexion->query($query);
 
 
         <div class="col-6">
-          <label for="caliFalta" class="form-label">Calificación de la Falta:</label>
-          <select class="form-select" name="caliFalta" id="caliFalta">
-            <option value="0" selected>Selecciona tu opción</option>
-            <?php
-            while ($r = $result->fetch_assoc()) {
-            ?>
-              <option value="<?php echo $r['id']; ?>"><?php echo $r['nombre']; ?></option>
-            <?php } ?>
+          <label for="calificacion" class="form-label">Calificación de la Falta:</label>
+          <select class="form-select" name="calificacion" id="calificacion">
+            <option value="" selected disabled> Calificación de la Falta... </option>
+            <option value="Falta Grave"> Falta Grave </option>
+            <option value="Falta de Particular Vinculado con Falta Administrativa Grave"> Falta de Particular Vinculado con Falta Administrativa Grave </option>
+            <option value="Falta de Particular en Situación Especial"> Falta de Particular en Situación Especial </option>
+            <option value="Faltas Graves de Servidores Públicos y Faltas de Particulares Vinculados con Faltas Administrativas Graves"> Faltas Graves de Servidores Públicos y Faltas de Particulares Vinculados con Faltas Administrativas Graves </option>
+            <option value="Faltas Graves de Servidores Públicos y Faltas de Particulares en Situación Especial"> Faltas Graves de Servidores Públicos y Faltas de Particulares en Situación Especial </option>
+            <option value="Faltas Graves de Servidores Públicos, Faltas de Particulares Vinculados con Faltas Administrativas Graves y Faltas de Particulares en Situación Especial"> Faltas Graves de Servidores Públicos, Faltas de Particulares Vinculados con Faltas Administrativas Graves y Faltas de Particulares en Situación Especial </option>
           </select>
         </div>
 
         <div class="col-6 mb-3">
           <label for="faltaGrave" class="form-label">Tipo de falta Administrativa Grave:</label>
           <select class="form-select" name="faltaGrave" id="faltaGrave">
-            <option value="0" selected>Selecciona tu opción</option>
-            <?php
-            while ($r = $result->fetch_assoc()) {
-            ?>
-              <option value="<?php echo $r['id']; ?>"><?php echo $r['nombre']; ?></option>
+            <option value="" selected disabled>Selecciona el Tipo de Falta Administrativa Grave...</option>
+            <?php while ($r4 = $result4->fetch_assoc()) { ?>
+              <option value=""><?php echo $r4['falta']; ?> </option>
             <?php } ?>
           </select>
         </div>
@@ -245,29 +249,28 @@ $result = $conexion->query($query);
         <div class="col-6">
           <label for="faltEsp" class="form-label">Modalidades (Faltas de Particulares en Situación Especial):</label>
           <select class="form-select" name="faltEsp" id="faltEsp">
-            <option value="0" selected>Selecciona tu opción</option>
-            <?php
-            while ($r = $result->fetch_assoc()) {
-            ?>
-              <option value="<?php echo $r['id']; ?>"><?php echo $r['nombre']; ?></option>
-            <?php } ?>
+            <option value="" selected disabled> Falta de Particulares en Situación Especial... </option>
+            <option value="Exigir Beneficios"> Exigir Beneficios </option>
+            <option value="Solicitar Beneficios"> Solicitar Beneficios </option>
+            <option value="Aceptar Beneficios"> Aceptar Beneficios </option>
+            <option value="Recibir Beneficios"> Recibir Beneficios </option>
+            <option value="Pretender Beneficios"> Pretender Beneficios </option>
+            <option value="No Aplica para este Asunto"> No Aplica para este Asunto </option>
+
           </select>
         </div>
 
         <div class="col-6 mb-3">
           <label for="periodoIrre" class="form-label">Fecha/Periodo de Irregularidad:</label>
-          <input type="text" class="form-control" name="periodoIrre" id="periodoIrre">
+          <input type="date" class="form-control" name="periodoIrre" id="periodoIrre">
         </div>
 
         <div class="col-6">
           <label for="denuncia" class="form-label">Denuncia:</label>
           <select class="form-select" name="denuncia" id="denuncia">
-            <option value="0" selected>Selecciona tu opción</option>
-            <?php
-            while ($r = $result->fetch_assoc()) {
-            ?>
-              <option value="<?php echo $r['id']; ?>"><?php echo $r['nombre']; ?></option>
-            <?php } ?>
+            <option value="" selected disabled>Denuncia...</option>
+            <option value="Con Denuncia"> Con Denuncia </option>
+            <option value="No Existe Denuncia"> No Existe Denuncia </option>
           </select>
         </div>
 
@@ -284,12 +287,7 @@ $result = $conexion->query($query);
         <div class="col-6 mb-3">
           <label for="autoriAnt" class="form-label">Autorizados DGI (Anteriores):</label>
           <select class="form-select" name="autoriAnt" id="autoriAnt">
-            <option value="0" selected>Selecciona tu opción</option>
-            <?php
-            while ($r = $result->fetch_assoc()) {
-            ?>
-              <option value="<?php echo $r['id']; ?>"><?php echo $r['nombre']; ?></option>
-            <?php } ?>
+            <option value="" selected disabled>Selecciona la lista de Autorizados DGI Anteriores...</option>
           </select>
         </div>
 

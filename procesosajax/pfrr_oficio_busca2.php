@@ -108,21 +108,20 @@ if ($sql == "") {
 		$idOficio = $r['consecutivo']; //***************Este es el Id que identifica cada Oficio******************
 
 		if ($estado == 0) {
-			$linkSubirArchivo ="";
-			$linkSubirArchivo2 ="";
+			$linkSubirArchivo = "";
+			$linkSubirArchivo2 = "";
 			$status = "CANCELADO";
 		} else {
 
-		if ($ofi != 0) {
-			$linkSubirArchivo = "";
-			$status = 'CARGADO';
-			$linkSubirArchivo2 = '<a href="#" title="Remplazar Archivo" onclick=\'new mostrarCuadro(300,400,"Remplazar archivo",70,"cont/pfrr_oficio_subir2.php","idOficio=' . $idOficio . '&procedimiento=' . $procedimientoF . '&folio=' . $folioF . '")\' >  <img src="images/page_16_remove.png" /> </a>';
-		} else {
-			$linkSubirArchivo2 = "";
-			$status = 'PENDIENTE';
-			$linkSubirArchivo = '<a href="#" title="Subir Archivo" onclick=\'new mostrarCuadro(300,400,"Subir archivo",70,"cont/pfrr_oficio_subir.php","idOficio=' . $idOficio . '&procedimiento=' . $procedimientoF . '&folio=' . $folioF . '")\'>  <img src="images/Upload.png" /> </a>';
-		}
-
+			if ($ofi != 0) {
+				$linkSubirArchivo = "";
+				$status = 'CARGADO';
+				$linkSubirArchivo2 = '<a href="#" title="Remplazar Archivo" onclick=\'new mostrarCuadro(300,400,"Remplazar archivo",70,"cont/pfrr_oficio_subir2.php","idOficio=' . $idOficio . '&procedimiento=' . $procedimientoF . '&folio=' . $folioF . '")\' >  <img src="images/page_16_remove.png" /> </a>';
+			} else {
+				$linkSubirArchivo2 = "";
+				$status = 'PENDIENTE';
+				$linkSubirArchivo = '<a href="#" title="Subir Archivo" onclick=\'new mostrarCuadro(300,400,"Subir archivo",70,"cont/pfrr_oficio_subir.php","idOficio=' . $idOficio . '&procedimiento=' . $procedimientoF . '&folio=' . $folioF . '")\'>  <img src="images/Upload.png" /> </a>';
+			}
 		}
 
 		//---------- Aquí se imprimen las columnas de la Tabla Oficios---------------------//
@@ -131,7 +130,7 @@ if ($sql == "") {
 			
 				    <td class="ofiNum">' . str_ireplace($texto, '<span class="b">' . $texto . '</span>', subject: $row) . '</td>
 					<td class="ofiFolio">' . $txtStatus . ' ' . verificaOficioLink($folioOf, $estado) . '</td> 
-					<td class="ofiCarga"> ' . $linkSubirArchivo . '' . $linkSubirArchivo2 . ' </td> 
+					<td class="ofiCarga"> ' . $linkSubirArchivo . '' . $linkSubirArchivo2 . '</td> 
 					<td class="ofiProc">' . str_ireplace($texto, '<span class="b">' . $texto . '</span>', $r['procedimiento']) . '</td>
 					<td class="ofiFecha">' . fechaNormal($r['fecha_oficio']) . '</td>
 					<td class="ofiCarg">' . str_ireplace($texto, '<span class="b">' . $texto . '</span>', $r['destinatario']) . '</td>

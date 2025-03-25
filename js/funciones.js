@@ -246,20 +246,95 @@ function completarCamposUsuariosJD() {
 	campo.value = campo.value.toUpperCase();
 }
 
-function convertirFormularioMayusculasAltaOficios() {
-	// Seleccionar todos los elementos del formulario
-	let elementos = document.querySelectorAll('#oficioForm input, #oficioForm textarea');
-	// Iterar sobre los elementos y convertir a mayúsculas
-	elementos.forEach(function(elemento) {
-		if (elemento.type === 'text' || elemento.tagName === 'TEXTAREA') {
-			elemento.value = elemento.value.toUpperCase();
-		}
-	});
+// function convertirFormularioMayusculasAltaOficios() {
+// 	// Seleccionar todos los elementos del formulario
+// 	let elementos = document.querySelectorAll('#oficioForm input, #oficioForm textarea');
+// 	// Iterar sobre los elementos y convertir a mayúsculas
+// 	elementos.forEach(function(elemento) {
+// 		if (elemento.type === 'text' || elemento.tagName === 'TEXTAREA') {
+// 			elemento.value = elemento.value.toUpperCase();
+// 		}
+// 	});
+// }
+
+  //************************************* TERMINA FUNCION PARA ONVERTIR EN MAYÚSCULAS LOS CAMPOS ESCRITOS************************************************
+
+//********************************** FUNCIÓN QUE TE DA POR DEFECTA LAS FUNCIONES AL SELECCIONAR DIRECCIÓN EN LA ALTA DEL PRA*****************************
+
+function seleccionDireccion(){
+
+const opciones = {
+	"A.1": {
+	  directores: ["Alfonso Javier Arredondo Huerta"],
+	  subdirector: {
+		"Alfonso Javier Arredondo Huerta": ["Daniela Armas Rendón", "Ivonne Celis Morales"]
+		// "[Nombre del Director]": ["Nombre de los subdirectores"],
+	  },
+	  jefeDepto: ["Cuauhtémoc Correa Sánchez", "Jazmín Ruiz Córdova", "Raúl Israel Mancilla Salazar", "José Manuel Palafox Pichardo"]
+	},
+	"A.2": {
+	  directores: ["Isaid Rodríguez Esquivel"],
+	  subdirector: {
+		"Isaid Rodríguez Esquivel": ["Jazmín Alejandra Arriaga Hernández", "Jorge Jiménez Santana"]
+		// "[Nombre del Director]": ["Nombre de los subdirectores"],
+	  },
+	  jefeDepto: ["Irving Alcántara González Machorro Nieves", "Mario Jair Hernández Ibañez","Janin Jounuen Silva González", "Carlo Iván Muraira Torres"]
+	}
+  };
+  
+  // Función para actualizar el segundo select
+  document.getElementById("direccion").addEventListener("change", function () {
+	const direccion = this.value;
+	const directorSelect = document.getElementById("director");
+	const subdirectorSelect = document.getElementById("subdirector");
+	const jefeDeptoSelect = document.getElementById("jefeDepto");
+  
+	// Limpiar selects dependientes
+	directorSelect.innerHTML = '<option value="" selected disabled>Selecciona la dirección del PRA...</option>';
+	subdirectorSelect.innerHTML = '<option value="" selected disabled>Selecciona un Director de Área...</option>';
+	jefeDeptoSelect.innerHTML = '<option value="" selected disabled>Selecciona un Subdirector de Área...</option>';
+  
+	if (direccion && opciones[direccion]) {
+	  // Llenar subcategorías
+	  opciones[direccion].directores.forEach(director => {
+		const option = document.createElement("option");
+		option.value = director;
+		option.textContent = director;
+		directorSelect.appendChild(option);
+	  });
+  
+	  // Llenar extras
+	  opciones[direccion].jefeDepto.forEach(jefeDepto => {
+		const option = document.createElement("option");
+		option.value = jefeDepto;
+		option.textContent = jefeDepto;
+		jefeDeptoSelect.appendChild(option);
+	  });
+	}
+  });
+  
+  // Función para actualizar el tercer select
+  document.getElementById("director").addEventListener("change", function () {
+	const director = this.value;
+	const direccion = document.getElementById("direccion").value;
+	const subdirectorSelect = document.getElementById("subdirector");
+  
+	subdirectorSelect.innerHTML = '<option value="" selected disabled>Selecciona un Jefe de Departamento...</option>';
+  
+	if (direccion && director && opciones[direccion].subdirector[director]) {
+	  opciones[direccion].subdirector[director].forEach(producto => {
+		const option = document.createElement("option");
+		option.value = producto;
+		option.textContent = producto;
+		subdirectorSelect.appendChild(option);
+	  });
+	}
+  });
 }
 
+  //*************************************** TERMINA FUNCIÓN QUE TE DA POR DEFECTA LAS FUNCIONES AL SELECCIONAR DIRECCIÓN ******************************
 
-  //************************************************************** TERMINA FUNCION PARA ONVERTIR EN MAYÚSCULAS LOS CAMPOS ESCRITOS*********************************//
-function cerrarMsg()
+  function cerrarMsg()
 {
 	$$("#message-green").fadeOut();
 }
