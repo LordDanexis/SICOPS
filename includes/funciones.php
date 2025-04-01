@@ -68,7 +68,7 @@ function menu($direccion)
 						<li><a href="#" class="munuSup"><b>Alta PRA</b><!--[if IE 7]><!--></a><!--<![endif]-->
 							<!--[if lte IE 6]><table><tr><td><![endif]-->
 						   <ul class="sub submenu redonda5 ulMd">
-							  <li> <a class="menu_md redonda3" href="Alta_PRA/registra_Pra.php"> <img src="images/alta.png" /> <span> Alta de Expedientes de Responsabilidad Administrativa</span> </a>
+							  <li> <a class="menu_md redonda3" href="alta_pra/registra_Pra.php"> <img src="images/alta.png" /> <span> Alta de Expedientes de Responsabilidad Administrativa</span> </a>
 							     <!--<ul class="submenu2 redonda5">  <li> <a class="menu_md redonda3" href="cont=medios_rr_actores"> <img src="images/actor.png" /> Ver Actores </a> </li> </ul>-->
 							   </li>
 						   </ul>

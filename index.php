@@ -117,42 +117,9 @@ if (in_array($f1, $fechasCierre, true)) {
 	<!-- ----------------------------------------- ----------------------------------------------->
 	<!-- ----------------------------------------- ----------------------------------------------->
 
-	<!-- <input type="text" name="usuarioActual" id="usuarioActual" value="<?php echo $_SESSION['usuario'] ?>" /> -->
-	<!-- Start: page-top-outer -->
-	<div id="page-top-outer" style="position:relative">
-		<!-- Start: page-top -->
-		<div id="page-top">
+	<?php include 'encabezadoP.php'; ?>
 
-			<div id='sagap'>
-				<a href="index.php">
-					<div id='logoSis'><img src="images/logo.png" alt="" /></div>
-					<div class='nomSis' id='nombre'> <span class='nomSis'> SICOPS </span> <span class='nomSis2'> DGSUB </span> </div>
-					<div id='texto'> Sistema de Consulta y Organización para Substanciación
-						<?php echo date(' d/m/Y ');
-						echo date(' g:ia '); ?>
-						<div id="current_date">
-							<script>
-								var d = new Date();
-								var hour = (d.getHours(), ':' + d.getMinutes(), ':' + d.getSeconds());
-							</script>
-
-						</div>
-					</div>
-				</a>
-			</div>
-			<!-- start logo -->
-			<div id="logo">
-
-
-				<a href="index.php"><img src="images/logoasfok.png" alt="" /></a>
-			</div>
-			<!-- end logo -->
-		</div>
-		<!-- End: page-top -->
-	</div>
-	<!-- End: page-top-outer -->
-
-	<div class="clear">&nbsp;</div>
+	<!-- <div class="clear">&nbsp;</div> -->
 
 	<!--  start nav-outer-repeat................................................................................................. START -->
 	<div class="nav-outer-repeat">
@@ -240,7 +207,6 @@ if (in_array($f1, $fechasCierre, true)) {
 
 
 			</div>
-			<!-- end nav-right -->
 
 			<div id="nav-right2" style="position:relative; z-index:100">
 				<div class="showhide-account">
@@ -274,12 +240,11 @@ if (in_array($f1, $fechasCierre, true)) {
 			<div class="nav">
 				<div class="table menuSup">
 					<?php
-					if ($sistemaCerrado == '1' AND $_SESSION['direccion'] != 'AP'){
-                
-					 echo "<script>alert('¡EL SISTEMA ESTA EN MANTENIMIENTO ESPERE A QUE EL DEPARTAMENTO DE SISTEMAS TERMINE DE ACTUALIZAR EL APLICATIVO!');</script>";
-					}
-					else
-					echo menu($_SESSION['direccion'], $_SESSION['nivel'])
+					if ($sistemaCerrado == '1' and $_SESSION['direccion'] != 'AP') {
+
+						echo "<script>alert('¡EL SISTEMA ESTA EN MANTENIMIENTO ESPERE A QUE EL DEPARTAMENTO DE SISTEMAS TERMINE DE ACTUALIZAR EL APLICATIVO!');</script>";
+					} else
+						echo menu($_SESSION['direccion'], $_SESSION['nivel'])
 					?>
 					<div class="clear"></div>
 				</div>

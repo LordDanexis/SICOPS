@@ -15,6 +15,7 @@
 
 <body>
     <main>
+        <?php include '../../encabezados/encabezadoUsuarios.php'; ?>
         <div class="container py-4 text-center">
             <h2>Lista de Usuarios DGSUB</h2>
 

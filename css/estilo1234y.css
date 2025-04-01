@@ -38,8 +38,8 @@ body	{
 	border-bottom: 1px solid #7e7e7e;
 	height: 92px; */
 	background-image: linear-gradient( 230deg,  #1c4f6a 13.5%, #b7b7b7 78.6%);
-	border-bottom: 1px solid #00a7ff;
-	height: 92px;
+	border-bottom: 2px solid #00a7ff;
+	height: 96px;
 	}
 #page-top	{
 	margin: 0 auto;

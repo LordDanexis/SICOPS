@@ -332,8 +332,7 @@ const opciones = {
   });
 }
 
-  //*************************************** TERMINA FUNCIÓN QUE TE DA POR DEFECTA LAS FUNCIONES AL SELECCIONAR DIRECCIÓN ******************************
-
+  //*************************************** TERMINA FUNCIÓN QUE TE DA POR DEFECTO LAS FUNCIONES AL SELECCIONAR DIRECCIÓN ******************************
   function cerrarMsg()
 {
 	$$("#message-green").fadeOut();

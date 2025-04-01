@@ -12,24 +12,23 @@ $result3 = $conexion->query($sql3);
 
 $sql4 = "SELECT * FROM faltas_admin";
 $result4 = $conexion->query($sql4);
+//****************************** CONEXIÓN A LAS BASES DE DATOS **********************************************
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alta de PRA</title>
-  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="../css/bootstrap_5.3.3/css/bootstrap.min.css">
-  <script href="../css/bootstrap_5.3.3/jss/bootstrap.bundle.min.js"> </script>
-
 </head>
 
 <body>
-
+  <?php include '../encabezados/encabezadoModulos.php'; ?>
   <div class="container">
     <div class="row mt-3">
       <div class="col">
@@ -40,11 +39,11 @@ $result4 = $conexion->query($sql4);
         <h2>VALIDACIÓN DE DATOS:</h2>
       </div>
     </div>
-    <form action="" method="POST">
+    <form action="procesar_formulario.php" method="POST">
       <div class="row mt-2">
         <div class="col-6">
-          <label for="accion" class="form-label">Clave de Acción:</label>
-          <input type="text" class="form-control" name="accion" id="accion">
+          <label for="num_accion" class="form-label">Clave de Acción:</label>
+          <input type="text" class="form-control" name="num_accion" id="num_accion">
         </div>
         <div class="col-6 mb-3">
           <label for="cp" class="form-label">Cuenta Pública (CP):</label>
@@ -55,27 +54,27 @@ $result4 = $conexion->query($sql4);
           <input type="text" class="form-control" name="auditoria" id="auditoria">
         </div>
         <div class="col-6 mb-3">
-          <label for="epra" class="form-label">EPRA:</label>
-          <input type="text" class="form-control" name="epra" id="epra">
+          <label for="pra" class="form-label">EPRA:</label>
+          <input type="text" class="form-control" name="pra" id="pra">
         </div>
         <div class="col-6">
           <label for="entidad" class="form-label">Entidad Fiscalizada:</label>
           <input type="text" class="form-control" name="entidad" id="entidad">
         </div>
-        <div class="col-6 mb-5">
+        <div class="mb-3">
           <label for="infraccion" class="form-label">Infracción Imputada en el IPRA:</label>
-          <input type="text" class="form-control" name="infraccion" id="infraccion">
+          <textarea class="form-control" id="infraccion" name="infraccion" rows="5" value=""> </textarea>
         </div>
 
         <h2>DATOS DE RECEPCIÓN Y ASIGNACIÓN:</h2>
 
         <div class="col-6">
           <label for="fechaRecep" class="form-label">Fecha de Recepción del EPRA:</label>
-          <input type="text" class="form-control" name="fechaRecep" id="fechaRecep">
+          <input type="date" class="form-control" name="fechaRecep" id="fechaRecep">
         </div>
         <div class="col-6 mb-3">
           <label for="fechaAsig" class="form-label">Fecha de Asignación del EPRA:</label>
-          <input type="text" class="form-control" name="fechaAsig" id="fechaAsig">
+          <input type="date" class="form-control" name="fechaAsig" id="fechaAsig">
         </div>
         <div class="col-6">
           <label for="oficioDGI" class="form-label">No. de Oficio DGI:</label>
@@ -167,7 +166,6 @@ $result4 = $conexion->query($sql4);
           </select>
         </div>
 
-
         <div class="col-6 mb-5">
           <label for="dañoa" class="form-label">Daño y/o Perjuicio a:</label>
           <select class="form-select" name="dañoa" id="dañoa">
@@ -187,9 +185,9 @@ $result4 = $conexion->query($sql4);
           <input type="text" class="form-control" name="noPresuntos" id="noPresuntos">
         </div>
 
-        <div class="col-6 mb-3">
+        <div class="col-6">
           <label for="presuntos" class="form-label">Presuntos:</label>
-          <input type="text" class="form-control" name="presuntos" id="presuntos">
+          <button type="button" class="btn btn-light"> <img src="../images/agregar.png" alt="Icono" class="" data-bs-toggle="modal" data-bs-target="#formModal"> </button>
         </div>
 
         <div class="col-6">
@@ -300,14 +298,15 @@ $result4 = $conexion->query($sql4);
           <label for="descripcion" class="form-label">Descripción</label>
           <input type="text" class="form-control" name="descripcion" id="descripcion">
         </div> -->
-        <bd>
-          <div class="col-12 mt-4">
-            <button type="submit" class="btn btn-primary">Guardar</button>
-          </div>
+
+        <div class="col-12 mt-4">
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
       </div>
     </form>
+    <?php include '../presuntos/Alta_Presuntos/alta_presunto.php'; ?>
   </div>
-
+  <script src="../css/bootstrap_5.3.3/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

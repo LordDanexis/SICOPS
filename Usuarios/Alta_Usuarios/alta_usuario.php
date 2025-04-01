@@ -17,6 +17,7 @@ $result = $conexion->query($query);
 </head>
 
 <body>
+  <?php include '../../encabezados/encabezadoUsuarios.php'; ?>
   <div class="container">
     <div class="row mt-5">
       <div class="col">
@@ -28,7 +29,7 @@ $result = $conexion->query($query);
         <?php include "inserta_usuario.php"; ?>
         <div class="col-6">
           <label for="nombre" class="form-label">Nombre:</label>
-          <input type="text" class="form-control" name="nombre" id="nombre"  required oninput="convertirMayusculas()">
+          <input type="text" class="form-control" name="nombre" id="nombre" required oninput="convertirMayusculas()">
           <div class="invalid-feedback"> Se debe de Capturar el Nombre Completo.</div>
         </div>
 
@@ -115,7 +116,7 @@ $result = $conexion->query($query);
             <?php } ?>
           </select>
         </div>
-
+        ñ
         <div class="col-6">
           <label for="subAdscrito" class="form-label">Subdirector Adscrito:</label>
           <input type="text" class="form-control" name="subAdscrito" id="subAdscrito">

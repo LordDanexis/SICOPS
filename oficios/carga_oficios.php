@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Script para cargar datos de lado del servidor con PHP y MySQL
+ *
+ * @author mroblesdev
+ * @link https://github.com/mroblesdev/server-side-php
+ * @license: MIT
+ */
+
 require_once("../includes/conexion.php");
 
 // Columnas a mostrar en la tabla
