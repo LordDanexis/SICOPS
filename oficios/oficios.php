@@ -70,8 +70,7 @@
                             <th class="sort asc">ABOGADO SOLICITANTE</th>
                             <th class="sort asc">ÁREA</th>
                             <th class="sort asc">FIRMA</th>
-                            <!-- <th class="sort asc">Estatus</th>  -->
-                            <!-- <th></th> -->
+                            <th></th>
                             <th></th>
                         </thead>
 

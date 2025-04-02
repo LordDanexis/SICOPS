@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Floating UI Tutorial</title>
+    <style>
+      #tooltip {
+        background: #222;
+        color: white;
+        font-weight: bold;
+        padding: 5px;
+        border-radius: 4px;
+        font-size: 90%;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="button" aria-describedby="tooltip">
+        My button
+      </button>
+      <div id="tooltip" role="tooltip">My tooltip</div>
+   
+      <script type="module"> </script>
+        // Your code will go here.
+        <script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.6.9"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.6.13"></script>
+  </body>
+</html>

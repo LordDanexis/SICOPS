@@ -119,8 +119,6 @@ if (in_array($f1, $fechasCierre, true)) {
 
 	<?php include 'encabezadoP.php'; ?>
 
-	<!-- <div class="clear">&nbsp;</div> -->
-
 	<!--  start nav-outer-repeat................................................................................................. START -->
 	<div class="nav-outer-repeat">
 		<!--  start nav-outer -->

@@ -10,6 +10,7 @@
 
 require_once("../includes/conexion.php");
 
+
 // Columnas a mostrar en la tabla
 $columns = ['consecutivo', 'folio', 'procedimiento', 'fecha_oficio', 'destinatario', 'cargo_destinatario', 'dependencia', 'asunto', 'abogado_solicitante', 'nivel', 'firma_oficio'];
 
@@ -105,8 +106,40 @@ if ($num_rows > 0) {
         $output['data'] .= '<td>' . $row['nivel'] . '</td>';
         $output['data'] .= '<td>' . $row['firma_oficio'] . '</td>';
         $output['data'] .= '<td><a class="btn btn-warning btn-sm" href="edita_oficio.php?id=' . $row['consecutivo'] . '">Editar</a></td>';
+        // $output['data'] .= '<td><a class="btn btn-info" href="oficios.php?id=' . $row['consecutivo'] . '">Subir Archivo</a></td    >';
+        $output['data'] .= '
+        <link rel="stylesheet" href="../css/bootstrap_5.3.3/css/bootstrap.min.css">
+   
+        <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="uploadModalLabel">Subir Archivo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="upload.php" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="fileInput" class="form-label">Selecciona un archivo</label>
+                            <input type="file" class="form-control" id="fileInput0" name="file">
+                        </div>
+                        <button type="submit" class="btn btn-success">Subir</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+         <script src="../css/bootstrap_5.3.3/js/bootstrap.bundle.min.js"></script>
+        <td><a class="btn btn-info" data-bs-toggle="modal" data-bs-target="#uploadModal" >Subir Archivo</a></td>
+        
+        
+        ';
+
+
+
+
         // $output['data'] .= "<td><a class='btn btn-danger btn-sm' href='elimiar.php?id=" . $row['consecutivo'] . "'>Eliminar</a></td>";
-        // $output['data'] .= '</tr>';
+        // $output['data'] .= '</tr>'  ;
     }
 } else {
     $output['data'] .= '<tr>';

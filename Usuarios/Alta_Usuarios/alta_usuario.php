@@ -28,8 +28,8 @@ $result = $conexion->query($query);
       <div class="row mt-5">
         <?php include "inserta_usuario.php"; ?>
         <div class="col-6">
-          <label for="nombre" class="form-label">Nombre:</label>
-          <input type="text" class="form-control" name="nombre" id="nombre" required oninput="convertirMayusculas()">
+          <label for="nombreU" class="form-label">Nombre:</label>
+          <input type="text" class="form-control" name="nombreU" id="nombreU" required oninput="convertirMayusculas()">
           <div class="invalid-feedback"> Se debe de Capturar el Nombre Completo.</div>
         </div>
 
