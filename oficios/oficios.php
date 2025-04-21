@@ -72,6 +72,7 @@
                             <th class="sort asc">FIRMA</th>
                             <th></th>
                             <th></th>
+                            <th></th>
                         </thead>
 
                         <!-- El id del cuerpo de la tabla. -->

@@ -69,16 +69,15 @@
 
     #fechaHora{
     
-            font-family: "DM Serif Display", serif;
-            position: fixed;
-            font-style: normal;
-            margin-left: 10px;
-            font-weight: 450;
-            font-size:16px;
-            color:#FFF;
-            display:block;
-            padding: 0px;
-            bottom: 865px;
-            left: 75px;
+        font-family: "DM Serif Display", serif;
+        position: absolute;            
+        font-style: normal;            
+        margin-left: 10px;           
+        font-weight: 450;           
+        font-size:16px;           
+        color:#FFF;            
+        display:block;           
+        padding: -2px;          
+        left: 75px;      
         }
 
