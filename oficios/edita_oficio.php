@@ -7,6 +7,8 @@ $resultado = $conexion->query($sql);
 
 $sql2 = "SELECT * FROM usuarios ORDER BY nombre ASC";
 $resultado2 = $conexion->query($sql2);
+
+include '../encabezados/encabezadoModuloOficios.php';
 ?>
 
 <!DOCTYPE html>
@@ -24,11 +26,14 @@ $resultado2 = $conexion->query($sql2);
 <body>
 
   <div class="container">
-    <div class="row mt-5">
-      <div class="col">
-        <h1>EDITAR OFICIO DGSUB <a href="../oficios/Oficios.php" class="btn btn-dark">Regresar</a></h1>
+
+    <div class="row row-cols-2 text-center">
+      <div class="col-6 mt-4">
+        <h2>Editar Oficios DGSUB</h2>
       </div>
+      <div class="col mt-4"><a href="../oficios/Oficios.php" class="btn btn-dark">Regresar</a></div>
     </div>
+
     <form action="" method="POST">
       <div class="row mt-5">
         <?php include "actualiza_oficio.php";
@@ -70,8 +75,8 @@ $resultado2 = $conexion->query($sql2);
           </div>
 
           <div class="mb-3">
-             <label for="asunto" class="form-label">Asunto:</label>
-              <textarea class="form-control" id="asunto" name="asunto" rows="3" value="<?php echo ivalorSeguro2($r['asunto']); ?>"><?php echo ivalorSeguro2($r['asunto']); ?></textarea>
+            <label for="asunto" class="form-label">Asunto:</label>
+            <textarea class="form-control" id="asunto" name="asunto" rows="3" value="<?php echo ivalorSeguro2($r['asunto']); ?>"><?php echo ivalorSeguro2($r['asunto']); ?></textarea>
           </div>
 
           <div class="col-6 mb-3">
@@ -79,7 +84,7 @@ $resultado2 = $conexion->query($sql2);
             <select class="form-select" name="solicitante" id="solicitante">
               <?php echo '<option value="' . $r['abogado_solicitante'] . '"selected>' . $r['abogado_solicitante'] . '</option>'; ?>
               <?php while ($r2 = $resultado2->fetch_assoc()) { ?>
-                <option value="<?php echo $r2['nombre']; ?>"><?php echo $r2['nombre'].' - '.$r2['nivel']; ?></option>
+                <option value="<?php echo $r2['nombre']; ?>"><?php echo $r2['nombre'] . ' - ' . $r2['nivel']; ?></option>
               <?php } ?>
             </select>
           </div>
@@ -121,7 +126,7 @@ $resultado2 = $conexion->query($sql2);
           $conexion->close();
         } ?>
 
-        <div class="col-12 mt-4">
+        <div class="col-12 mt-4 text-center">
           <button type="submit" class="btn btn-primary" name="btnactualizar" value="ok">Modificar Oficio</button>
         </div>
 

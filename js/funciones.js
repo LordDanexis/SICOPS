@@ -151,189 +151,8 @@ function comprobarForm(form,estado,volantes,oficios,cral,SolventacionBaja)
 	}
 }
 
-//**********************ESTA FUNCIÓN  COMPLETA LOS CAMPOS AL SELECCIÓNAR EL ÁREA DEL MÓDULO DE ALTA PRA************************************* 
 
-function completarCampos() {
-	const select = document.getElementById("direccion");
-	const director = document.getElementById("director");
-	const subdirector = document.getElementById("subdirector");
-	
-	switch (select.value) {
-	  case "A.1":
-		director.value = "Alfonso Javier Arredondo Huerta";
-		subdirector.value = "Alfonso Javier Arredondo Huerta";
-		break;
-	  case "A.2":
-		director.value = "Isaid Rodríguez Esquivel";
-		subdirector.value = "Alfonso Javier Arredondo Huerta";
-		break;
-	  default:
-		campo1.value = "";
-		campo2.value = "";
-	}
-  }
-  //*******************TERMINA FUNCIÓN  COMPLETA LOS CAMPOS AL SELECCIÓNAR EL ÁREA DEL MÓDULO DE ALTA PRA************************************* 
-
-//**********************ESTA FUNCIÓN  COMPLETA LOS CAMPOS DEL Subdirector Adscrito: AL SELECCIÓNAR EL ÁREA DEL MÓDULO DE EDITAR USUARIO************************************* 
-
-function completarCamposUsuarios() {
-	const datos = {
-		"A.1": ["Daniela Armas Rendón", "Ivonne Celis Morales"],
-		"A.2": ["Jazmín Alejandra Arriaga Hernández", "Jorge Jiménez Santana"],
-		"A":   ["Diana Teresa Sedano Toledo"],
-		"ST":  ["Eumir Fernando Zaldívar Jiménez"],
-		"C":   ["Gustavo Rios Castro"],
-
-	};
-
-	// Función para actualizar el segundo select
-
-		const nivel = document.getElementById("nivel");
-		const subAdscrito = document.getElementById("subAdscrito");
-		const seleccion = nivel.value; // Valor seleccionado
-
-		// Limpia las opciones actuales
-		subAdscrito.innerHTML = "";
-
-		// Agrega las opciones nuevas
-		if (datos[seleccion]) {
-			datos[seleccion].forEach(function(opcion) {
-				const nuevaOpcion = document.createElement("option");
-				nuevaOpcion.value = opcion;
-				nuevaOpcion.textContent = opcion;
-				subAdscrito.appendChild(nuevaOpcion);
-			});
-		}
-  }
-  //*******************TERMINA FUNCIÓN  COMPLETA LOS CAMPOS DEL Subdirector Adscrito: AL SELECCIÓNAR EL ÁREA DEL MÓDULO DE EDITAR USUARIO************************************* 
-
-  //**********************ESTA FUNCIÓN  COMPLETA LOS CAMPOS DEL Subdirector Adscrito: AL SELECCIÓNAR EL ÁREA DEL MÓDULO DE EDITAR USUARIO************************************* 
-
-function completarCamposUsuariosJD() {
-	const datos = {
-		"Daniela Armas Rendón": ["Cuauhtémoc Correa Sánchez", "Jazmín Ruiz Córdova"],
-		"Ivonne Celis Morales": ["Raúl Israel Mancilla Salazar", "José Manuel Palafox Pichardo"],
-		"Jazmín Alejandra Arriaga Hernández": ["Irving Alcántara González Machorro Nieves", "Mario Jair Hernández Ibañez"],
-		"Jorge Jiménez Santana":["Janin Jounuen Silva González", "Carlo Iván Muraira Torres"],
-		"Gustavo Rios Castro":["Gustavo Rios Castro"],
-		"Eumir Fernando Zaldívar Jiménez":["Eumir Fernando Zaldívar Jiménez"]
-	};
-
-	// Función para actualizar el segundo select
-
-		const subAdscrito = document.getElementById("subAdscrito");
-		const jefeAdscrito = document.getElementById("jefeAdscrito");
-		const seleccion = subAdscrito.value; // Valor seleccionado
-
-		// Limpia las opciones actuales
-		jefeAdscrito.innerHTML = "";
-
-		// Agrega las opciones nuevas
-		if (datos[seleccion]) {
-			datos[seleccion].forEach(function(opcion) {
-				const nuevaOpcion = document.createElement("option");
-				nuevaOpcion.value = opcion;
-				nuevaOpcion.textContent = opcion;
-				jefeAdscrito.appendChild(nuevaOpcion);
-			});
-		}
-  }
-  //*******************TERMINA FUNCIÓN  COMPLETA LOS CAMPOS DEL Subdirector Adscrito: AL SELECCIÓNAR EL ÁREA DEL MÓDULO DE EDITAR USUARIO************************************* 
-
-  //**********************************FUNCION PARA ONVERTIR EN MAYÚSCULAS LOS CAMPOS ESCRITOS*********************************//
-  function convertirMayusculas() {
-	const campo = document.getElementById("nombre");
-	campo.value = campo.value.toUpperCase();
-}
-
-// function convertirFormularioMayusculasAltaOficios() {
-// 	// Seleccionar todos los elementos del formulario
-// 	let elementos = document.querySelectorAll('#oficioForm input, #oficioForm textarea');
-// 	// Iterar sobre los elementos y convertir a mayúsculas
-// 	elementos.forEach(function(elemento) {
-// 		if (elemento.type === 'text' || elemento.tagName === 'TEXTAREA') {
-// 			elemento.value = elemento.value.toUpperCase();
-// 		}
-// 	});
-// }
-
-  //************************************* TERMINA FUNCION PARA ONVERTIR EN MAYÚSCULAS LOS CAMPOS ESCRITOS************************************************
-
-//********************************** FUNCIÓN QUE TE DA POR DEFECTA LAS FUNCIONES AL SELECCIONAR DIRECCIÓN EN LA ALTA DEL PRA*****************************
-
-function seleccionDireccion(){
-
-const opciones = {
-	"A.1": {
-	  directores: ["Alfonso Javier Arredondo Huerta"],
-	  subdirector: {
-		"Alfonso Javier Arredondo Huerta": ["Daniela Armas Rendón", "Ivonne Celis Morales"]
-		// "[Nombre del Director]": ["Nombre de los subdirectores"],
-	  },
-	  jefeDepto: ["Cuauhtémoc Correa Sánchez", "Jazmín Ruiz Córdova", "Raúl Israel Mancilla Salazar", "José Manuel Palafox Pichardo"]
-	},
-	"A.2": {
-	  directores: ["Isaid Rodríguez Esquivel"],
-	  subdirector: {
-		"Isaid Rodríguez Esquivel": ["Jazmín Alejandra Arriaga Hernández", "Jorge Jiménez Santana"]
-		// "[Nombre del Director]": ["Nombre de los subdirectores"],
-	  },
-	  jefeDepto: ["Irving Alcántara González Machorro Nieves", "Mario Jair Hernández Ibañez","Janin Jounuen Silva González", "Carlo Iván Muraira Torres"]
-	}
-  };
-  
-  // Función para actualizar el segundo select
-  document.getElementById("direccion").addEventListener("change", function () {
-	const direccion = this.value;
-	const directorSelect = document.getElementById("director");
-	const subdirectorSelect = document.getElementById("subdirector");
-	const jefeDeptoSelect = document.getElementById("jefeDepto");
-  
-	// Limpiar selects dependientes
-	directorSelect.innerHTML = '<option value="" selected disabled>Selecciona la dirección del PRA...</option>';
-	subdirectorSelect.innerHTML = '<option value="" selected disabled>Selecciona un Director de Área...</option>';
-	jefeDeptoSelect.innerHTML = '<option value="" selected disabled>Selecciona un Subdirector de Área...</option>';
-  
-	if (direccion && opciones[direccion]) {
-	  // Llenar subcategorías
-	  opciones[direccion].directores.forEach(director => {
-		const option = document.createElement("option");
-		option.value = director;
-		option.textContent = director;
-		directorSelect.appendChild(option);
-	  });
-  
-	  // Llenar extras
-	  opciones[direccion].jefeDepto.forEach(jefeDepto => {
-		const option = document.createElement("option");
-		option.value = jefeDepto;
-		option.textContent = jefeDepto;
-		jefeDeptoSelect.appendChild(option);
-	  });
-	}
-  });
-  
-  // Función para actualizar el tercer select
-  document.getElementById("director").addEventListener("change", function () {
-	const director = this.value;
-	const direccion = document.getElementById("direccion").value;
-	const subdirectorSelect = document.getElementById("subdirector");
-  
-	subdirectorSelect.innerHTML = '<option value="" selected disabled>Selecciona un Jefe de Departamento...</option>';
-  
-	if (direccion && director && opciones[direccion].subdirector[director]) {
-	  opciones[direccion].subdirector[director].forEach(producto => {
-		const option = document.createElement("option");
-		option.value = producto;
-		option.textContent = producto;
-		subdirectorSelect.appendChild(option);
-	  });
-	}
-  });
-}
-
-  //*************************************** TERMINA FUNCIÓN QUE TE DA POR DEFECTO LAS FUNCIONES AL SELECCIONAR DIRECCIÓN ******************************
-  function cerrarMsg()
+function cerrarMsg()
 {
 	$$("#message-green").fadeOut();
 }
@@ -360,5 +179,227 @@ function muestraPestana(divId)
 }
 function verPdf(archivo)
 {
- new mostrarCuadro2(600,800,"Visor de Documento "+archivo,10,"cont/po_verPdf.php","archivo="+archivo);//alto,ancho,titulo,top,pagina,datos
+	new mostrarCuadro2(600,800,"Visor de Documento "+archivo,10,"cont/po_verPdf.php","archivo="+archivo);//alto,ancho,titulo,top,pagina,datos
 }
+
+//*****************************************************************************************************************************************
+//***************************************************NUEVA PROGRAMACIÓN********************************************************************
+//*****************************************************************************************************************************************
+
+
+//**********************************FUNCION PARA CONVERTIR EN MAYÚSCULAS LOS CAMPOS ESCRITOS*********************************//
+function convertirMayusculas() {
+	const campo = document.getElementById("nombreU");
+	campo.value = campo.value.toUpperCase();
+}
+//************************************* TERMINA FUNCION PARA ONVERTIR EN MAYÚSCULAS LOS CAMPOS ESCRITOS************************************************
+
+
+//*************************************************FUNCIÓN QUE CAMBIA LOS SELECTS DINAMICO AL EDITAR UN USUARIO ********************************************************
+  function selectDinamicoEditaUsuario() {
+  const opciones = {
+    "A.1": {
+      nivel: ["N/A", "ALFONSO JAVIER ARREDONDO HUERTA", "DIANA TERESA SEDANO TOLEDO"],
+      subdirector: {
+        "ALFONSO JAVIER ARREDONDO HUERTA": ["N/A", "DANIELA ARMAS RENDÓN", "IVONNE CELIS MORALES"],
+		"DIANA TERESA SEDANO TOLEDO": ["N/A"],
+        "N/A": ["N/A"]
+      },
+      jefeDepto: ["N/A"],
+      coordinador: ["N/A", "CUAUHTÉMOC CORREA SÁNCHEZ", "JAZMÍN RUIZ CÓRDOVA", "RAÚL ISRAEL MANCILLA SALAZAR", "JOSÉ MANUEL PALAFOX PICHARDO"]
+    },
+    "A.2": {
+      nivel: ["N/A", "ISAID RODRÍGUEZ ESQUIVEL", "DIANA TERESA SEDANO TOLEDO"],
+      subdirector: {
+        "ISAID RODRÍGUEZ ESQUIVEL": ["N/A", "JAZMÍN ALEJANDRA ARRIAGA HERNÁNDEZ", "JORGE JIMÉNEZ SANTANA"],
+		"DIANA TERESA SEDANO TOLEDO": ["N/A"],
+        "N/A": ["N/A"]
+      },
+      jefeDepto: ["N/A", "IRVING ALCÁNTARA GONZÁLEZ", "MARIO JAIR HERNÁNDEZ IBAÑEZ",  "CARLO IVÁN MURAIRA TORRES"],
+      coordinador: ["N/A", "JANIN JOUNUEN SILVA GONZÁLEZ"]
+    },
+    "ST": {
+      nivel: ["DIANA TERESA SEDANO TOLEDO"],
+      subdirector: {
+        "DIANA TERESA SEDANO TOLEDO": ["N/A", "EUMIR FERNANDO ZALDIVAR JIMENEZ"]
+      },
+      jefeDepto: ["N/A", "DANIEL ALEXIS CARRASCO ARCINIEGA", "BEATRIZ MACHORRO NIEVES", "ISRAEL ESPINOSA RAMOS"],
+      coordinador: ["N/A"]
+    },
+    "A": {
+      nivel: ["N/A", "DIANA TERESA SEDANO TOLEDO"],
+      subdirector: {
+		"DIANA TERESA SEDANO TOLEDO": ["N/A"],
+        "N/A": ["N/A"]
+      },
+      jefeDepto: ["N/A"],
+      coordinador: ["N/A"]
+    }
+  };
+
+  document.getElementById("nivel").addEventListener("change", function () {
+    const nivel = this.value;
+    const directorSelect = document.getElementById("director");
+    const subdirectorSelect = document.getElementById("subdirector");
+    const jefeDeptoSelect = document.getElementById("jefeDepto");
+    const coordinadorSelect = document.getElementById("coordinador");
+
+    directorSelect.innerHTML = '<option value="" selected disabled>Selecciona un director de área...</option>';
+    subdirectorSelect.innerHTML = '<option value="" selected disabled>Selecciona un subdirector de área...</option>';
+    jefeDeptoSelect.innerHTML = '<option value="" selected disabled>Selecciona un jefe departamento...</option>';
+    coordinadorSelect.innerHTML = '<option value="" selected disabled>Selecciona un coordinador...</option>';
+
+    if (nivel && opciones[nivel]) {
+      opciones[nivel].nivel.forEach(director => {
+        const option = document.createElement("option");
+        option.value = director;
+        option.textContent = director;
+        directorSelect.appendChild(option);
+      });
+
+      opciones[nivel].jefeDepto.forEach(jefeDepto => {
+        const option = document.createElement("option");
+        option.value = jefeDepto;
+        option.textContent = jefeDepto;
+        jefeDeptoSelect.appendChild(option);
+      });
+
+      opciones[nivel].coordinador.forEach(coordinador => {
+        const option = document.createElement("option");
+        option.value = coordinador;
+        option.textContent = coordinador;
+        coordinadorSelect.appendChild(option);
+      });
+    }
+  });
+
+  document.getElementById("director").addEventListener("change", function () {
+	  const director = this.value;
+	  const nivel = document.getElementById("nivel").value;
+	  const subdirectorSelect = document.getElementById("subdirector");
+	  
+    subdirectorSelect.innerHTML = '<option value="" selected disabled>Selecciona un subdirector de área...</option>';
+	
+    if (nivel && director && opciones[nivel].subdirector[director]) {
+		opciones[nivel].subdirector[director].forEach(subdirector => {
+			const option = document.createElement("option");
+			option.value = subdirector;
+			option.textContent = subdirector;
+			subdirectorSelect.appendChild(option);
+		});
+    }
+});
+}
+//***************************************TERMINA FUNCIÓN QUE CAMBIA LOS SELECTS DINAMICO AL EDITAR UN USUARIO ********************************************************
+
+//****************FUNCION QUE HABILITA EL BOTON PARA ABRIR EL MÓDAL DE ALTA PRESUNTO CUANDO HAY TEXTO INGRESADO EN EL CAMPO DE NÚMERO DE ACCIÓN************************
+function activarModalAltaPresunto() {
+	document.getElementById('campo1').addEventListener('input', function() {
+		const inputText = document.getElementById('campo1').value;
+		const submitButton = document.getElementById('altapresunto');
+		submitButton.disabled = inputText.trim() === '';
+		var input = document.getElementById('campo1');
+		completarCamposAltraPRA(input.value);//esta funcion le manda a llamar a completarCamposAltraPRA: la cuaúl despliega los campos 
+	});
+}
+//********TERMINA FUNCION QUE HABILITA EL BOTON PARA ABRIR EL MÓDAL DE ALTA PRESUNTO CUANDO HAY TEXTO INGRESADO EN EL CAMPO DE NÚMERO DE ACCIÓN************************
+
+//***********FUNCIÓN PARA BUSCAR LOS DATOS DEL NÚMERO DE ACCION AL BUSCAR POR CLAVE Y DESPLIEGA LA: CP, NO. DE AUDITORIA, NO. DE EPRA, Y LA ENTIDAD ********************
+
+function completarCamposAltraPRA(){
+
+	$(document).ready(function() {
+		$('#campo1').autocomplete({
+			source: 'busquedaDatos.php',
+			select: function(event, ui) {
+				$('#campo2').val(ui.item.campo2);
+				$('#campo3').val(ui.item.campo3);
+				$('#campo4').val(ui.item.campo4);
+				$('#campo5').val(ui.item.campo5);
+			}
+		});
+	});
+}
+//*************************************** TERMINA FUNCIÓN PARA COMPLETAR LOS CAMPOS AL DAR DE ALTA EL EPRA*************************************************************
+
+//***************************************FUNCIÓN PARA SACAR EL NÚMERO DE MODALES DEPENDIENDO LOS PRESUNTOS QUE SELECCIONA EL USUARIO **********************************
+// function modals() {
+// 	document.getElementById('nopresuntos').addEventListener('change', function() {
+// 		var numPresuntos = this.value;
+// 		var modalContainer = document.getElementById('modalContainer');
+// 		modalContainer.innerHTML = ''; // Limpiar el contenedor de modales
+	
+// 		for (var i = 0; i < numPresuntos; i++) {
+// 			var modalClone = document.getElementById('formModal').cloneNode(true);
+// 			modalClone.id = 'formModal' + i;
+// 			modalContainer.appendChild(modalClone);
+// 			var modal = new bootstrap.Modal(modalClone);
+// 			modal.show();
+// 		}
+// 	});
+// 	}
+//*************************************** TERMINA FUNCIÓN PARA SACAR EL NÚMERO DE MODALES DEPENDIENDO LOS PRESUNTOS QUE SELECCIONA EL USUARIO**************************
+
+//*************************FUNCIÓN PARA AUTOCOMPLETAR LOS CHECKBOXES AL SELECCIONAR EL TIPO FALTA ADMINISTRATIVA DEL PRESUNTO EN LA ALTA DEL PRA***********************
+function updateCheckboxes(option) {
+	// Contenedor de los checkboxes
+	var checkboxesContainer = document.getElementById("checkboxesContainer");
+	checkboxesContainer.innerHTML = ""; // Limpiar los checkboxes existentes
+
+	// Realizar una solicitud AJAX para obtener los datos
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", "../presuntos/Alta_Presuntos/faltas_checkboxes.php?option=" + option, true);
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			var data = JSON.parse(xhr.responseText);
+			var row;
+
+			for (var i = 0; i < data.length; i++) {
+				if (i % 3 === 0) {
+					row = document.createElement("div");
+					row.className = "row mb-2";
+					checkboxesContainer.appendChild(row);
+				}
+
+				var col = document.createElement("div");
+				col.className = "col";
+
+				var checkboxDiv = document.createElement("div");
+				checkboxDiv.className = "form-check";
+
+				var checkbox = document.createElement("input");
+				checkbox.type = "checkbox";
+				checkbox.className = "form-check-input";
+				checkbox.name = "checks[]";
+				checkbox.value = data[i];
+				checkboxDiv.appendChild(checkbox);
+
+				var label = document.createElement("label");
+				label.className = "form-check-label";
+				label.innerHTML = data[i];
+				checkboxDiv.appendChild(label);
+
+				col.appendChild(checkboxDiv);
+				row.appendChild(col);
+			}
+		}
+	};
+	xhr.send();
+}
+//********************TERMINA FUNCIÓN PARA AUTOCOMPLETAR LOS CHECKBOXES AL SELECCIONAR EL TIPO FALTA ADMINISTRATIVA DEL PRESUNTO EN LA ALTA DEL PRA********************
+
+//****************************************FUNCION QUE PASA LA CLAVE DE ACCIÓN AL MODAL DE DAR ALTA LOS PRESUNTOS*******************************************************/
+function showModal() {
+	var text = document.getElementById('textInput').value;
+	document.getElementById('modalText').innerText = text;
+	$('#textModal').modal('show');
+}
+//*********************************************TERMINA LA FUNCION QUE PASA LA CLAVE DE ACCIÓN AL MODAL DE DAR ALTA LOS PRESUNTOS**************************************/
+
+//*******************************************************************NUEVA FUNCIÓN A PROBAR **************************************************************************/
+
+
+
+
+ 
+

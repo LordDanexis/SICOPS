@@ -10,7 +10,7 @@
 require_once('../../includes/conexion.php');
 
 // Columnas a mostrar en la tabla
-$columns = ['id', 'nombre', 'curp', 'genero', 'usuario', 'password', 'contrato', 'nivel', 'direccion', 'no_empleado', 'tipo_emp', 'puesto', 'sub_adscrito', 'jefe_depto_adscrito', 'status'];
+$columns = ['id', 'nombre', 'curp', 'genero', 'usuario', 'password', 'contrato', 'nivel', 'direccion', 'no_empleado', 'tipo_emp', 'puesto', 'director', 'sub_adscrito', 'jefe_depto_adscrito', 'coordinador_AJ', 'status'];
 
 // Nombre de la tablas
 $table = "usuarios";
@@ -86,7 +86,7 @@ $output['totalFiltro'] = $totalFiltro;
 $output['data'] = '';
 $output['paginacion'] = '';
 
-['id', 'nombre', 'curp', 'genero', 'usuario', 'password', 'contrato', 'nivel', 'direccion', 'no_empleado', 'tipo_emp', 'puesto', 'sub_adscrito', 'jefe_depto_adscrito', 'status'];
+['id', 'nombre', 'curp', 'genero', 'usuario', 'password', 'contrato', 'nivel', 'direccion', 'no_empleado', 'tipo_emp', 'puesto', 'director', 'sub_adscrito', 'jefe_depto_adscrito', 'coordinador_AJ', 'status'];
 
 
 if ($num_rows > 0) {
@@ -100,12 +100,14 @@ if ($num_rows > 0) {
         $output['data'] .= '<td>' . $row['password'] . '</td>';
         $output['data'] .= '<td>' . $row['contrato'] . '</td>';
         $output['data'] .= '<td>' . $row['nivel'] . '</td>';
-        $output['data'] .= '<td>' . $row['direccion'] . '</td>';
         $output['data'] .= '<td>' . $row['no_empleado'] . '</td>';
         $output['data'] .= '<td>' . $row['tipo_emp'] . '</td>';
         $output['data'] .= '<td>' . $row['puesto'] . '</td>';
+        $output['data'] .= '<td>' . $row['director'] . '</td>';
         $output['data'] .= '<td>' . $row['sub_adscrito'] . '</td>';
         $output['data'] .= '<td>' . $row['jefe_depto_adscrito'] . '</td>';
+        $output['data'] .= '<td>' . $row['coordinador_AJ'] . '</td>';
+        $output['data'] .= '<td>' . $row['direccion'] . '</td>';
         $output['data'] .= '<td>' . $row['status'] . '</td>';
         $output['data'] .= '<td><a class="btn btn-warning btn-sm" href="edita_usuario.php?id=' . $row['id'] . '">Editar</a></td>';
         // $output['data'] .= "<td><a class='btn btn-danger btn-sm' href='elimiar.php?id=" . $row['id'] . "'>Eliminar</a></td>";

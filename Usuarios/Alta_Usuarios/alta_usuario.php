@@ -1,7 +1,13 @@
 <?php
+//************************CONEXIÓN A LA BASE DE DATOS*****************************/
 require_once("../../includes/conexion.php");
+
 $query =  "SELECT * FROM puestos";
 $result = $conexion->query($query);
+
+$query2 =  "SELECT * FROM usuarios";
+$resultado = $conexion->query($query2);
+//************************CONEXIÓN A LA BASE DE DATOS*****************************/
 ?>
 
 <!DOCTYPE html>
@@ -19,11 +25,15 @@ $result = $conexion->query($query);
 <body>
   <?php include '../../encabezados/encabezadoUsuarios.php'; ?>
   <div class="container">
-    <div class="row mt-5">
-      <div class="col">
-        <h1>Alta de Usuarios DGSUB<a href="../../index.php" class="btn btn-dark">Regresar</a></h1>
+
+    <div class="row row-cols-2 text-center">
+      <div class="col-6 mt-4">
+        <h2>Alta de Usuarios DGSUB</h2>
       </div>
+      <div class="col mt-4"><a href="../../index.php" class="btn btn-dark">Regresar</a></div>
     </div>
+
+
     <form class="needs-validation" method="POST" novalidate>
       <div class="row mt-5">
         <?php include "inserta_usuario.php"; ?>
@@ -66,7 +76,7 @@ $result = $conexion->query($query);
           <div class="invalid-feedback"> Se debe de Capturar el Número del Contrato.</div>
         </div>
 
-        <div class="col-6 mb-3">
+        <div class="col-6">
           <label for="nivel" class="form-label">Nivel:</label>
           <select class="form-select" name="nivel" id="nivel" required>
             <option value="" disabled selected>A que área esta Adscrito el Usuario...</option>
@@ -78,7 +88,7 @@ $result = $conexion->query($query);
           <div class="invalid-feedback"> Se debe de Capturar el Área a la que va a Estár Ádscrita el Usuario.</div>
         </div>
 
-        <div class="col-6 mb-4">
+        <div class="col-6 mb-3">
           <label for="direccion" class="form-label">Dirección:</label>
           <select class="form-select" name="direccion" id="direccion" required>
             <option value="" disabled selected>Dirección del Usuario...</option>
@@ -105,7 +115,7 @@ $result = $conexion->query($query);
           </select>
         </div>
 
-        <div class="col-6 mb-3">
+        <div class="col-6">
           <label for="puesto" class="form-label">Puesto:</label>
           <select class="form-select" name="puesto" id="puesto" required>
             <option value="" disabled selected>Selecciona el Puesto del Usuario...</option>
@@ -116,15 +126,35 @@ $result = $conexion->query($query);
             <?php } ?>
           </select>
         </div>
-        ñ
-        <div class="col-6">
-          <label for="subAdscrito" class="form-label">Subdirector Adscrito:</label>
-          <input type="text" class="form-control" name="subAdscrito" id="subAdscrito">
+
+        <!-- <div class="col-6 mb-3">
+          <label for="director" class="form-label">Director:</label>
+          <input type="text" class="form-control" name="director" id="director">
+        </div> -->
+
+        <div class="col-6 mb-3">
+          <label for="director" class="form-label">Direccion DGI:</label>
+          <select class="form-select" id="director" name="director">
+            <option value="" selected disabled>Selecciona la DGI A O B...</option>
+            <option value="DGI A">DGI A</option>
+            <option value="DGI B">DGI B</option>
+          </select>
+          <div class="invalid-feedback">Se debe capturar la dirección de DGI correspondiente.</div>
         </div>
 
         <div class="col-6">
-          <label for="jefeAdscrito" class="form-label">Jefe de Departamento Adscrito:</label>
+          <label for="subAdscrito" class="form-label">Subdirector:</label>
+          <input type="text" class="form-control" name="subAdscrito" id="subAdscrito">
+        </div>
+
+        <div class="col-6 mb-3">
+          <label for="jefeAdscrito" class="form-label">Jefe de Departamento:</label>
           <input type="text" class="form-control" name="jefeAdscrito" id="jefeAdscrito">
+        </div>
+
+        <div class="col-6 mb-3">
+          <label for="coordinador" class="form-label">Coordinador de Auditores Juridicos:</label>
+          <input type="text" class="form-control" name="coordinador" id="coordinador">
         </div>
 
         <div class="col-6 mb-3">
@@ -136,7 +166,7 @@ $result = $conexion->query($query);
           </select>
           <div class="invalid-feedback">Se debe de llenar el Campo Status.</div>
         </div>
-        <div class="col-12">
+        <div class="col-12 mb-3 text-center">
           <button type="submit" class="btn btn-primary" name="btninsertar" value="ok">Guardar</button>
         </div>
       </div>

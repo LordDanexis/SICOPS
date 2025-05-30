@@ -95,7 +95,6 @@ if ($num_rows > 0) {
     while ($row = $resultado->fetch_assoc()) {
         // Creamos un ID único para el modal, por ejemplo, basado en consecutivo y folio.
         $modalId = 'uploadModal' . $row['consecutivo'] . '-' . $row['folio'];
-
         $output['data'] .= '<tr>';
         $output['data'] .= '<td>' . $row['consecutivo'] . '</td>';
         $output['data'] .= '<td>' . $row['folio'] . '</td>';
@@ -111,21 +110,20 @@ if ($num_rows > 0) {
         $output['data'] .= '<td>
             <a class="btn btn-warning btn-sm" href="edita_oficio.php?id=' . $row['consecutivo'] . '">Editar</a>
         </td>';
+        // Generar un ID único para el modal
 
-        // Botón que abre el modal, utilizando el ID único generado.
         $output['data'] .= '<td>
-            <a class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#' . $modalId . '">
-                Subir Acuse
-            </a>
-        </td>';
+    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#' . $modalId . '">
+        Adjuntar PDF
+    </button>
+</td>';
 
-        // Incluir el contenido del modal.
-        // Se asume que el archivo "popup_subir_archivo.php" contiene la estructura HTML del modal.
-        // Este archivo debe usar la variable $modalId para establecer el atributo id del modal.
+        // Guardar contenido del modal
         ob_start();
         include('popup_subir_archivo.php');
         $modalContent = ob_get_clean();
         $output['data'] .= $modalContent;
+
 
         $output['data'] .= "<td>
             <a class='btn btn-info btn-sm' href='elimiar.php?id=" . $row['consecutivo'] . "'>

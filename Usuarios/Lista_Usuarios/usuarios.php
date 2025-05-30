@@ -16,7 +16,7 @@
 <body>
     <main>
         <?php include '../../encabezados/encabezadoUsuarios.php'; ?>
-        <div class="container py-4 text-center">
+        <div class="container text-center">
             <h2>Lista de Usuarios DGSUB</h2>
 
             <div class="row g-4">
@@ -66,13 +66,15 @@
                             <th class="sort asc">CONTRASEÑA</th>
                             <th class="sort asc">CONTRATO</th>
                             <th class="sort asc">NIVEL</th>
-                            <th class="sort asc">DIRECCIÓN</th>
                             <th class="sort asc">NO. EMPLEADO</th>
                             <th class="sort asc">TIPO EMPLEADO</th>
                             <th class="sort asc">PUESTO</th>
                             <!-- <th class="sort asc">TIPO</th>-->
+                            <th class="sort asc">DIRECTOR</th>
                             <th class="sort asc">SUB ADSCRITO</th>
                             <th class="sort asc">JEFE ADSCRITO</th>
+                            <th class="sort asc">COORDINADOR ADSCRITO</th>
+                            <th class="sort asc">TIPO DE USUARIO</th>
                             <th class="sort asc">STATUS</th>
 
                             <th></th>

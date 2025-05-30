@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <?php include '../encabezados/encabezadoModulos.php'; ?>
+    <?php include '../encabezados/encabezadoModuloOficios.php'; ?>
     <main>
         <div class="container py-4 text-center">
             <h2>Oficios DGSUB</h2>

@@ -4,15 +4,32 @@ header("Content-Type: text/html;charset=utf-8");
 
 //require_once("../includes/clases.php");
 require_once("../includes/funciones.php");
+require_once("../includes/conexion.php");
 $enlace = mysqli_connect("127.0.0.1", "root", "", "dgsub_sicops");
+
+// if ($conn->connect_error) {
+// 	die("Conexión fallida: " . $conn->connect_error);
+// }
+
+// $term = $_GET['term'];
+// $sql = "SELECT accion, cp, auditoria, epra, entidad FROM acciones_sicsa WHERE accion LIKE '%" . $term . "%'";
+// $result = $conn->query($sql);
+
 
 //-------------------------- DESINFECTAR VARIABLES -----------------------------
 //------------------------------------------------------------------------------
-$texto = ivalorSeguro($enlace, $_REQUEST['texto']);
-$usuario = ivalorSeguro($enlace, $_REQUEST['usuario']);
-$direccion = ivalorSeguro($enlace, $_REQUEST['direccion']);
-$nivel = ivalorSeguro($enlace, $_REQUEST['nivel']);
-$nombre = ivalorSeguro($enlace, $_REQUEST['nombre']);
+// $texto = ivalorSeguro($enlace, $_REQUEST['texto']);
+// $usuario = ivalorSeguro($enlace, $_REQUEST['usuario']);
+// $direccion = ivalorSeguro($enlace, $_REQUEST['direccion']);
+// $nivel = ivalorSeguro($enlace, $_REQUEST['nivel']);
+// $nombre = ivalorSeguro($enlace, $_REQUEST['nombre']);
+
+$texto = ivalorSeguro2($_REQUEST['texto']);
+$usuario = ivalorSeguro2($_REQUEST['usuario']);
+$direccion = ivalorSeguro2($_REQUEST['direccion']);
+$nivel = ivalorSeguro2($_REQUEST['nivel']);
+$nombre = ivalorSeguro2($_REQUEST['nombre']);
+
 
 switch ($nivel) {
 	case "A.1":
@@ -124,6 +141,7 @@ if ($sql == "") {
 			}
 		}
 
+
 		//---------- Aquí se imprimen las columnas de la Tabla Oficios---------------------//
 		$tabla .= '
 				<tr ' . $estilo . ' >
@@ -156,5 +174,5 @@ if ($sql == "") {
 	echo $tabla;
 	//mysql_free_result($sql);	
 	mysqli_free_result($query);
-	mysqli_close($enlace);
+	// mysqli_close($enlace);
 }

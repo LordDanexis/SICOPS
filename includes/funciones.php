@@ -17,21 +17,22 @@ function dameurl()
 	return $url;
 }
 //-------------------------------------------------- URL -------------------------------------------------------
-function acentos($cadena)
-{
-	$no_permitidas = array("&eacute;");
-	$permitidas = array("e");
-	$texto = str_replace($no_permitidas, $permitidas, $cadena);
-	return $texto;
-}
+// function acentos($cadena)
+// {
+// 	$no_permitidas = array("&eacute;");
+// 	$permitidas = array("e");
+// 	$texto = str_replace($no_permitidas, $permitidas, $cadena);
+// 	return $texto;
+// }
 //*********************************************QUITA CARACTERES ESPECIALES**************************************************
-function quitar_espaciales($cadena)
-{
-	$no_permitidas = array("�", "á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú", "ñ", "À", "Ã", "Ì", "Ò", "Ù", "Ã™", "Ã ", "Ã¨", "Ã¬", "Ã²", "Ã¹", "ç", "Ç", "Ã¢", "ê", "Ã®", "Ã´", "Ã»", "Ã‚", "ÃŠ", "ÃŽ", "Ã”", "Ã›", "ü", "Ã¶", "Ã–", "Ã¯", "Ã¤", "«", "Ò", "Ã", "Ã„", "Ã‹");
-	$permitidas = array("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
-	$texto = str_replace($no_permitidas, $permitidas, $cadena);
-	return $texto;
-}
+// function quitar_espaciales($cadena)
+// {
+// 	$no_permitidas = array("�", "á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú", "ñ", "À", "Ã", "Ì", "Ò", "Ù", "Ã™", "Ã ", "Ã¨", "Ã¬", "Ã²", "Ã¹", "ç", "Ç", "Ã¢", "ê", "Ã®", "Ã´", "Ã»", "Ã‚", "ÃŠ", "ÃŽ", "Ã”", "Ã›", "ü", "Ã¶", "Ã–", "Ã¯", "Ã¤", "«", "Ò", "Ã", "Ã„", "Ã‹");
+// 	$permitidas = array("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+// 	$texto = str_replace($no_permitidas, $permitidas, $cadena);
+// 	return $texto;
+// }
+
 //------------------------------------------------------------------------------------------------------------------------
 //-------------------------------------------------- MENÚ PRINCIPAL -------------------------------------------------------
 //-------------------------------------------------------------------------------------------------------------------------
@@ -47,41 +48,44 @@ function menu($direccion)
 	//********************************************MENÚ DE OFICIOS DGSUB********************************************************* */
 	if ($direccion == "A"  || $direccion == "DG" || $direccion == "AP" || $direccion == "C" || $direccion == "ST") {
 
+		//****************************ESTE ES EL SUBMENÚ DE ALTA OFICIOS****************************************
 		$menu .= '
-		
 		<ul class="select menu" id="mInicio"> 
-		    <li><a href="#nogo" class="munuSup"><b>Oficios DGSUB</b> <!--[if IE 7]><!--></a><!--<![endif]-->
+		
+		    <li><a href="#nogo" class="munuSup"> <b>Oficios DGSUB</b>  <!--[if IE 7]><!--></a><!--<![endif]-->
 		        <ul class="sub submenu redonda5 ulPfrr">
-		        <li><a class="menu_pfrr redonda3" href="?cont=pfrr_oficios3"> <img src="images/alta.png" /> <span>Alta Oficio </span> </a></li> ';
-		if ($direccion == "AP" || $direccion == "ST" || $direccion == "DG") $menu .= '<li><a class="menu_pfrr redonda3" href="oficios/oficios.php"> <img src="images/editar_oficio.png" /> <span>Editar Oficio </span> </a></li>
-		    </li>
-		        </ul>  
-		</ul>';
-	}
-	//********************************* TERMINA MENÚ DE OFICIOS DGSUB********************************************************* */
-
-	//*************************************************MENÚ ALTA PFRR********************************************************* */	
-	if ($direccion == "AP") {
+                
+		        <li><a class="menu_pfrr redonda3" href="?cont=pfrr_oficios3"> <img src="images/alta.png" /> <span>Alta Oficio </span> </a></li>';
+		if ($direccion == "AP" || $direccion == "ST")
+			$menu .= '
+				<li><a class="menu_pfrr redonda3" href="oficios/oficios.php"> <img src="images/editar_oficio.png" /> <span>Editar Oficio </span> </a></li> ';
 		$menu .= '
-					<div class="nav-divider">&nbsp;</div>
-					<ul class="select menu" id="mInicio">
-						<li><a href="#" class="munuSup"><b>Alta PRA</b><!--[if IE 7]><!--></a><!--<![endif]-->
-							<!--[if lte IE 6]><table><tr><td><![endif]-->
-						   <ul class="sub submenu redonda5 ulMd">
-							  <li> <a class="menu_md redonda3" href="alta_pra/registra_Pra.php"> <img src="images/alta.png" /> <span> Alta de Expedientes de Responsabilidad Administrativa</span> </a>
-							     <!--<ul class="submenu2 redonda5">  <li> <a class="menu_md redonda3" href="cont=medios_rr_actores"> <img src="images/actor.png" /> Ver Actores </a> </li> </ul>-->
-							   </li>
-						   </ul>
-						</li>
-							<div class="nav-divider">&nbsp;</div>
-					</ul> ';
+			</li>
+			
+		</ul>    ';
+		//****************************TERMINA EL SUBMENÚ DE ALTA OFICIOS****************************************
+
+		//****************************ESTE ES EL SUBMENÚ DE ALTA EPRA*****************************************
+		$menu .= '
+                 
+                 <li><a href="#nogo" class="munuSup"> <b> Alta PRA</b> <!--[if IE 7]><!--></a><!--<![endif]-->
+				 <div class="nav-divider">&nbsp;</div>
+
+	 				   <ul class="sub submenu redonda5 ulMd">
+						   <li> <a class="menu_md redonda3" href="ExpedientesDGSUB/altaNumExpediente/registra_Pra.php"> <img src="images/alta.png" /> <span> Alta de Expedientes de Responsabilidad Administrativa </span> </a> </li>
+						   <li> <a class="menu_md redonda3" href="ExpedientesDGSUB/verExpedientes/expedientes.php"> <img src="images/epra.png" /> Examinar PRA </a> </li>  						
+						</ul>
+				 </li>
+				';
+		//****************************TERMINA EL SUBMENÚ DE ALTA EPRA*****************************************
+
 	}
 	return $menu;
-}   //*******************************************TERMINA MENÚ ALTA PFRR********************************************************* */	
+}
+//--------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------- TERMINA MENÚ PRINCIPAL ---------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------------
 
-//------------------------------------------------------------------------------------------------------------------------
-//----------------------------------------- TERMINA MENÚ PRINCIPAL -------------------------------------------------------
-//-------------------------------------------------------------------------------------------------------------------------
 
 
 //--------------------------------------------------------------------------------------------------------------------------------
@@ -243,6 +247,7 @@ function verificaOficioLink($oficio, $estado)
 	$o = mysqli_fetch_array($sql, MYSQLI_BOTH);
 	$no = mysqli_num_rows($sql);
 
+	mysqli_close($enlace);
 	if ($no != 0) {
 
 		if ($estado == 1) {
@@ -335,3 +340,82 @@ function generaOficios($tipo = "", $procedimiento, $fechaOficio, $horaOficio, $r
 		}
 	}
 }
+
+// function generarNumeroExp()
+// {
+
+// 	// if ($dirForm == 'ST') {
+// 	require_once("conexion.php");
+// 	$query     = "SELECT contador, concat('DGSUB\"A\"/','" . "',lpad(consecutivo,4,'0'),'/',year(now())) as folio from ( SELECT ifnull(max(consecutivo),0) + 1 as consecutivo FROM oficios WHERE fecha_oficio BETWEEN concat(year(now()),'-01-01') and concat(year(now()),'-12-31 23:59:59')  ) dos";
+// 	$resultado = $conexion->query($query);
+// 	$row = $resultado->fetch_array(MYSQLI_BOTH);
+// 	$consecutivo = $r['consecutivo'];
+// 	// $enlace = mysqli_connect("127.0.0.1", "root", "", "dgsub_sicops");
+// 	$folio = $r['folio'];
+
+// 	// if ($consecutivo > 0) {
+// 	// 	//-------------------------------------------------------------------------------
+// 	// 	$query = "INSERT INTO oficios 
+// 	// 						  SET 
+// 	// 							consecutivo = '$consecutivo',
+// 	// 							folio = '$folio',
+// 	// 							fecha_oficio = '$fechaOficio',
+// 	// 							hora_oficio = '$horaOficio',
+// 	// 							procedimiento = '" . $procedimiento . "',
+// 	// 							nivel = '$dirForm',
+// 	// 							observaciones = '$oficioRef',
+// 	// 							destinatario = '$remitente',
+// 	// 							cargo_destinatario = '$cargo',
+// 	// 							dependencia = '$dependencia',
+// 	// 							asunto = '" . $asunto . "',
+// 	// 							abogado_solicitante = '" . $userForm . "',
+// 	// 							firma_oficio = '$userForm2',
+// 	// 							tipo = '$tipoOficio',
+// 	// 							tipoOficio = '" . $tipo . "',
+// 	// 							status = 1,
+// 	// 							juridico = 1 ";
+// 	// 	mysqli_query($enlace, $query);
+// 	// 	return $folio;
+// 	// } else {
+// 	// 	return "ERROR";
+// 	// }
+// 	// } else {
+
+// 	// 	$enlace = mysqli_connect("127.0.0.1", "root", "", "dgsub_sicops");
+// 	// 	$sql = "SELECT consecutivo, concat('DGSUB\"A\"/','" . $dirForm . '/' . "',lpad(consecutivo,4,'0'),'/',year(now())) as folio from ( SELECT ifnull(max(consecutivo),0) + 1 as consecutivo FROM oficios WHERE fecha_oficio BETWEEN concat(year(now()),'-01-01') and concat(year(now()),'-12-31 23:59:59')  ) dos";
+// 	// 	//$sql = "SELECT ifnull(max(consecutivo),0) + 1 as consecutivo, concat('DGSUB\"A\"/','" . $dirForm . '/' . "',lpad(ifnull(max(consecutivo),0) + 1,4,'0'),'/',year(now())) as folio FROM oficios";
+// 	// 	$query = mysqli_query($enlace, $sql);
+// 	// 	$r = mysqli_fetch_array($query, MYSQLI_BOTH);
+// 	// 	$consecutivo = $r['consecutivo'];
+// 	// 	$folio = $r['folio'];
+
+// 	// if ($consecutivo > 0) {
+// 	// 	//-------------------------------------------------------------------------------
+// 	// 	$query = "INSERT INTO oficios 
+// 	// 					  SET 
+// 	// 						consecutivo = '$consecutivo',
+// 	// 						folio = '$folio',
+// 	// 						fecha_oficio = '$fechaOficio',
+// 	// 						hora_oficio = '$horaOficio',
+// 	// 						procedimiento = '$procedimiento',
+// 	// 						nivel = '$dirForm',
+// 	// 						observaciones = '$oficioRef',
+// 	// 						destinatario = '$remitente',
+// 	// 						cargo_destinatario = '$cargo',
+// 	// 						dependencia = '$dependencia',
+// 	// 						asunto = '$asunto',
+// 	// 						abogado_solicitante = '" . $userForm . "',
+// 	// 						firma_oficio = '$userForm2',
+// 	// 						tipo = '$tipoOficio',
+// 	// 						tipoOficio = '" . $tipo . "',
+// 	// 						status = 1,
+// 	// 						juridico = 1 ";
+
+// 	// 	mysqli_query($enlace, $query);
+// 	// 	//printf("Nuevo registro con el id %d.\n", mysqli_insert_id($enlace));
+// 	// 	return $folio;
+// 	// } else {
+
+// 	// 	return "ERROR";
+// 	// }
+// }

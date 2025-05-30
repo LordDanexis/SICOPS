@@ -20,5 +20,6 @@ if (!empty($_POST["btnactualizar"])) {
         echo "<div class='alert alert-success'>Modificación Exitosa</div>";
     } else {
         echo "<div class='alert alert-warning'>Error al Modificar</div>";
+        
     }
 }
